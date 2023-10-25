@@ -42,4 +42,13 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    protected $table = 'users'; // Specify the table name if it's different from the model name
+
+    protected $primaryKey = 'id'; // Specify the primary key if it's different from 'id'
+
+    public function reviews()
+    {
+        return $this->hasMany(Review::class, 'user_id', 'user_id');
+    }
 }
