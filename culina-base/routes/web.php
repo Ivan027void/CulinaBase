@@ -24,3 +24,7 @@ Route::get('/option', function () {
 Route::get('/about', function () {
     return view('about-us');
 });
+
+Route::get('/recipe', function () {
+    return view('recipe');
+});

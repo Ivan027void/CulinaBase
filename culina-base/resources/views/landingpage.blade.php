@@ -41,12 +41,12 @@
 
             <div class="recipe-cards">
                 <div class="recipe-card">
-                    <a href="#">
+                    <a href="/recipe">
                         <img src="recipe/carbonara.jpg" alt="Spaghetti Carbonara">
                         <h2>Spaghetti Carbonara</h2>
                         <p>Masakan pasta klasik Italia dengan saus telur, keju parmesan, dan daging bacon yang lezat.
                         </p>
-                        <a class="read-more" href="#">Lanjutkan Membaca</a>
+                        <a class="read-more" href="/recipe">Lanjutkan Membaca</a>
                     </a>
                 </div>
 
