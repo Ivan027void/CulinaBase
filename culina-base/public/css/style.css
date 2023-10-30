@@ -1,9 +1,10 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-.container{
+
+.container {
     height: 100%;
     width: 100%;
     overflow-x: none;
@@ -12,12 +13,12 @@
 
 }
 
-.navContainer{
+.navContainer {
     width: 100vw;
     /* background-color: rgba(113, 113, 154, 0.776);
     */
     background-color: #000000;
-background-image: linear-gradient(160deg, #000000 0%, #8085d0 100%);
+    background-image: linear-gradient(160deg, #000000 0%, #8085d0 100%);
 
 
     min-height: 80px;
@@ -26,10 +27,12 @@ background-image: linear-gradient(160deg, #000000 0%, #8085d0 100%);
     align-items: center;
     position: relative;
 }
-nav{
+
+nav {
     width: 100%;
 }
-#navList{
+
+#navList {
     width: 100%;
     padding: 15px;
     /* margin-left: 10px;
@@ -41,24 +44,28 @@ nav{
     /* align-items: center; */
 }
 
-#navLogo{
+#navLogo {
     font-size: 2.8rem;
     color: azure;
 }
 
-a{
+a {
     text-decoration: none;
     color: azure;
 }
-#navItems{
+
+#navItems {
     display: flex;
     gap: 40px;
-    
+
 }
 
 /* CSS untuk bagian <main> */
 main {
     display: flex;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
     flex-direction: column;
     align-items: center;
     text-align: center;
@@ -68,13 +75,17 @@ main {
 .welcome-section {
     text-align: center;
     padding: 20px;
-    background-color: #f9f9f9; /* Warna latar belakang */
-    margin-bottom: 20px; /* Menambahkan margin di bawah bagian welcome */
+    background-color: #f9f9f9;
+    /* Warna latar belakang */
+    margin-bottom: 20px;
+    /* Menambahkan margin di bawah bagian welcome */
 }
 
 .welcome-section h1 {
-    font-size: 36px; /* Ukuran teks "Welcome" yang besar */
-    margin-bottom: 10px; /* Jarak ke teks paragraf di bawahnya */
+    font-size: 36px;
+    /* Ukuran teks "Welcome" yang besar */
+    margin-bottom: 10px;
+    /* Jarak ke teks paragraf di bawahnya */
 }
 
 .welcome-section p {
@@ -93,15 +104,19 @@ main {
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 5px;
-    max-width: calc(33.33% - 20px); /* Membuat 3 kartu per baris */
+    max-width: calc(33.33% - 20px);
+    /* Membuat 3 kartu per baris */
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-    flex: 0 0 calc(33.33% - 20px); /* Membuat 3 kartu per baris */
+    flex: 0 0 calc(33.33% - 20px);
+    /* Membuat 3 kartu per baris */
 }
 
 .recipe-card img {
     max-width: 100%;
-    height: 200px; /* Tentukan tinggi gambar yang tetap */
-    object-fit: cover; /* Memastikan gambar selalu memenuhi kotak kartu */
+    height: 200px;
+    /* Tentukan tinggi gambar yang tetap */
+    object-fit: cover;
+    /* Memastikan gambar selalu memenuhi kotak kartu */
 }
 
 
@@ -164,19 +179,20 @@ main {
 /* Media query untuk menangani layar yang lebih kecil (responsif) */
 @media (max-width: 768px) {
     .recipe-card {
-        max-width: calc(50% - 20px); /* Menampilkan 2 kartu per baris pada layar yang lebih kecil */
+        max-width: calc(50% - 20px);
+        /* Menampilkan 2 kartu per baris pada layar yang lebih kecil */
     }
 }
 
 
-footer{
+footer {
     width: 100%;
 }
 
-.footerBox{
+.footerBox {
     background-color: #000000;
     background-image: linear-gradient(160deg, #000000 0%, #8085d0 100%);
-    
+
     width: 100%;
     text-align: center;
     min-height: 40px;
@@ -187,7 +203,7 @@ footer{
     font-size: 2rem;
 }
 
-.contentBox{
+.contentBox {
     width: 50%;
     margin: auto;
     /* border: 1px solid black; */
@@ -206,18 +222,24 @@ footer{
 
 /* CSS untuk bagian "welcome" */
 .welcome {
-    text-align: center; /* Mengatur teks ke tengah */
-    padding: 20px; /* Atur padding sesuai kebutuhan */
-    background-color: #f5f5f5; /* Atur warna latar belakang sesuai kebutuhan */
+    text-align: center;
+    /* Mengatur teks ke tengah */
+    padding: 20px;
+    /* Atur padding sesuai kebutuhan */
+    background-color: #f5f5f5;
+    /* Atur warna latar belakang sesuai kebutuhan */
 }
 
 .welcome h1 {
-    font-size: 36px; /* Atur ukuran teks h1 sesuai kebutuhan */
-    margin-bottom: 10px; /* Memberikan ruang di bawah teks */
+    font-size: 36px;
+    /* Atur ukuran teks h1 sesuai kebutuhan */
+    margin-bottom: 10px;
+    /* Memberikan ruang di bawah teks */
 }
 
 .welcome p {
-    font-size: 18px; /* Atur ukuran teks paragraf sesuai kebutuhan */
+    font-size: 18px;
+    /* Atur ukuran teks paragraf sesuai kebutuhan */
 }
 
 

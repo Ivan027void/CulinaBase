@@ -10,10 +10,14 @@ return new class extends Migration {
      */
     public function up()
     {
-        Schema::create('categories', function (Blueprint $table) {
-            $table->id('category_id');
-            $table->string('category_name')->unique();
+        Schema::create('images', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('recipe_id');
+            $table->string('path'); // This column will store the file path.
             $table->timestamps();
+
+            // Define a foreign key for recipe_id
+            $table->foreign('recipe_id')->references('recipe_id')->on('recipes');
         });
     }
 
@@ -22,6 +26,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('categories');
+        Schema::dropIfExists('images');
     }
 };

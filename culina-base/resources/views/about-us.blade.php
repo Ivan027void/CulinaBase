@@ -22,6 +22,7 @@
                                 <a href="/">Home</a>
                                 <a href="/option">Recipe</a>
                                 <a href="/about">About</a>
+                                <a href="/login">Login</a>
                             </div>
                         </li>
                     </ul>
@@ -67,15 +68,15 @@
                     <p>
                         Kami memiliki nilai-nilai inti yang kami anut:
                     </p>
-                        <ul class='point'>
-                            <li><strong>Inovasi:</strong> Kami selalu mencari cara baru untuk memperbaiki layanan kami dan
-                                menjadikannya lebih baik.</li>
-                            <li><strong>Kualitas:</strong> Kami berkomitmen untuk menyediakan konten terbaik, resep yang
-                                teruji, dan informasi yang akurat.</li>
-                            <li><strong>Keterbukaan:</strong> Kami mendengar masukan Anda dan selalu siap untuk berinteraksi
-                                dengan Anda.</li>
-                            <li><strong>Kepuasan Pelanggan:</strong> Kepuasan Anda adalah prioritas utama kami.</li>
-                        </ul>
+                    <ul class='point'>
+                        <li><strong>Inovasi:</strong> Kami selalu mencari cara baru untuk memperbaiki layanan kami dan
+                            menjadikannya lebih baik.</li>
+                        <li><strong>Kualitas:</strong> Kami berkomitmen untuk menyediakan konten terbaik, resep yang
+                            teruji, dan informasi yang akurat.</li>
+                        <li><strong>Keterbukaan:</strong> Kami mendengar masukan Anda dan selalu siap untuk berinteraksi
+                            dengan Anda.</li>
+                        <li><strong>Kepuasan Pelanggan:</strong> Kepuasan Anda adalah prioritas utama kami.</li>
+                    </ul>
                 </section>
 
                 <section class="team">

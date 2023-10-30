@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role'
     ];
 
     /**
@@ -47,6 +48,11 @@ class User extends Authenticatable
 
     protected $primaryKey = 'id'; // Specify the primary key if it's different from 'id'
 
+    public function hasRole($role)
+    {
+        return $this->role === $role;
+    }
+    
     public function reviews()
     {
         return $this->hasMany(Review::class, 'user_id', 'user_id');

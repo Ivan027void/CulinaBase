@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resep Spaghetti Carbonara</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/resep.css">
 </head>
 
 <body>
@@ -22,14 +22,16 @@
                                 <a href="/">Home</a>
                                 <a href="/option">Recipe</a>
                                 <a href="/about">About</a>
+                                <a href="/login">Login</a>
                             </div>
                         </li>
                     </ul>
                 </nav>
             </div>
         </header>
-        
+
         <main>
+            <img src="recipe/carbonara.jpg" alt="Spaghetti Carbonara">
             <h1>Spaghetti Carbonara</h1>
             <p>Penulis: Anonymous</p>
 
@@ -59,7 +61,7 @@
             </ul>
 
             <h3>Cara Memasak:</h3>
-            <ol>
+            <ol type='1'>
                 <li>Didihkan air dalam panci besar, tambahkan sedikit garam, dan masak spaghetti sesuai petunjuk kemasan
                     hingga al dente. Simpan sekitar 1/2 cangkir air rebusan pasta sebelum mengeringkannya.</li>
                 <li>Sementara spaghetti dimasak, panaskan sedikit minyak zaitun dalam wajan besar dan tumis potongan

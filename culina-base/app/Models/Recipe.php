@@ -15,6 +15,14 @@ class Recipe extends Model
         'recipe_name', 'description', 'preparation_time', 'cooking_time', 'category_id',
     ];
 
+    public function addGambar($file)
+    {
+        $fileName = time() . '.' . $file->getClientOriginalExtension();
+        $file->move(public_path('images'), $fileName);
+        $this->gambar = $fileName;
+        $this->save();
+    }
+
     public function category()
     {
         return $this->belongsTo(Category::class, 'category_id', 'category_id');
