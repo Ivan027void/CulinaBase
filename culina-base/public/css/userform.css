@@ -125,6 +125,44 @@ select {
     background: #c82333;
 }
 
+
+/* Add this CSS to your userform.css file */
+
+.logout {
+    text-align: center;
+    margin-top: 20px; /* Adjust the margin-top as needed to center it vertically */
+}
+
+.btn_logout {
+    background: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 16px; /* Adjust the font size as needed */
+    font-weight: bold;
+}
+
+.btn_logout:hover {
+    background: #0056b3; /* Change the background color on hover */
+}
+
+.button-link {
+    background: none;
+    color: #007bff;
+    border: none;
+    cursor: pointer;
+    text-decoration: underline;
+    font-size: 16px; /* Adjust the font size as needed */
+    font-weight: bold;
+}
+
+.button-link:hover {
+    color: #0056b3; /* Change the text color on hover */
+}
+
+
 /* Styling for the footer */
 footer {
     text-align: center;

@@ -31,7 +31,7 @@ Route::get('/recipe_info', function () {
 });
 
 Route::get('/login', function () {
-    return view('login');
+    return view('loginpage');
 });
 
 Route::post('/Login', [LoginController::class, 'login'])->name('login');

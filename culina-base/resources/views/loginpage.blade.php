@@ -1,11 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link rel="stylesheet" href="css/loginregis.css">
+<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport"
+    content="width=device-width, initial-scale=1.0">
+<title>Login</title>
+<link rel="stylesheet" href="css/loginregis.css">
 </head>
 
 <body>
@@ -31,14 +27,17 @@
         </header>
         <main>
             <div class="formarea">
-                <form method="Post" action="#">
+                <form method="Post" action="{{ route('login') }}">
                     @csrf
                     <label for="email">Email:</label>
                     <input type="email" name="email" id="email">
                     <label for="password">Password:</label>
                     <input type="password" name="password" id="password">
-                    <button type="submit"><a href=/userPage>Login<a></button>
-                    <div>
+                    <div class=button-container>
+                        <button class="btn_kembali" type="button" onclick="window.location.href='/'">Kembali</button>
+                        <button class="btn_submit" type="submit">Login</button>
+                    </div>
+                    <div class='noAccount'>
                         <p>Belum punya akun?<a href="/regis">Sign Up</p>
                     </div>
                 </form>

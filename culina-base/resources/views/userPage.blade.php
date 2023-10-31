@@ -1,11 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Upload Recipe</title>
-    <link rel="stylesheet" href="css/userform.css">
+<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width,
+    initial-scale=1.0"> <title>Upload Recipe</title>
+<link rel="stylesheet" href="css/userform.css">
 </head>
 
 <body>
@@ -22,7 +17,11 @@
                                 <a href="/">Home</a>
                                 <a href="/option">Recipe</a>
                                 <a href="/about">About</a>
-                                <a href="/login">Login</a>
+                                @auth
+                                <a href="/">{{Auth::user()->name }}</a>
+                                @else
+                                user
+                                @endauth
                             </div>
                         </li>
                     </ul>
@@ -76,6 +75,14 @@
 
                 <button type="submit">Upload Recipe</button>
             </form>
+
+
+            <div class="logout">
+                <form method="post" action="{{ route('logout') }}">
+                    @csrf
+                    <button class="btn_logout"type="submit" class="btn btn-light button-link">Logout</button>
+                </form>
+            </div>
         </main>
 
         <footer>

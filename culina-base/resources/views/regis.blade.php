@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <div class='container'style="background-image: url(gambar/bg2.jpg);">
+    <div class='container' style="background-image: url(gambar/bg2.jpg);">
         <header>
             <div class="navContainer">
                 <nav>
@@ -30,7 +30,7 @@
             </div>
         </header>
         <main>
-            <form method="POST" action="#">
+            <form method="POST" action="/register">
                 @csrf
                 <label for="name">Name:</label>
                 <input type="text" name="name" id="name">
@@ -42,8 +42,11 @@
                 <input type="password" name="password" id="password">
                 <label for="password_confirmation">Confirm Password:</label>
                 <input type="password" name="password_confirmation" id="password_confirmation">
-                <button type="submit" href="/userPage">Register</button>
-                <div>
+                <div class=button-container>
+                    <button class="btn_kembali" type="button" onclick="window.location.href='/'">Kembali</button>
+                    <button class="btn_submit" type="submit">Register</button>
+                </div>
+                <div class="noAccount">
                     <p>Sudah punya akun? <a href="/login">Sign in</a></p>
                 </div>
             </form>

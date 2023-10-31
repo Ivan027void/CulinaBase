@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html> <html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -25,7 +24,12 @@
                                 <a href="/">Home</a>
                                 <a href="/option">Recipe</a>
                                 <a href="/about">About</a>
+                                @auth
+                                <a href="/userPage">{{Auth::user()->name }}</a>
+                                @else
                                 <a href="/login">Login</a>
+                                @endauth
+
                             </div>
                         </li>
                     </ul>

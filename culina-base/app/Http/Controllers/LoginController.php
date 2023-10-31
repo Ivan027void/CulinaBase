@@ -30,6 +30,7 @@ class LoginController extends Controller
             $User = Auth::user();
 
         }
+        return redirect('/userPage');
     }
 
     // Proses logout
