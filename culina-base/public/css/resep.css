@@ -64,6 +64,9 @@ main {
     border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     text-align: center; /* Center-align the content */
+    width: auto;
+    max-width: 75%;
+    margin: 0 auto;
 }
 
 main img {
@@ -86,7 +89,7 @@ main h2 {
 }
 
 main p {
-    font-size: 16px;
+    font-size: 18px;
     line-height: 1.6;
     margin-bottom: 10px;
 }
@@ -106,8 +109,9 @@ main ol {
 }
 
 main ul li, main ol li {
-    font-size: 16px;
+    font-size: 18px;
     line-height: 1.6;
+    text-align: justify;
 }
 
 /* Style for the ingredients and instructions */
@@ -120,7 +124,7 @@ h3 {
 
 /* Additional styling for lists inside the main section */
 ul, ol {
-    font-size: 16px;
+    font-size: 18px;
     margin-top: 10px;
     text-align: left; /* Align text to the left */
 }

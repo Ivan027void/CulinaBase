@@ -14,11 +14,13 @@ class Step extends Model
     protected $primaryKey = 'step_id'; // Specify the primary key if it's different from 'id'
 
     protected $fillable = [
-        'recipe_id', 'step_order', 'description',
+        'recipe_id',
+        'step_order',
+        'description',
     ];
 
     public function recipe()
     {
-        return $this->belongsTo(Recipe::class, 'recipe_id', 'recipe_id');
+        return $this->belongsTo(Recipe::class, 'recipe_id');
     }
 }

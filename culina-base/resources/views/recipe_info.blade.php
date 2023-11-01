@@ -1,36 +1,34 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resep Spaghetti Carbonara</title>
-    <link rel="stylesheet" href="css/resep.css">
-</head>
-
-<body>
-    <div Class='Container'>
-        <header>
-            <div class="navContainer">
-                <nav>
-                    <ul id="navList">
-                        <li>
-                            <a id="navLogo" href="/">CulinaBase</a>
-                        </li>
-                        <li>
-                            <div id="navItems">
-                                <a href="/">Home</a>
-                                <a href="/option">Recipe</a>
-                                <a href="/about">About</a>
-                                <a href="/login">Login</a>
-                            </div>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-        </header>
-
-        <main>
+     <head> 
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <title>Resep Spaghetti Carbonara</title>
+        <link rel="stylesheet" href="css/resep.css">
+    </head> 
+    <body> 
+        <div Class='Container'>
+            <header> 
+                <div class="navContainer"> 
+                    <nav>
+                        <ul id="navList">
+                            <li>
+                                <a id="navLogo" href="/">CulinaBase</a>
+                            </li>
+                            <li>
+                                <div id="navItems">
+                                    <a href="/">Home</a>
+                                    <a href="/option">Recipe</a>
+                                    <a href="/about">About</a>
+                                    <a href="/login">login</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </header>
+            
+            <main>
             <img src="recipe/carbonara.jpg" alt="Spaghetti Carbonara">
             <h1>Spaghetti Carbonara</h1>
             <p>Penulis: Anonymous</p>
@@ -77,18 +75,12 @@
                 <li>Sajikan Spaghetti Carbonara panas dan taburi dengan sedikit keju parmesan tambahan jika diinginkan.
                 </li>
             </ol>
-</body>
-
+        </main>
+            <footer>
+                <div class="footerBox">
+                    <p>Copyright &copy; CulinaBase kelompok Sistem Informasi</p>
+                </div>
+            </footer>
+        </div>
+    </body>
 </html>
-
-</main>
-<footer>
-    <div class="footerBox">
-        <p>
-            Copyright &copy; CulinaBase kelompok Sistem Informasi
-        </p>
-    </div>
-</footer>
-
-</div>
-</body>

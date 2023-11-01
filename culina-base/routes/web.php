@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RecipeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,6 +18,7 @@ use App\Http\Controllers\LoginController;
 Route::get('/', function () {
     return view('landingpage');
 });
+//Route::get('/', [RecipeController::class, 'index']);
 
 Route::get('/option', function () {
     return view('option');
@@ -29,6 +31,9 @@ Route::get('/about', function () {
 Route::get('/recipe_info', function () {
     return view('recipe_info');
 });
+
+//Route::get('/recipe_info/{id}', [RecipeController::class, 'show']);
+
 
 Route::get('/login', function () {
     return view('loginpage');

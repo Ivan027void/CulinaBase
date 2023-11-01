@@ -14,18 +14,15 @@ class IngredientsTableSeeder extends Seeder
     public function run()
     {
         $ingredients = [
-            ['ingredient_name' => 'nasi putih'],
-            ['ingredient_name' => 'telur'],
             ['ingredient_name' => 'spaghetti'],
-            ['ingredient_name' => 'telur'],
             ['ingredient_name' => 'pancetta'],
+            ['ingredient_name' => 'telur'],
             ['ingredient_name' => 'parmesan'],
             ['ingredient_name' => 'pecorino romano'],
             ['ingredient_name' => 'bawang putih,'],
-            ['ingredient_name' => 'nasi putih'],
             ['ingredient_name' => 'Garam'],
             ['ingredient_name' => 'lada hitam'],
-            ['ingredient_name' => 'Minyak zaitun extra virgin'],
+            ['ingredient_name' => 'minyak zaitun extra virgin'],
 
            
         ];

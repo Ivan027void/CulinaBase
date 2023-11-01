@@ -12,7 +12,12 @@ class Recipe extends Model
     protected $primaryKey = 'recipe_id'; // Specify the primary key if it's different from 'id'
 
     protected $fillable = [
-        'recipe_name','gambar', 'description', 'preparation_time', 'cooking_time', 'category_id',
+        'recipe_name',
+        'gambar',
+        'description',
+        'preparation_time',
+        'cooking_time',
+        'category_id',
     ];
 
     public function addGambar($file)
@@ -31,13 +36,14 @@ class Recipe extends Model
     public function ingredients()
     {
         return $this->belongsToMany(Ingredient::class, 'recipe_ingredients', 'recipe_id', 'ingredient_id')
-            ->withPivot('quantity', 'size');
+            ->withPivot('quantity', 'size', 'note');
     }
 
     public function steps()
     {
-        return $this->hasMany(Step::class, 'recipe_id', 'recipe_id');
+        return $this->hasMany(Step::class, 'recipe_id');
     }
+
 
     public function reviews()
     {

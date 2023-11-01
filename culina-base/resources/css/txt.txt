@@ -1,0 +1,27 @@
+
+
+
+
+        <main>
+                <img src="{{ asset('recipe/' . $recipe->gambar) }}" alt="{{ $recipe->recipe_name }}">
+                <h1>{{ $recipe->recipe_name }}</h1>
+                <p>Penulis: {{ $recipe->author ? $recipe->author->name : '-' }}</p>
+                <h2>Deskripsi</h2>
+                <p>{{$recipe->description }}</p>
+                <p>Waktu Persiapan: {{ $recipe->preparation_time }}</p>
+                <p>Waktu Memasak: {{ $recipe->cooking_time }}</p>
+
+                <h3>Bahan-bahan:</h3>
+                <ul>
+                    @foreach ($recipe->ingredients as $ingredient)
+                    <li>{{ $ingredient->quantity }} {{ $ingredient->size }} {{ $ingredient->ingredient_name }} {{ $ingredient->note }}</li>
+                    @endforeach
+                </ul>
+
+                <h3>Cara Memasak:</h3>
+                <ol type="1">
+                    @foreach ($recipe->steps as $step)
+                    <li>{{ $step->description }}</li>
+                    @endforeach
+                </ol>
+            </main>
