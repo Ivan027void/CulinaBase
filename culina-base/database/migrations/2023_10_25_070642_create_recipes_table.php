@@ -16,8 +16,8 @@ return new class extends Migration {
             $table->string('gambar')->nullable();
             $table->text('description');
             $table->unsignedBigInteger('author_id')->nullable();
-            $table->integer('preparation_time');
-            $table->integer('cooking_time');
+            $table->string('preparation_time');
+            $table->string('cooking_time');
             // Define foreign key for category_id here
             $table->foreign('author_id')->references('id')->on('users');
             $table->timestamps();

@@ -12,7 +12,7 @@ class Recipe extends Model
     protected $primaryKey = 'recipe_id'; // Specify the primary key if it's different from 'id'
 
     protected $fillable = [
-        'recipe_name', 'description', 'preparation_time', 'cooking_time', 'category_id',
+        'recipe_name','gambar', 'description', 'preparation_time', 'cooking_time', 'category_id',
     ];
 
     public function addGambar($file)

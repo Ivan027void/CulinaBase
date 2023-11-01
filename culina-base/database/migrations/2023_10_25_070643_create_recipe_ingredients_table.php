@@ -16,6 +16,7 @@ return new class extends Migration {
             $table->unsignedBigInteger('ingredient_id');
             $table->decimal('quantity');
             $table->string('size');
+            $table->string('note');
             // Define foreign keys for recipe_id and ingredient_id here
             $table->foreign('recipe_id')->references('recipe_id')->on('recipes');
             $table->foreign('ingredient_id')->references('ingredient_id')->on('ingredients');
