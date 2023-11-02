@@ -129,6 +129,21 @@ ul, ol {
     text-align: left; /* Align text to the left */
 }
 
+.btn_kembali {
+    margin-top: 10px;
+    background-color: #007bff; /* Button background color */
+    color: #fff; /* Button text color */
+    padding: 10px 20px; /* Button padding */
+    border: none; /* Remove button border */
+    border-radius: 5px; /* Add rounded corners */
+    cursor: pointer; /* Add pointer cursor on hover */
+}
+
+.btn_kembali:hover {
+    background-color: #0056b3; /* Change background color on hover */
+}
+
+
 /* Styling for the footer */
 footer {
     text-align: center;

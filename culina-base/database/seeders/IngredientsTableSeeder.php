@@ -2,29 +2,79 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Ingredient;
 
 class IngredientsTableSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
     public function run()
     {
+        // Define the recipe ingredients data
         $ingredients = [
-            ['ingredient_name' => 'spaghetti'],
-            ['ingredient_name' => 'pancetta'],
-            ['ingredient_name' => 'telur'],
-            ['ingredient_name' => 'parmesan'],
-            ['ingredient_name' => 'pecorino romano'],
-            ['ingredient_name' => 'bawang putih,'],
-            ['ingredient_name' => 'Garam'],
-            ['ingredient_name' => 'lada hitam'],
-            ['ingredient_name' => 'minyak zaitun extra virgin'],
-
-           
+            [
+                'recipe_id' => 1,
+                'ingredient_name' => 'spaghetti', // ID of spaghetti in the "ingredients" table
+                'quantity' => '250',
+                'size' => 'g',
+                'note' => null,
+            ],
+            [
+                'recipe_id' => 1,
+                'ingredient_name' => 'pancetta', // ID of pancetta in the "ingredients" table
+                'quantity' => '150',
+                'size' => 'g',
+                'note' => 'potong dadu kecil',
+            ],
+            [
+                'recipe_id' => 1,
+                'ingredient_name' => 'telur', // ID of telur in the "ingredients" table
+                'quantity' => '2',
+                'size' => null,
+                'note' => null,
+            ],
+            [
+                'recipe_id' => '1',
+                'ingredient_name' => 'pamersan', // ID of pamersan in the "ingredients" table
+                'quantity' => 50,
+                'size' => 'g',
+                'note' => 'diparut',
+            ],
+            [
+                'recipe_id' => 1,
+                'ingredient_name' => 'pecorino romano', // ID of pecorino romano in the "ingredients" table
+                'quantity' => '50',
+                'size' => 'g',
+                'note' => 'diparut',
+            ],
+            [
+                'recipe_id' => 1,
+                'ingredient_name' => 'bawang putih', // ID of bawang putih in the "ingredients" table
+                'quantity' => '2',
+                'size' => 'siung',
+                'note' => null,
+            ],
+            [
+                'recipe_id' => 1,
+                'ingredient_name' => 'garam', // ID of garam in the "ingredients" table
+                'quantity' => null,
+                'size' => null,
+                'note' => 'secukupnya',
+            ],
+            [
+                'recipe_id' => 1,
+                'ingredient_name' => 'lada hitam', // ID of lada hitam in the "ingredients" table
+                'quantity' => null,
+                'size' => null,
+                'note' => 'secukupnya',
+            ],
+            [
+                'recipe_id' => 1,
+                'ingredient_name' => 'minyak zaitun', // ID of minyak zaitun in the "ingredients" table
+                'quantity' => null,
+                'size' => null,
+                'note' => 'extra virgin',
+            ]
+            
         ];
 
         // Insert the data into the "ingredients" table
@@ -33,5 +83,4 @@ class IngredientsTableSeeder extends Seeder
         }
     }
 }
-
-//php artisan db:seed --class=IngredientsTableSeeder
+//php artisan db:seed --class=RecipeIngredientsTableSeeder

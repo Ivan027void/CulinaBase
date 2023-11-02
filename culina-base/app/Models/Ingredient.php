@@ -2,26 +2,23 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Ingredient extends Model
 {
-    use HasFactory;
-
-    protected $table = 'ingredients'; // Specify the table name if it's different from the model name
-
-    protected $primaryKey = 'ingredient_id'; // Specify the primary key if it's different from 'id'
+    protected $table = 'ingredients'; // Correct the table name
+    protected $primaryKey = 'ingredient_id';
 
     protected $fillable = [
+        'recipe_id',
         'ingredient_name',
+        'quantity',
+        'size',
+        'note',
     ];
 
-    public function recipes()
+    public function recipe()
     {
-        return $this->belongsToMany(Recipe::class, 'recipe_ingredients', 'ingredient_id', 'recipe_id')
-            ->withPivot('quantity', 'size', 'note');
+        return $this->belongsTo(Recipe::class, 'recipe_id', 'recipe_id');
     }
-
-
 }

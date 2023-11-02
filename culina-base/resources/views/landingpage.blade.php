@@ -45,25 +45,16 @@
             </div>
 
             <div class="recipe-cards">
-                <div class="recipe-card">
-                    <a href="/recipe_info">
-                        <img src="recipe/carbonara.jpg" alt="Spaghetti Carbonara">
-                        <h2>Spaghetti Carbonara</h2>
-                        <p>Masakan pasta klasik Italia dengan saus telur, keju parmesan, dan daging bacon yang lezat.
-                        </p>
-                        <a class="read-more" href="/recipe_info">Lanjutkan Membaca</a>
-                    </a>
-                </div>
-
-                <div class="recipe-card">
-                    <a href="#">
-                        <img src="recipe/Chicken_Alfredo.jpg" alt="Chicken Alfredo">
-                        <h2>Chicken Alfredo</h2>
-                        <p>Hidangan pasta dengan saus krim yang lezat, disertai potongan ayam yang gurih, dan pasta yang
-                            lembut.</p>
-                        <a class="read-more" href="#">Lanjutkan Membaca</a>
-                    </a>
-                </div>
+            @foreach($recipes as $recipe)
+            <div class="recipe-card">
+                <a href="/recipe_info/{{ $recipe->recipe_id }}">
+                    <img src="{{ asset('recipe/' . $recipe->gambar) }}" alt="{{ $recipe->name }}">
+                    <h2 class='recipe_title'>{{ $recipe->recipe_name }}</h2>
+                    <p>{{ Str::limit($recipe->description, 80, '...') }}</p>
+                    <a class="read-more" href="/recipe_info/{{ $recipe->recipe_id }}">Lanjutkan Membaca</a>
+                </a>
+            </div>
+            @endforeach
 
                 <div class="recipe-card">
                     <a href="#">

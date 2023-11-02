@@ -13,11 +13,14 @@ return new class extends Migration {
         Schema::create('ingredients', function (Blueprint $table) {
             $table->id('ingredient_id');
             $table->string('ingredient_name');
+            $table->unsignedBigInteger('recipe_id');
+            $table->string('quantity')->nullable();
+            $table->string('size')->nullable();
+            $table->string('note')->nullable();
+            $table->foreign('recipe_id')->references('recipe_id')->on('recipes');
             $table->timestamps();
         });
     }
-
-
 
     /**
      * Reverse the migrations.

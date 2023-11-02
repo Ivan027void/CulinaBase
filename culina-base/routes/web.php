@@ -18,7 +18,8 @@ use App\Http\Controllers\RecipeController;
 Route::get('/', function () {
     return view('landingpage');
 });
-//Route::get('/', [RecipeController::class, 'index']);
+Route::get('/', [RecipeController::class, 'index']);
+Route::get('/admin', [RecipeController::class, 'indexAdmin']);
 
 Route::get('/option', function () {
     return view('option');
@@ -28,11 +29,11 @@ Route::get('/about', function () {
     return view('about-us');
 });
 
-Route::get('/recipe_info', function () {
-    return view('recipe_info');
-});
+// Route::get('/recipe_info', function () {
+//     return view('recipe_info');
+// });
 
-//Route::get('/recipe_info/{id}', [RecipeController::class, 'show']);
+Route::get('/recipe_info/{id}', [RecipeController::class, 'show']);
 
 
 Route::get('/login', function () {
