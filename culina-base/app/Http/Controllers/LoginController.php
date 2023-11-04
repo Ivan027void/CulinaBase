@@ -27,11 +27,18 @@ class LoginController extends Controller
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {
-            $User = Auth::user();
+            $user = Auth::user();
 
+            if ($user->role === 'admin' || strpos($user->email, '@adm') !== false) {
+                return redirect('/adminPage'); // Redirect to adminPage for admins or emails containing '@adm'
+            } else {
+                return redirect('/userPage'); // Redirect to userPage for regular users
+            }
         }
-        return redirect('/userPage');
+
+        return redirect('/login'); // Redirect back to login page if authentication fails
     }
+
 
     // Proses logout
     public function logout()

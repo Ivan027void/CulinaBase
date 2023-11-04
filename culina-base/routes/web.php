@@ -51,3 +51,13 @@ Route::get('/userPage', function () {
     return view('userPage');
 });
 
+
+Route::get('/adminPage', function () {
+    return view('adminPage');
+});
+Route::get('/adminPage',[RecipeController::class, 'indexAdmin'])->name('admin.page');
+Route::get('/recipe_info/{id}', [RecipeController::class, 'showAdmin'])->name('recipes.show');
+Route::get('/adminPage/edit_recipe/{id}', [RecipeController::class, 'edit'])->name('recipes.edit');
+Route::delete('/adminPage/delete/{id}', [RecipeController::class, 'delete'])->name('recipes.delete');
+
+

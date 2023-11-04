@@ -45,84 +45,27 @@
             </div>
 
             <div class="recipe-cards">
-            @foreach($recipes as $recipe)
-            <div class="recipe-card">
-                <a href="/recipe_info/{{ $recipe->recipe_id }}">
-                    <img src="{{ asset('recipe/' . $recipe->gambar) }}" alt="{{ $recipe->name }}">
-                    <h2 class='recipe_title'>{{ $recipe->recipe_name }}</h2>
-                    <p>{{ Str::limit($recipe->description, 80, '...') }}</p>
-                    <a class="read-more" href="/recipe_info/{{ $recipe->recipe_id }}">Lanjutkan Membaca</a>
-                </a>
-            </div>
-            @endforeach
+                @php
+                    $counter = 0; // Initialize a counter variable
+                @endphp
 
-                <div class="recipe-card">
-                    <a href="#">
-                        <img src="recipe/Margherita_Pizza.jpg" alt="Margherita Pizza">
-                        <h2>Margherita Pizza</h2>
-                        <p>Pizza klasik Italia dengan saus tomat, mozzarella segar, dan daun basil yang harum.</p>
-                        <a class="read-more" href="#">Lanjutkan Membaca</a>
-                    </a>
-                </div>
-
-                <div class="recipe-card">
-                    <a href="#">
-                        <img src="recipe/Beef-Stir-Fry.jpg" alt="Beef Stir-Fry">
-                        <h2>Beef Stir-Fry</h2>
-                        <p>Hidangan daging sapi yang dimasak cepat dengan sayuran dan saus gurih, ideal untuk makan
-                            malam cepat.</p>
-                        <a class="read-more" href="#">Lanjutkan Membaca</a>
-                    </a>
-                </div>
-
-                <div class="recipe-card">
-                    <a href="#">
-                        <img src="recipe/Caesar-Salad.jpg" alt="Caesar Salad">
-                        <h2>Caesar Salad</h2>
-                        <p>Salad segar dengan daun romaine, crouton, parmesan, dan saus Caesar yang khas.</p>
-                        <a class="read-more" href="#">Lanjutkan Membaca</a>
-                    </a>
-                </div>
-
-                <div class="recipe-card">
-                    <a href="#">
-                        <img src="recipe/Grilled_Salmon.jpeg" alt="Grilled Salmon">
-                        <h2>Grilled Salmon</h2>
-                        <p>Salmon panggang yang lezat, disajikan dengan bumbu dan saus khusus.</p>
-                        <a class="read-more" href="#">Lanjutkan Membaca</a>
-                    </a>
-                </div>
-
-                <div class="recipe-card">
-                    <a href="#">
-                        <img src="recipe/Vegetable_Curry.jpg" alt="Vegetable Curry">
-                        <h2>Vegetable Curry</h2>
-                        <p>Semangkuk kari lezat dengan sayuran yang dimasak dalam saus rempah-rempah.</p>
-                        <a class="read-more" href="#">Lanjutkan Membaca</a>
-                    </a>
-                </div>
-
-                <div class="recipe-card">
-                    <a href="#">
-                        <img src="recipe/Mango_Smoothie.jpeg" alt="Mango Smoothie">
-                        <h2>Mango Smoothie</h2>
-                        <p>Minuman segar yang terbuat dari mangga matang, yogurt, dan es, sempurna untuk cuaca panas.
-                        </p>
-                        <a class="read-more" href="#">Lanjutkan Membaca</a>
-                    </a>
-                </div>
-
-                <div class="recipe-card">
-                    <a href="#">
-                        <img src="recipe/Chocolate_Brownies.jpeg" alt="Chocolate Brownies">
-                        <h2>Chocolate Brownies</h2>
-                        <p>Brownies cokelat yang lembut dan renyah, cocok untuk pencinta cokelat.</p>
-                        <a class="read-more" href="#">Lanjutkan Membaca</a>
-                    </a>
-                </div>
-
-                <!-- Add more recipe cards as needed -->
-
+                @foreach($recipes as $recipe)
+                    @if($counter < 9)
+                        <div class="recipe-card">
+                            <a href="/recipe_info/{{ $recipe->recipe_id }}">
+                                <img src="{{ asset('recipe/' . $recipe->gambar) }}" alt="{{ $recipe->name }}">
+                                <h2 class="recipe_title">{{ $recipe->recipe_name }}</h2>
+                                <p>{{ Str::limit($recipe->description, 80, '...') }}</p>
+                                <a class="read-more" href="/recipe_info/{{ $recipe->recipe_id }}">Lanjutkan Membaca</a>
+                            </a>
+                        </div>
+                        @php
+                            $counter++; // Increment the counter variable
+                        @endphp
+                    @else
+                        @break // Exit the loop after 9 iterations
+                    @endif
+                @endforeach
             </div>
 
 
