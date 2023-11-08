@@ -1,0 +1,160 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #e2e5e8;
+    margin: 0; /* Add this to remove default body margin */
+}
+
+.container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.navContainer {
+    background: linear-gradient(160deg, #000000 0%, #8085d0 100%);
+    min-height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed; /* Add this to fix the header */
+    top: 0; /* Add this to position it at the top */
+    width: 100%; /* Add this to make it full-width */
+    z-index: 1; /* Add this to place it above other content */
+}
+
+nav {
+    width: 100%;
+}
+
+#navList {
+    width: 100%;
+    padding: 15px;
+    list-style: none;
+    font-size: 2.3rem;
+    display: flex;
+    justify-content: space-around;
+}
+
+#navLogo {
+    font-size: 2.2rem;
+    color: azure;
+}
+
+a {
+    text-decoration: none;
+    color: azure;
+}
+
+#navItems {
+    display: flex;
+    gap: 20px;
+}
+
+main {
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 20px auto;
+    text-align: center;
+    margin-top: 100px; /* Add this to create space for the fixed header */
+}
+
+.dashboard-actions {
+    margin-top: 20px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+.btn.btn-primary {
+    background-color: #007bff;
+}
+
+.btn.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.logout {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.btn_logout {
+    background: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.btn_logout:hover {
+    background: #0056b3;
+}
+
+.button-link {
+    background: none;
+    color: #007bff;
+    border: none;
+    cursor: pointer;
+    text-decoration: underline;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.button-link:hover {
+    color: #0056b3;
+}
+
+.footerBox {
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+footer {
+    text-align: center;
+    background: linear-gradient(160deg, #000000 0%, #8085d0 100%);
+    padding: 10px 0;
+    position: fixed; /* Add this to fix the footer */
+    bottom: 0; /* Add this to position it at the bottom */
+    width: 100%; /* Add this to make it full-width */
+    z-index: 1; /* Add this to place it above other content */
+}
+
+.footerBox p {
+    color: azure;
+    font-size: 2rem;
+    display: none;
+}
+
+/* Show the footer text on small screens (sm and above) */
+@media (min-width: 576px) {
+    .footerBox p {
+        display: inline;
+    }
+}

@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Recipe;
 use App\Models\Step;
 use App\Models\Ingredient;
+use App\Models\Review;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class RecipeController extends Controller
@@ -23,7 +25,10 @@ class RecipeController extends Controller
             $query->where('recipes.recipe_id', $id); // Use table alias
         })->get();
 
-        return view('recipe_info', compact('recipe', 'steps', 'ingredients'));
+        // Retrieve the reviews for the recipe
+        $reviews = Review::where('recipe_id', $id)->get();
+
+        return view('recipe_info', compact('recipe', 'steps', 'ingredients', 'reviews'));
     }
 
 
@@ -65,11 +70,37 @@ public function showAdmin($id)
     $ingredients = Ingredient::whereHas('recipe', function ($query) use ($id) {
         $query->where('recipes.recipe_id', $id); // Use table alias
     })->get();
+     // Retrieve the reviews for the recipe
+     $reviews = Review::where('recipe_id', $id)->get();
 
-    return view('recipe_info', compact('recipe', 'steps', 'ingredients'));
+    return view('recipe_info', compact('recipe', 'steps', 'ingredients','reviews'));
 }
 
+public function postReview(Request $request)
+    {
+        // Validate the input data
+        $request->validate([
+            'isi_review' => 'required|string|max:500',
+        ]);
 
+        // Ensure that the user is authenticated
+        if (!Auth::check()) {
+            return redirect()->back()->with('error', 'You must be logged in to post a review');
+        }
+
+        // Create a new review instance
+        $review = new Review();
+        $review->recipe_id = $request->input('recipe_id');
+        $review->review_content = $request->input('isi_review');
+        $review->user_id = Auth::user()->id; // Set user_id from the authenticated user
+        $review->reviewer_name = Auth::user()->name; // Set reviewer_name from the authenticated user
+
+        // Save the review to the database
+        $review->save();
+
+        // Redirect back to the recipe page
+        return redirect()->back()->with('success', 'Review posted successfully');
+    }
 
 }
 

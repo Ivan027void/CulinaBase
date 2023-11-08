@@ -58,4 +58,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(Review::class, 'user_id', 'user_id');
     }
+
+    public function isAdmin()
+    {
+        return $this->role === 'admin' || strpos($this->email, '@adm') !== false;
+    }
+
 }

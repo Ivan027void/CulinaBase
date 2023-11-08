@@ -30,6 +30,8 @@
             </div>
         </header>
         <main>
+        <div class="formarea">
+                <p class="log-title">Login Form</p>
             <form method="POST" action="/register">
                 @csrf
                 <label for="name">Name:</label>
@@ -50,7 +52,7 @@
                     <p>Sudah punya akun? <a href="/login">Sign in</a></p>
                 </div>
             </form>
-
+        </div>
         </main>
         <footer>
             <div class="footerBox">

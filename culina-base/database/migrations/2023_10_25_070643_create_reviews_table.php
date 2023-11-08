@@ -14,7 +14,7 @@ return new class extends Migration {
             $table->id('review_id');
             $table->unsignedBigInteger('recipe_id');
             $table->unsignedBigInteger('user_id');
-            $table->date('review_date');
+            $table->date('review_date')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->string('reviewer_name');
             $table->text('review_content');
             // Define foreign keys for recipe_id and user_id here

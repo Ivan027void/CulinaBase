@@ -6,6 +6,11 @@
     box-sizing: border-box;
 }
 
+body {
+  font-family: Arial, sans-serif;
+  background-color: #e2e5e8;
+}
+
 /* Container */
 
 .container {

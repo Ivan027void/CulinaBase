@@ -52,7 +52,66 @@
                 </ol>
 
                 <button class="btn_kembali" onclick="history.back()">Back</button>
+
+                <div class="review_layout">
+                <div class="review_layout">
+                    <div class="masukan_review">
+                        <form action="/review-post" method="post" id="reviewForm">
+                            @csrf
+                            <input type="hidden" name="recipe_id" value="{{ $recipe->recipe_id }}">
+                            <div class="input_data mb-3">
+                                <label for="R_nama" style="font-weight: bold; font-family: 'Times New Roman', serif;">Masukan Nama</label>
+                                @auth
+                                <input class="input_nama" type="text" name="user_name" value="{{ Auth::user()->name }}" disabled>
+                                @else
+                                <input class="input_nama @error('user_name') is-invalid @enderror" type="text" name="R_nama" placeholder="Masukan Nama Anda Disini">
+                                @endauth
+                            </div>
+                            <div class="input_data mb-3">
+                                <label for="isi_review" style="font-weight: bold; font-family: 'Times New Roman', serif;">Tulis review</label>
+                                <textarea class="input_review @error('isi_review') is-invalid @enderror" name="isi_review" placeholder="Review...."></textarea>
+                            </div>
+                            <div class="button">
+                                <button type="submit" class="btn btn-outline-dark" style="float: right; margin-top: 5px; background-color: rgb(144, 222, 255); width: 100px; height: 45px;">
+                                    post
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="container">
+                    <div class="row">
+                        @foreach($reviews as $review)
+                            @if($review->recipe_id == $recipe->recipe_id)
+                                <div class="col-md-4 mb-3">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="reviews">
+                                                <h3>{{ $review->reviewer_name }}<span style="color: gray; font-size: 12px;"> {{ $review->created_at->format('d M Y') }}</span></h3>
+                                                <p>"{{ $review->review_content }}"</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endif
+                        @endforeach
+                    </div>
+                </div>
+
+
             </main>
+
+            <script>
+                @if(session('success'))
+                alert("Review posted successfully: {{ session('success') }}");
+                @endif
+
+                @if(session('error'))
+                alert("Error: {{ session('error') }}");
+                @endif
+            </script>
+
             
             <footer>
                 <div class="footerBox">

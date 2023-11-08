@@ -27,6 +27,7 @@
         </header>
         <main>
             <div class="formarea">
+                <p class="log-title">Login Form</p>
                 <form method="Post" action="{{ route('login') }}">
                     @csrf
                     <label for="email">Email:</label>

@@ -4,21 +4,21 @@
     box-sizing: border-box;
 }
 
+body {
+    font-family: Arial, sans-serif;
+    background-color: #e2e5e8;
+}
+
 .container {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed; /* Optional - fixes the background while scrolling */
     overflow-x: hidden;
 }
 
 .navContainer {
     width: 100%;
-    background-color: #000000;
-    background-image: linear-gradient(100deg, #000000 0%, #8085d0 100%);
+    background: linear-gradient(100deg, #000000 0%, #8085d0 100%);
     min-height: 80px;
     display: flex;
     justify-content: center;
@@ -55,19 +55,18 @@ a {
 }
 
 main {
-    background-color: rgba(255, 255, 255, 0.9); /* Adjust the opacity as needed */
-    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 15px;
     border: 1px solid #ddd;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    max-width: 2000px;
+    max-width: 1800px;
     margin: 20px auto;
     text-align: center;
     flex-grow: 1;
-    width:100%;
+    width: 100%;
 }
 
-/* Style for tables */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -84,8 +83,7 @@ table th {
     background-color: #f2f2f2;
 }
 
-/* Style for User Management section */
-#user-management {
+#user-management, #recipe-management {
     margin-top: 20px;
     background-color: rgba(255, 255, 255, 0.9);
     border: 1px solid #ddd;
@@ -95,26 +93,17 @@ table th {
     text-align: center;
 }
 
-/* Style for Recipe Management section */
-#recipe-management {
-    margin-top: 20px;
-    background-color: rgba(255, 255, 255, 0.9);
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    text-align: center;
-}
-
-
-/* Additional styling for the buttons */
-.btn-custom-primary {
-    background-color: #007bff;
-    color: #fff;
-    border: 1px solid #007bff;
+.btn-custom-primary, .btn-custom-success, .btn-custom-danger {
+    border: none;
     border-radius: 4px;
     padding: 5px 15px;
     font-weight: bold;
+    cursor: pointer;
+}
+
+.btn-custom-primary {
+    background-color: #007bff;
+    color: #fff;
 }
 
 .btn-custom-primary:hover {
@@ -124,10 +113,6 @@ table th {
 .btn-custom-success {
     background-color: #28a745;
     color: #fff;
-    border: 1px solid #28a745;
-    border-radius: 4px;
-    padding: 5px 15px;
-    font-weight: bold;
 }
 
 .btn-custom-success:hover {
@@ -137,23 +122,15 @@ table th {
 .btn-custom-danger {
     background-color: #dc3545;
     color: #fff;
-    border: 1px solid #dc3545;
-    border-radius: 4px;
-    padding: 5px 15px;
-    font-weight: bold;
 }
 
 .btn-custom-danger:hover {
     background-color: #b52937;
 }
 
-
-
-/* Add this CSS to your userform.css file */
-
 .logout {
     text-align: center;
-    margin-top: 20px; /* Adjust the margin-top as needed to center it vertically */
+    margin-top: 20px;
 }
 
 .btn_logout {
@@ -163,12 +140,12 @@ table th {
     border-radius: 3px;
     padding: 10px 15px;
     cursor: pointer;
-    font-size: 16px; /* Adjust the font size as needed */
+    font-size: 16px;
     font-weight: bold;
 }
 
 .btn_logout:hover {
-    background: #0056b3; /* Change the background color on hover */
+    background: #0056b3;
 }
 
 .button-link {
@@ -177,16 +154,14 @@ table th {
     border: none;
     cursor: pointer;
     text-decoration: underline;
-    font-size: 16px; /* Adjust the font size as needed */
+    font-size: 16px;
     font-weight: bold;
 }
 
 .button-link:hover {
-    color: #0056b3; /* Change the text color on hover */
+    color: #0056b3;
 }
 
-
-/* Styling for the footer */
 footer {
     text-align: center;
     background-color: #333;
@@ -198,8 +173,7 @@ footer {
 .footerBox {
     max-width: 960px;
     margin: 0 auto;
-    background-color: #000000;
-    background-image: linear-gradient(160deg, #000000 0%, #8085d0 100%);
+    background: linear-gradient(160deg, #000000 0%, #8085d0 100%);
     width: 100%;
     text-align: center;
     min-height: 40px;

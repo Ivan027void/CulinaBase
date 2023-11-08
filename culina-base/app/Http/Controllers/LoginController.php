@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-use app\Models\User;
+use App\Models\User;
 
 class LoginController extends Controller
 {
@@ -29,11 +29,11 @@ class LoginController extends Controller
         if (Auth::attempt($credentials)) {
             $user = Auth::user();
 
-            if ($user->role === 'admin' || strpos($user->email, '@adm') !== false) {
-                return redirect('/adminPage'); // Redirect to adminPage for admins or emails containing '@adm'
+            if ($user->isAdmin()) {
+                return redirect('/adminPage'); // Redirect to adminPage for admins
             } else {
-                return redirect('/userPage'); // Redirect to userPage for regular users
-            }
+                return redirect()->route('user-page'); // Redirect to userPage for regular users
+            }    
         }
 
         return redirect('/login'); // Redirect back to login page if authentication fails

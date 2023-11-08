@@ -4,26 +4,37 @@
     box-sizing: border-box;
 }
 
-.container {
+body {
+    font-family: Arial, sans-serif;
+    background-color: #e2e5e8;
+    margin: 0;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+}
+
+.container {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    background-image: url(gambar/bg5.jpg);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-attachment: fixed; /* Optional - fixes the background while scrolling */
+    background-attachment: fixed;
     overflow-x: hidden;
 }
 
 .navContainer {
-    width: 100%;
-    background-color: #000000;
-    background-image: linear-gradient(100deg, #000000 0%, #8085d0 100%);
+    background: linear-gradient(160deg, #000000 0%, #8085d0 100%);
     min-height: 80px;
     display: flex;
     justify-content: center;
     align-items: center;
-    position: relative;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
 }
 
 nav {
@@ -54,42 +65,40 @@ a {
     gap: 40px;
 }
 
-
-/* Add a background color to make text more readable */
 main {
-    background-color: rgba(255, 255, 255, 0.9); /* Adjust the opacity as needed */
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    max-width: 800px;
-    margin: 20px auto;
-    text-align: center;
     flex-grow: 1;
-    width:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .formarea {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 30px; /* Increase padding for more space inside the form */
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 500px; /* Increase the maximum width of the form */
     text-align: center;
 }
 
+.log-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
 
 form {
     display: flex;
     flex-direction: column;
-    max-width: 1000px;
-    margin: 0 auto;
+    max-width: 100%;
     padding: 10px;
     text-align: left;
-    
 }
 
 label {
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
     font-weight: bold;
 }
 
@@ -98,7 +107,7 @@ input[type="email"],
 input[type="password"] {
     width: 100%;
     padding: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     border: 1px solid #ddd;
     border-radius: 3px;
 }
@@ -106,52 +115,48 @@ input[type="password"] {
 .button-container {
     display: flex;
     justify-content: space-between;
-    margin: 7px; /* Adjust the margin to control the spacing between buttons */
+    margin: 20px 0;
 }
 
 .btn_kembali {
-    background: #007bff;
+    background: red;
     color: #fff;
     border: none;
     border-radius: 3px;
-    padding: 10px 15px;
+    padding: 10px 20px; /* Increase padding for larger buttons */
     cursor: pointer;
-    font-size: 24px;
+    font-size: 20px;
     font-weight: bold;
-    width: 200px;
-    height: 50px;
+    width: 200px; /* Increase width for more space */
+    height: 50px; /* Increase height for larger buttons */
+    margin-right: 10px; /* Add margin to create space */
 }
 
 .btn_submit {
-    background: #007bff;
+    background: green;
     color: #fff;
     border: none;
     border-radius: 3px;
-    padding: 10px 15px;
+    padding: 10px 20px; /* Increase padding for larger buttons */
     cursor: pointer;
-    font-size: 24px;
+    font-size: 20px;
     font-weight: bold;
-    width: 200px;
-    height: 50px;
+    width: 200px; /* Increase width for more space */
+    height: 50px; /* Increase height for larger buttons */
 }
 
-
-button:hover {
+.btn_submit:hover,
+.btn_kembali:hover {
     background: #0056b3;
-}
-
-a {
-    text-decoration: none;
-    color: #007bff;
 }
 
 .noAccount {
     text-align: center;
-    margin-top: 20px; /* Adjust the margin-top as needed to center it vertically */
+    margin-top: 20px;
 }
 
 .noAccount p {
-    margin: 0; /* Remove default margin from the paragraph */
+    margin: 0;
 }
 
 .noAccount a {
@@ -163,8 +168,6 @@ a {
     text-decoration: underline;
 }
 
-
-/* Styling for the footer */
 footer {
     text-align: center;
     background-color: #333;
@@ -180,7 +183,6 @@ footer {
     background-image: linear-gradient(160deg, #000000 0%, #8085d0 100%);
     width: 100%;
     text-align: center;
-    min-height: 40px;
 }
 
 .footerBox p {

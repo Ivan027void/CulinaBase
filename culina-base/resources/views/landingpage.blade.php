@@ -25,10 +25,15 @@
                                 <a href="/option">Recipe</a>
                                 <a href="/about">About</a>
                                 @auth
-                                <a href="/userPage">{{Auth::user()->name }}</a>
+                                    @if (Auth::user()->isAdmin())
+                                        <a href="/adminPage">{{ Auth::user()->name }}</a> <!-- Redirect admin users to adminPage -->
+                                    @else
+                                        <a href="/userPage">{{ Auth::user()->name }}</a> <!-- Redirect regular users to userPage -->
+                                    @endif
                                 @else
-                                <a href="/login">Login</a>
+                                    <a href="/login">Login</a>
                                 @endauth
+
 
                             </div>
                         </li>

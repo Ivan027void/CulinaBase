@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RecipeController;
+use App\Http\Controllers\UserPageController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -34,7 +36,7 @@ Route::get('/about', function () {
 // });
 
 Route::get('/recipe_info/{id}', [RecipeController::class, 'show']);
-
+Route::post('/review-post', [RecipeController::class, 'postReview']);
 
 Route::get('/login', function () {
     return view('loginpage');
@@ -47,9 +49,6 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/regis', [RegisterController::class, 'showRegistrationForm']);
 Route::post('/register', [RegisterController::class, 'register']);
 
-Route::get('/userPage', function () {
-    return view('userPage');
-});
 
 
 Route::get('/adminPage', function () {
@@ -61,3 +60,8 @@ Route::get('/adminPage/edit_recipe/{id}', [RecipeController::class, 'edit'])->na
 Route::delete('/adminPage/delete/{id}', [RecipeController::class, 'delete'])->name('recipes.delete');
 
 
+Route::get('/userPage', [UserPageController::class, 'userPage'])->name('user-page');
+Route::get('/formUser', [UserPageController::class, 'formUser'])->name('form-user');
+Route::post('/create-recipe', [UserPageController::class, 'createRecipe'])->name('create-recipe');
+Route::get('/ingredientUser', [UserPageController::class, 'ingredientUser'])->name('ingredient-user');
+Route::get('/stepUser', [UserPageController::class, 'stepUser'])->name('step-user');
