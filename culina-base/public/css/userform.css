@@ -39,13 +39,13 @@ nav {
     width: 100%;
     padding: 15px;
     list-style: none;
-    font-size: 2.3rem;
+    font-size: 1.8rem;
     display: flex;
     justify-content: space-around;
 }
 
 #navLogo {
-    font-size: 2.8rem;
+    font-size: 2.4rem;
     color: azure;
 }
 
@@ -56,7 +56,7 @@ a {
 
 #navItems {
     display: flex;
-    gap: 40px;
+    gap: 30px;
 
 }
 
@@ -128,9 +128,7 @@ select {
     border-radius: 3px;
 }
 
-.add-ingredient,
 .add-step,
-.remove-ingredient,
 .remove-step {
     background: #dc3545;
     color: #fff;
@@ -227,4 +225,108 @@ footer {
 .footerBox p {
     color: azure;
     font-size: 2rem;
+}
+
+
+/* Style for the button container */
+.button-container {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Style for the first row (Add Ingredient and Submit Ingredients) */
+.button-row-1 {
+    display: flex;
+    justify-content: center;
+    gap: 10px; /* Adjust the gap as needed for spacing between the buttons */
+}
+
+/* Style for the second row (Back button) */
+.button-row-2 {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px; /* Add top margin to separate the rows */
+}
+
+/* Style for the "Remove" button within ingredient rows */
+.remove-ingredient {
+    background-color: red; /* Set the background color to red (adjust as needed) */
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    margin-right: 5px; /* Add a right margin to create space between Remove and Add buttons */
+    cursor: pointer;
+}
+
+/* Style for the "Add Ingredient" button */
+#add-ingredient {
+    background-color: green; /* Set the background color to green */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-right: 10px; /* Add right margin to create space between Add and Submit buttons */
+    cursor: pointer;
+}
+
+/* Style for the "Submit Ingredients" button */
+[type="submit"] {
+    background-color: #007BFF; /* Set the background color to a blue shade */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+/* Style for the "Back" button */
+.btn_kembali {
+    background-color: #333; /* Set the background color to a dark color (adjust as needed) */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 10px; /* Add top margin to create space between Submit and Back buttons */
+    cursor: pointer;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 800px;
+    margin: 20px auto;
+}
+
+table, th, td {
+    border: 1px solid #333;
+}
+
+th, td {
+    padding: 10px;
+    text-align: center;
+}
+
+th {
+    background-color: #333;
+    color: white;
+}
+
+.alert {
+    background-color: #ff3333;
+    color: white;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+}
+
+h2 {
+    font-size: 24px;
+}
+
+h3 {
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+p {
+    font-size: 16px;
 }

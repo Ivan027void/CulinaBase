@@ -1,6 +1,6 @@
 <!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width,
-    initial-scale=1.0"> <title>Upload Recipe</title>
-<link rel="stylesheet" href="css/userform.css">
+    initial-scale=1.0"> <title>add ingredient</title>
+    <link rel="stylesheet" href="{{ asset('css/userform.css') }}">
 </head>
 
 <body>
@@ -30,59 +30,73 @@
         </header>
 
         <main>
-            <form method="POST" action="#" enctype="#">
+            <h2 class="recipe_title">{{ $recipe->recipe_name }}</h2>
+             <p>{{ Str::limit($recipe->description, 80, '...') }}</p>
+
+             <h3>Bahan-bahan:</h3>
+
+            @if ($ingredient->isEmpty())
+                <p>No ingredient.</p>
+            @else
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nama Bahan</th>
+                            <th>Quantity</th>
+                            <th>Size</th>
+                            <th>Note</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($ingredient as $item)
+                            <tr>
+                                <td>{{ $item->ingredient_name }}</td>
+                                <td>{{ $item->quantity }}</td>
+                                <td>{{ $item->size }}</td>
+                                <td>{{ $item->note }}</td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            @endif
+
+             <!-- Display validation errors -->
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
+
+            <form method="POST" action="{{ route('ingredients.store', ['recipe_id' => $recipe->recipe_id]) }}" enctype="multipart/form-data">
                 @csrf
-                <label for="name">Recipe Name:</label>
-                <input type="text" name="name" id="name">
-
-                <label for="image">Food Image:</label>
-                <input type="file" name="image" id="image">
-
-                <label for="description">Description:</label>
-                <textarea name="description" id="description" rows="4"></textarea>
-
-                <label for="prep_time">Preparation Time (minutes):</label>
-                <input type="number" name="prep_time" id="prep_time">
-
-                <label for="cook_time">Cooking Time (minutes):</label>
-                <input type="number" name="cook_time" id="cook_time">
-
                 <label for="ingredients">Ingredients:</label>
                 <div id="ingredients-container">
                     <div class="ingredient-row">
-                        <input type="text" name="ingredients[]" class="ingredient-input" required>
+                        <input type="text" name="ingredients[]" class="ingredient-input" placeholder="Nama bahan" required>
+                        <input type="text" name="quantity[]" class="quantity-input" placeholder="Quantity">
+                        <input type="text" name="size[]" class="size-input" placeholder="Size">
+                        <input type="text" name="note[]" class="note-input" placeholder="Note">
                         <button type="button" class="remove-ingredient">Remove</button>
                     </div>
                 </div>
-                <button type="button" id="add-ingredient">Add Ingredient</button>
-
-                <label for="steps">Steps:</label>
-                <div id="steps-container">
-                    <div class="step-row">
-                        <textarea name="steps[]" class="step-input" rows="4" required></textarea>
-                        <button type="button" class="remove-step">Remove</button>
-                    </div>
+                <div class="button-container">
+                <div class="button-row-1">
+                    <button type="button" id="add-ingredient">Add Ingredient</button>
+                    <button type="submit">Submit Ingredients</button>
                 </div>
-                <button type="button" id="add-step">Add Step</button>
-
-                <label for="categories">Categories:</label>
-                <select name="categories[]" multiple>
-                    <option value="breakfast">Breakfast</option>
-                    <option value="lunch">Lunch</option>
-                    <option value="dinner">Dinner</option>
-                    <!-- Add more category options here -->
-                </select>
-
-                <button type="submit">Upload Recipe</button>
-            </form>
-
-
-            <div class="logout">
-                <form method="post" action="{{ route('logout') }}">
-                    @csrf
-                    <button class="btn_logout"type="submit" class="btn btn-light button-link">Logout</button>
-                </form>
+                <div class="button-row-2">
+                    <button class="btn_kembali" onclick="window.location.href='/userPage'">Back</button>
+                </div>
             </div>
+            </form>
+           
+
+            
         </main>
 
         <footer>
@@ -95,40 +109,26 @@
     </div>
 
     <script>
-        // JavaScript code for adding dynamic ingredient and step fields
-        document.getElementById('add-ingredient').addEventListener('click', function () {
-            const ingredientInput = document.createElement('div');
-            ingredientInput.className = 'ingredient-row';
-            ingredientInput.innerHTML = `
-                <input type="text" name="ingredients[]" class="ingredient-input" required>
-                <button type="button" class="remove-ingredient">Remove</button>
-            `;
-            document.getElementById('ingredients-container').appendChild(ingredientInput);
-        });
+    document.getElementById('add-ingredient').addEventListener('click', function () {
+        const ingredientInput = document.createElement('div');
+        ingredientInput.className = 'ingredient-row';
+        ingredientInput.innerHTML = `
+            <input type="text" name="ingredients[]" class="ingredient-input" placeholder="Nama Bahan" required>
+            <input type="text" name="quantity[]" class="quantity-input" placeholder="Quantity">
+            <input type="text" name="size[]" class="size-input" placeholder="Size">
+            <input type="text" name="note[]" class="note-input" placeholder="Note">
+            <button type="button" class="remove-ingredient">Remove</button>
+        `;
+        document.getElementById('ingredients-container').appendChild(ingredientInput);
+    });
 
-        document.getElementById('add-step').addEventListener('click', function () {
-            const stepInput = document.createElement('div');
-            stepInput.className = 'step-row';
-            stepInput.innerHTML = `
-                <textarea name="steps[]" class="step-input" rows="4" required></textarea>
-                <button type="button" class="remove-step">Remove</button>
-            `;
-            document.getElementById('steps-container').appendChild(stepInput);
-        });
+    document.getElementById('ingredients-container').addEventListener('click', function (e) {
+        if (e.target.classList.contains('remove-ingredient')) {
+            e.target.parentElement.remove();
+        }
+    });
+</script>
 
-        // JavaScript code for removing ingredient and step fields
-        document.getElementById('ingredients-container').addEventListener('click', function (e) {
-            if (e.target.classList.contains('remove-ingredient')) {
-                e.target.parentElement.remove();
-            }
-        });
-
-        document.getElementById('steps-container').addEventListener('click', function (e) {
-            if (e.target.classList.contains('remove-step')) {
-                e.target.parentElement.remove();
-            }
-        });
-    </script>
 
 </body>
 

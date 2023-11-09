@@ -1,10 +1,13 @@
 <?php
 
+use App\Models\Ingredient;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RecipeController;
 use App\Http\Controllers\UserPageController;
+use App\Http\Controllers\IngredientController;
+use App\Http\Controllers\StepController;
 
 /*
 |--------------------------------------------------------------------------
@@ -63,5 +66,11 @@ Route::delete('/adminPage/delete/{id}', [RecipeController::class, 'delete'])->na
 Route::get('/userPage', [UserPageController::class, 'userPage'])->name('user-page');
 Route::get('/formUser', [UserPageController::class, 'formUser'])->name('form-user');
 Route::post('/create-recipe', [UserPageController::class, 'createRecipe'])->name('create-recipe');
-Route::get('/ingredientUser', [UserPageController::class, 'ingredientUser'])->name('ingredient-user');
-Route::get('/stepUser', [UserPageController::class, 'stepUser'])->name('step-user');
+Route::get('/userPage/edit/{id}', [UserPageController::class, 'edit'])->name('edit-recipe');
+Route::post('/update/{id}', [UserPageController::class, 'update'])->name('update-recipe');
+
+
+Route::get('/ingredientUser/{id}', [IngredientController::class, 'ingredientUser'])->name('ingredient-user');
+Route::post('/storeIngredient/{recipe_id}', [IngredientController::class, 'storeIngredient'])->name('ingredients.store');
+
+Route::get('/stepUser/{id}', [StepController::class, 'stepUser'])->name('step-user');

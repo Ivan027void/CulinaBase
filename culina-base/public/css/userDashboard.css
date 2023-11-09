@@ -158,3 +158,125 @@ footer {
         display: inline;
     }
 }
+
+
+/* Style for the recipe list */
+.recipe-list {
+    margin: 20px;
+    padding: 20px;
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.recipe-list h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Style for the table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table th, table td {
+    padding: 10px;
+    text-align: left;
+}
+
+table th {
+    background-color: #333;
+    color: #fff;
+}
+
+table td {
+    border: 1px solid #ddd;
+}
+
+/* Style for the buttons */
+.btn {
+    display: inline-block;
+    padding: 5px 10px;
+    text-decoration: none;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+/* Style for the "Show" button */
+.btn-show {
+    display: inline-block;
+    padding: 10px 12px;
+    background-color: #3498db; /* Blue background color */
+    color: #fff; /* White text color */
+    text-decoration: none;
+    border: 1px solid #3498db;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.btn-show:hover {
+    background-color: #2577b5; /* Slightly darker blue on hover */
+}
+
+/* Style for the "Add Ingredient" button */
+.btn-add-ingredient {
+    display: inline-block;
+    padding: 10px 10px;
+    background-color: #27ae60; /* Green background color */
+    color: #fff; /* White text color */
+    text-decoration: none;
+    border: 1px solid #27ae60;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.btn-add-ingredient:hover {
+    background-color: #219a52; /* Slightly darker green on hover */
+}
+
+/* Style for the "Langkah Memasak" button */
+.btn-langkah-memasak {
+    display: inline-block;
+    padding: 10px 10px;
+    background-color: #f39c12; /* Orange background color */
+    color: #fff; /* White text color */
+    text-decoration: none;
+    border: 1px solid #f39c12;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.btn-langkah-memasak:hover {
+    background-color: #d88d0e; /* Slightly darker orange on hover */
+}
+
+/* Style for the "Edit" button */
+.btn-edit {
+    display: inline-block;
+    padding: 10px 10px;
+    background-color: #3498db; /* Blue background color */
+    color: #fff; /* White text color */
+    text-decoration: none;
+    border: 1px solid #3498db;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .btn-edit:hover {
+    background-color: #2980b9; /* Slightly darker blue on hover */
+  }
+  
+
+
+/* Style for the "No recipes yet" message */
+.recipe-list td[colspan="3"] {
+    text-align: center;
+    font-style: italic;
+    color: #888;
+}
+

@@ -28,9 +28,15 @@
                 </div>
             </header>
             <main>
-                <img src="{{ asset('recipe/' . $recipe->gambar) }}" alt="{{ $recipe->recipe_name }}">
+            @if (file_exists(public_path('recipe/' . $recipe->gambar)))
+                                <!-- Gunakan gambar dari public/recipe jika ada -->
+                                <img src="{{ asset('recipe/' . $recipe->gambar) }}" alt="{{ $recipe->recipe_name }}">
+                            @else
+                                <!-- Fallback to the storage/app/public/images directory -->
+                                <img src="{{ asset('storage/' . $recipe->gambar) }}" alt="{{ $recipe->recipe_name }}">
+                            @endif
                 <h1>{{ $recipe->recipe_name }}</h1>
-                <p>Penulis: {{ $recipe->author ? $recipe->author->name : '-' }}</p>
+                <p>Penulis: {{ $author->name }}</p>
                 <h2>Deskripsi</h2>
                 <p>{{$recipe->description }}</p>
                 <p>Waktu Persiapan: {{ $recipe->preparation_time }}</p>
@@ -42,7 +48,6 @@
                         <li>{{ $ingredient->quantity }} {{ $ingredient->size }} {{ $ingredient->ingredient_name }} {{ $ingredient->note }}</li>
                     @endforeach
                 </ul>
-
 
                 <h3>Cara Memasak:</h3>
                 <ol type="1">

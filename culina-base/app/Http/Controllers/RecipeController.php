@@ -6,6 +6,7 @@ use App\Models\Recipe;
 use App\Models\Step;
 use App\Models\Ingredient;
 use App\Models\Review;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -28,7 +29,10 @@ class RecipeController extends Controller
         // Retrieve the reviews for the recipe
         $reviews = Review::where('recipe_id', $id)->get();
 
-        return view('recipe_info', compact('recipe', 'steps', 'ingredients', 'reviews'));
+       // Retrieve the author (user) information
+        $author = User::find($recipe->author_id);
+
+     return view('recipe_info', compact('recipe', 'steps', 'ingredients', 'reviews', 'author'));
     }
 
 
@@ -59,7 +63,7 @@ public function delete($id)
     $recipe = Recipe::findOrFail($id);
     $this->authorize('delete', $recipe); // Check authorization
     $recipe->delete();
-    return redirect()->route('adminPage')->with('success', 'Recipe deleted successfully');
+    return redirect()->view('adminPage')->with('success', 'Recipe deleted successfully');
 }
 
 public function showAdmin($id)
@@ -73,8 +77,11 @@ public function showAdmin($id)
      // Retrieve the reviews for the recipe
      $reviews = Review::where('recipe_id', $id)->get();
 
-    return view('recipe_info', compact('recipe', 'steps', 'ingredients','reviews'));
-}
+        // Retrieve the author (user) information
+        $author = User::find($recipe->author_id);
+
+        return view('recipe_info', compact('recipe', 'steps', 'ingredients', 'reviews', 'author'));
+        }
 
 public function postReview(Request $request)
     {

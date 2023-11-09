@@ -39,7 +39,7 @@ class RecipesTableSeeder extends Seeder
         ]);
         Recipe::create([
             'recipe_name'=>'Caesar Salad',
-            'gambar'=>'Ceasar-Salad.jpg',
+            'gambar'=>'Caesar-Salad.jpg',
             'description'=>'Caesar Salad adalah hidangan salad klasik yang terdiri dari daun romaine lettuce yang dirobek menjadi potongan-potongan kecil, saus dressing yang khas, parmesan parut, dan crouton (potongan roti yang dibakar). Dressing Caesar Salad biasanya terbuat dari campuran bawang putih, mayones, jus lemon, anchovy, dan parmesan. Hidangan ini sering dihias dengan irisan daging ayam panggang atau udang, tetapi variasi lain juga umum. Caesar Salad adalah hidangan yang terkenal karena rasa krimi dan gurih dressingnya yang khas, serta tekstur yang kontras antara daun selada yang segar dan crouton yang renyah. Hidangan ini adalah hidangan pembuka yang populer di restoran-restoran dan sering disajikan dalam porsi utama dengan penambahan protein tambahan seperti ayam, udang, atau daging lainnya. Caesar Salad merupakan salah satu hidangan salad yang paling dikenal di seluruh dunia.',
             'preparation_time'=>'sekitar 15-20 menit.',
             'cooking_time'=>'sekitar 10-15 menit'

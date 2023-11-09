@@ -49,7 +49,7 @@
                         <thead>
                             <tr>
                                 <th>Recipe Name</th>
-                                <th>Category</th>
+                                <th>description</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -57,10 +57,12 @@
                             @forelse($userRecipes as $recipe)
                             <tr>
                                 <td>{{ $recipe->recipe_name }}</td>
-                                <td>Main Dish</td> <!-- Add a category column if needed -->
+                                <td>{{ Str::limit($recipe->description, 80, '...') }}</td> <!-- Add a category column if needed -->
                                 <td>
-                                    <a href="{{ route('ingredient-user', $recipe->recipe_id) }}" class="btn btn-success">Add Ingredient</a>
-                                    <a href="{{ route('step-user', $recipe->recipe_id) }}" class="btn btn-info">Edit Steps</a>
+                                <a href="/recipe_info/{{ $recipe->recipe_id }}" class="btn-show">Show</a>
+                                <a href="{{ route('ingredient-user', $recipe->recipe_id) }}" class="btn-add-ingredient">Add Ingredient</a>
+                                <a href="{{ route('step-user', $recipe->recipe_id) }}" class="btn-langkah-memasak">Add Steps</a>
+                                <a href="{{ route('edit-recipe', $recipe->recipe_id) }}" class="btn-edit">Edit</a>
                                 </td>
                             </tr>
                             @empty

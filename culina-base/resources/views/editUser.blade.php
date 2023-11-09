@@ -1,6 +1,6 @@
 <!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width,
     initial-scale=1.0"> <title>Upload Recipe</title>
-<link rel="stylesheet" href="css/userform.css">
+<link rel="stylesheet" href="{{ asset('css/userform.css') }}">
 </head>
 
 <body>
@@ -30,25 +30,31 @@
         </header>
 
         <main>
-        <form method="POST" action="{{ route('create-recipe') }}" enctype="multipart/form-data">
+        <form action="#" method="post" enctype="multipart/form-data">
             @csrf
-            <label for="name">Recipe Name<span class="required">*</span>:</label>
-            <input type="text" name="recipe_name" id="name" required>
+            <div class="form-group">
+                <label for="recipe_name">Nama Resep</label>
+                <input type="text" class="form-control" id="recipe_name" name="recipe_name" value="{{ $recipe->recipe_name }}">
+            </div>
 
-            <label for="image">Food Image<span class="required">*</span>:</label>
-            <input type="file" name="gambar" id="image" required>
+            <div class="form-group">
+                <label for="description">Deskripsi</label>
+                <textarea class="form-control" id="description" name="description">{{ $recipe->description }}</textarea>
+            </div>
 
-            <label for="description">Description:</label>
-            <textarea name="description" id="description" rows="4"></textarea>
+            <div class="form-group">
+                <label for="preparation_time">Waktu Persiapan</label>
+                <input type="text" class="form-control" id="preparation_time" name="preparation_time" value="{{ $recipe->preparation_time }}">
+            </div>
 
-            <label for="prep_time">Preparation Time (minutes)<span class="required">*</span>:</label>
-            <input type="text" name="preparation_time" id="prep_time" required>
+            <div class="form-group">
+                <label for="cooking_time">Waktu Memasak</label>
+                <input type="text" class="form-control" id="cooking_time" name="cooking_time" value="{{ $recipe->cooking_time }}">
+            </div>
 
-            <label for="cook_time">Cooking Time (minutes)<span class="required">*</span>:</label>
-            <input type="text" name="cooking_time" id="cook_time" required>
-
-            <button class="upload" type="submit">Upload Recipe</button>
+            <button type="submit" class="btn btn-primary">Simpan</button>
         </form>
+
         <div class="warning">
             <p>Please fill in all required fields marked with <span class="required">*</span></p>
         </div>

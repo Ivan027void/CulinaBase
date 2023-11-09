@@ -64,4 +64,5 @@ class User extends Authenticatable
         return $this->role === 'admin' || strpos($this->email, '@adm') !== false;
     }
 
+
 }

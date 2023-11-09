@@ -20,13 +20,20 @@ class Recipe extends Model
         'category_id',
     ];
 
-    public function addGambar($file)
+    // public function addGambar($file)
+    // {
+    //     $fileName = time() . '.' . $file->getClientOriginalExtension();
+    //     $file->move(public_path('images'), $fileName);
+    //     $this->gambar = $fileName;
+    //     $this->save();
+    // }
+
+    // Recipe.php (Recipe model)
+    public function author()
     {
-        $fileName = time() . '.' . $file->getClientOriginalExtension();
-        $file->move(public_path('images'), $fileName);
-        $this->gambar = $fileName;
-        $this->save();
+        return $this->belongsTo(User::class, 'author_id', 'id');
     }
+
 
     public function category()
     {

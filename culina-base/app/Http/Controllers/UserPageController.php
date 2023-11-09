@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Recipe; // Sesuaikan dengan model Recipe yang Anda gunakan
+use Illuminate\Support\Facades\Session;
+
 
 class UserPageController extends Controller
 {
@@ -57,16 +59,66 @@ class UserPageController extends Controller
         $recipe->author_id = Auth::id(); // Menggunakan ID pengguna yang sedang login sebagai author_id
         $recipe->save();
 
-        return redirect('/user-page')->with('success', 'Recipe has been created successfully');
+        return redirect('/userPage')->with('success', 'Recipe has been created successfully');
     }
 
-    public function ingredientUser()
+    // Buat method baru untuk menampilkan halaman edit recipe
+    public function edit($id)
     {
-        return view('ingredientUser');
+        // Cek apakah user sudah login
+        if (!Auth::check()) {
+            return redirect('/login');
+        }
+
+        // Dapatkan recipe berdasarkan ID
+        $recipe = Recipe::findOrFail($id);
+
+        // Cek apakah recipe dimiliki oleh user
+        if ($recipe->author_id != Auth::user()->id) {
+            return redirect('/');
+        }
+
+        // Tampilkan halaman edit recipe
+        return view('editUser', compact('recipe'));
     }
 
-    public function stepUser()
-    {
-        return view('stepUser');
+    public function update(Request $request, $id)
+{
+    // Cek apakah user sudah login
+    if (!Auth::check()) {
+        return redirect('/login');
     }
+
+    // Dapatkan recipe berdasarkan ID
+    $recipe = Recipe::findOrFail($id);
+
+    // Cek apakah recipe dimiliki oleh user
+    if ($recipe->author_id != Auth::user()->id) {
+        return redirect('/');
+    }
+
+    // Validasi input
+    $this->validate($request, [
+        'recipe_name' => 'required|string|max:255',
+        'description' => 'required|string',
+        'preparation_time' => 'required|string|max:255',
+        'cooking_time' => 'required|string|max:255',
+    ]);
+
+    // Perbarui informasi resep
+    $recipe->recipe_name = $request->input('recipe_name');
+    $recipe->description = $request->input('description');
+    $recipe->preparation_time = $request->input('preparation_time');
+    $recipe->cooking_time = $request->input('cooking_time');
+    $recipe->save();
+
+    // Tampilkan pesan sukses
+    Session::flash('success', 'Informasi resep berhasil diperbarui.');
+
+    // Redirect ke halaman resep
+    return redirect('/userPage')->with('success', 'Recipe has been update successfully');
+}
+
+
+    
 }
