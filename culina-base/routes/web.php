@@ -67,7 +67,7 @@ Route::get('/userPage', [UserPageController::class, 'userPage'])->name('user-pag
 Route::get('/formUser', [UserPageController::class, 'formUser'])->name('form-user');
 Route::post('/create-recipe', [UserPageController::class, 'createRecipe'])->name('create-recipe');
 Route::get('/userPage/edit/{id}', [UserPageController::class, 'edit'])->name('edit-recipe');
-Route::post('/update/{id}', [UserPageController::class, 'update'])->name('update-recipe');
+Route::put('/userPage/edit/{id}', [UserPageController::class, 'update'])->name('update-recipe');
 
 
 Route::get('/ingredientUser/{id}', [IngredientController::class, 'ingredientUser'])->name('ingredient-user');

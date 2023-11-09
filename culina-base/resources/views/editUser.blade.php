@@ -30,8 +30,9 @@
         </header>
 
         <main>
-        <form action="#" method="post" enctype="multipart/form-data">
+        <form action="{{ route('update-recipe', ['id' => $recipe->recipe_id]) }}"  method="post" enctype="multipart/form-data">
             @csrf
+            @method('PUT')
             <div class="form-group">
                 <label for="recipe_name">Nama Resep</label>
                 <input type="text" class="form-control" id="recipe_name" name="recipe_name" value="{{ $recipe->recipe_name }}">

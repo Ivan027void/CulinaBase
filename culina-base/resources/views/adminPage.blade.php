@@ -105,6 +105,7 @@
                 <td>{{ $recipe->recipe_name }}</td>
                 <td>{{ Str::limit($recipe->description, 200, '...') }}</td>
                 <td>
+                <div class="button-container">
                     <form action="{{ route('recipes.show', $recipe->recipe_id) }}" method="GET" style="display: inline;">
                         @csrf
                         <button type="submit" class="btn btn-custom-primary">Show</button>
@@ -118,6 +119,7 @@
                         @method('DELETE')
                         <button type="submit" class="btn btn-custom-danger" onclick="return confirm('Are you sure you want to delete this recipe?')">Delete</button>
                     </form>
+                </div>
                 </td>
             </tr>
             @endforeach

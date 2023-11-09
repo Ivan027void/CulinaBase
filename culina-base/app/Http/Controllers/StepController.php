@@ -21,4 +21,22 @@ class StepController extends Controller
             return view('stepUser', compact('recipe', 'step'));
         }
     }
+
+    public function addStep(Request $request, $recipe_id)
+    {
+
+        $request->validate([
+            'step_order' => 'required|integer',
+            'description' => 'required|string',
+        ]);
+        
+        $step = new Step;
+        $step->recipe_id = $recipe_id;
+        $step->step_order = $request->input('step_order');
+        $step->description = $request->input('description');
+        $step->save();
+
+        return response()->json(['message' => 'Step added successfully'], 200);
+    }
+
 }

@@ -36,7 +36,7 @@
                                 <img src="{{ asset('storage/' . $recipe->gambar) }}" alt="{{ $recipe->recipe_name }}">
                             @endif
                 <h1>{{ $recipe->recipe_name }}</h1>
-                <p>Penulis: {{ $author->name }}</p>
+                <p>Penulis: {{ $author->name ?? '-'}}</p>
                 <h2>Deskripsi</h2>
                 <p>{{$recipe->description }}</p>
                 <p>Waktu Persiapan: {{ $recipe->preparation_time }}</p>

@@ -48,15 +48,15 @@ class RecipeController extends Controller
         return view('adminPage', compact('recipes'));
     }
     public function edit($id)
-{
-    $recipe = Recipe::findOrFail($id);
-    $this->authorize('edit', $recipe); // Check authorization
-    $steps = Step::where('recipe_id', $id)->get();
-    $ingredients = Ingredient::whereHas('recipe', function ($query) use ($id) {
-        $query->where('recipes.recipe_id', $id);
-    })->get();
-    return view('edit_recipe', compact('recipe', 'steps', 'ingredients'));
-}
+    {
+        $recipe = Recipe::findOrFail($id);
+        $this->authorize('edit', $recipe); // Check authorization
+        $steps = Step::where('recipe_id', $id)->get();
+        $ingredients = Ingredient::whereHas('recipe', function ($query) use ($id) {
+            $query->where('recipes.recipe_id', $id);
+        })->get();
+        return view('editAdmin', compact('recipe', 'steps', 'ingredients'));
+    }
 
 public function delete($id)
 {
