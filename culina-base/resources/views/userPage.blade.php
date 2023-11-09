@@ -59,10 +59,12 @@
                                 <td>{{ $recipe->recipe_name }}</td>
                                 <td>{{ Str::limit($recipe->description, 80, '...') }}</td> <!-- Add a category column if needed -->
                                 <td>
-                                <a href="/recipe_info/{{ $recipe->recipe_id }}" class="btn-show">Show</a>
-                                <a href="{{ route('ingredient-user', $recipe->recipe_id) }}" class="btn-add-ingredient">Add Ingredient</a>
-                                <a href="{{ route('step-user', $recipe->recipe_id) }}" class="btn-langkah-memasak">Add Steps</a>
-                                <a href="{{ route('edit-recipe', $recipe->recipe_id) }}" class="btn-edit">Edit</a>
+                                <div class="button-container">
+                                    <a href="/recipe_info/{{ $recipe->recipe_id }}" class="btn-show">Show</a>
+                                    <a href="{{ route('ingredient-user', $recipe->recipe_id) }}" class="btn-add-ingredient">Add Ingredient</a>
+                                    <a href="{{ route('step-user', $recipe->recipe_id) }}" class="btn-langkah-memasak">Add Steps</a>
+                                    <a href="{{ route('edit-recipe', $recipe->recipe_id) }}" class="btn-edit">Edit</a>
+                                </div>
                                 </td>
                             </tr>
                             @empty

@@ -74,3 +74,4 @@ Route::get('/ingredientUser/{id}', [IngredientController::class, 'ingredientUser
 Route::post('/storeIngredient/{recipe_id}', [IngredientController::class, 'storeIngredient'])->name('ingredients.store');
 
 Route::get('/stepUser/{id}', [StepController::class, 'stepUser'])->name('step-user');
+Route::post('/addStep/{recipe_id}', [StepController::class, 'addStep'])->name('step.add');

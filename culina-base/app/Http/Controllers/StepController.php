@@ -23,20 +23,30 @@ class StepController extends Controller
     }
 
     public function addStep(Request $request, $recipe_id)
-    {
+{
+    $request->validate([
+        'steps' => 'required|array',
+        'steps.*' => 'required',
+        'descriptions' => 'required|array',
+        'descriptions.*' => 'required',
+    ]);
 
-        $request->validate([
-            'step_order' => 'required|integer',
-            'description' => 'required|string',
+    // Retrieve the input data for steps and descriptions
+    $steps = $request->input('steps');
+    $descriptions = $request->input('descriptions');
+
+    // Loop through the submitted steps and descriptions and insert them into the database
+    for ($i = 0; $i < count($steps); $i++) {
+        $step = new Step([
+            'recipe_id' => $recipe_id,
+            'step_order' => $i + 1, // Use the index as the step order
+            'description' => $descriptions[$i],
         ]);
-        
-        $step = new Step;
-        $step->recipe_id = $recipe_id;
-        $step->step_order = $request->input('step_order');
-        $step->description = $request->input('description');
         $step->save();
-
-        return response()->json(['message' => 'Step added successfully'], 200);
     }
+
+    // Redirect back or to a specific page after insertion
+    return redirect()->back()->with('success', 'Steps added successfully');
+}
 
 }

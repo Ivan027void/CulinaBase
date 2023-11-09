@@ -15,7 +15,7 @@
                 <nav>
                     <ul id="navList">
                         <li>
-                            <p id="navLogo" href="/">CulinaBase</p>
+                            <a id="navLogo" href="/">CulinaBase</a>
                         </li>
                         <li>
                             <div id="navItems">
