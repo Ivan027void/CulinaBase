@@ -42,6 +42,20 @@ class RecipeController extends Controller
         return view('landingpage', compact('recipes'));
     }
 
+    public function fullIndex()
+    {
+        $recipes = Recipe::all(); // Retrieve all recipes from the database
+        return view('option', compact('recipes'));
+    }
+
+    public function searchRecipes(Request $request)
+{
+    $searchText = $request->input('search'); // Retrieve the search input from the request
+    $recipes = Recipe::where('recipe_name', 'like', '%' . $searchText . '%')->get();
+
+    return view('recipe.index', ['recipes' => $recipes]);
+}
+
     public function indexAdmin()
     {
         $recipes = Recipe::all(); // Retrieve all recipes from the database

@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <div class="container" style="background-image: url(gambar/bg2.jpg);">
+    <div class="container">
         <header>
             <div class="navContainer">
                 <nav>
@@ -43,83 +43,31 @@
         </header>
         <br>
         <center>
-            <form name="search" action="" method="POST">
+            <form name="search" action="/search" method="POST">
                 <input type="text" id="search" name="reg" placeholder="Search...">
             </form>
         </center>
         <br><br>
-        <center>
-            <table id="t" style="color:white">
-                <tr>
-                    <td class="content"><a style="text-decoration:none;" href="pizza.html"><button>Pizza</button></a>
-                    </td>
-                    <td class="content"><a style="text-decoration:none;" href="pasta.html"><button>Pasta</button></a>
-                    </td>
-                    <td class="content"><a style="text-decoration:none;" href="burger.html"><button>Burger</button></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="content"><a style="text-decoration:none;"
-                            href="noodles.html"><button>Noodles</button></a>
-                    </td>
-                    <td class="content"><a style="text-decoration:none;" href="hs.html"><button>Chinese Hot and Sour
-                                Soup</button></a></td>
-                    <td class="content"><a style="text-decoration:none;" href="cgs.html"><button>Carrot Ginger
-                                Soup</button></a></td>
-                </tr>
-                <tr>
-                    <td class="content"><a style="text-decoration:none;" href="breadroll.html"><button>Bread
-                                Roll</button></a></td>
-                    <td class="content"><a style="text-decoration:none;" href="ps.html"><button>Paneer
-                                Sandwich</button></a>
-                    </td>
-                    <td class="content"><a style="text-decoration:none;" href="vegetablemaggie.html"><button>Vegetable
-                                Maggie</button></a></td>
-                </tr>
-                <tr>
-                    <td class="content"><a style="text-decoration:none;" href="frenchtoast.html"><button>French
-                                Toast</button></a></td>
-                    <td class="content"><a style="text-decoration:none;" href="tacos.html"><button>Tacos</button></a>
-                    </td>
-                    <td class="content"><a style="text-decoration:none;" href="momos.html"><button>Momos</button></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="content"><a style="text-decoration:none;" href="pt.html"><button>Paneer
-                                Tikka</button></a>
-                    </td>
-                    <td class="content"><a style="text-decoration:none;" href="ccb.html"><button>Crispy Chilly
-                                Babycorn</button></a></td>
-                    <td class="content"><a style="text-decoration:none;" href="ac.html"><button>American
-                                Chopsuey</button></a></td>
-                </tr>
-                <tr>
-                    <td class="content"><a style="text-decoration:none;" href="q.html"><button>Quesadilla</button></a>
-                    </td>
-                    <td class="content"><a style="text-decoration:none;" href="chococake.html"><button>Chocolate
-                                Cake</button></a></td>
-                    <td class="content"><a style="text-decoration:none;" href="lbp.html"><button>Lemon Bar
-                                Peeps</button></a></td>
-                </tr>
-                <tr>
-                    <td class="content"><a style="text-decoration:none;" href="sbpie.html"><button>Strawberry
-                                Pie</button></a></td>
-                    <td class="content"><a style="text-decoration:none;"
-                            href="tiramisu.html"><button>Tiramisu</button></a>
-                    </td>
-                    <td class="content"><a style="text-decoration:none;" href="pc.html"><button>Panna Cotta</button></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="content"><a style="text-decoration:none;" href="bmc.html"><button>Blueberry Muffin
-                                Cake</button></a></td>
-                    <td class="content"><a style="text-decoration:none;"
-                            href="cheesecake.html"><button>Cheesecake</button></a></td>
-                    <td class="content"><a style="text-decoration:none;" href="cm.html"><button>Chocolate
-                                Milkshake</button></a></td>
-                </tr>
-            </table>
-        </center>
+        <main>
+        <div class="recipe-cards">
+                @foreach($recipes as $recipe)
+                        <div class="recipe-card">
+                            <a href="/recipe_info/{{ $recipe->recipe_id }}">
+                            @if (file_exists(public_path('recipe/' . $recipe->gambar)))
+                                <!-- Gunakan gambar dari public/recipe jika ada -->
+                                <img src="{{ asset('recipe/' . $recipe->gambar) }}" alt="{{ $recipe->recipe_name }}">
+                            @else
+                                <!-- Fallback to the storage/app/public/images directory -->
+                                <img src="{{ asset('storage/' . $recipe->gambar) }}" alt="{{ $recipe->recipe_name }}">
+                            @endif
+                                <h2 class="recipe_title">{{ $recipe->recipe_name }}</h2>
+                                <p>{{ Str::limit($recipe->description, 80, '...') }}</p>
+                                <a class="read-more" href="/recipe_info/{{ $recipe->recipe_id }}">Lanjutkan Membaca</a>
+                            </a>
+                        </div>
+                @endforeach
+            </div>
+        </main>
         <footer>
             <div class="footerBox">
                 <p>
@@ -134,13 +82,17 @@
 <script>
     $(document).ready(function () {
         $('#search').keyup(function () {
-            var text = $(this).val();
-            $('.content').hide();
-            $('.content:contains("' + text + '")').show();
-
+            var text = $(this).val().toLowerCase(); // Convert input to lowercase for case-insensitive search
+            $('.recipe-card').each(function () {
+                var recipeName = $(this).find('.recipe_title').text().toLowerCase();
+                if (recipeName.includes(text)) {
+                    $(this).show();
+                } else {
+                    $(this).hide();
+                }
+            });
         });
     });
-
 </script>
 
 </html>

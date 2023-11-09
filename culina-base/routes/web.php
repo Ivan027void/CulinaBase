@@ -29,6 +29,9 @@ Route::get('/admin', [RecipeController::class, 'indexAdmin']);
 Route::get('/option', function () {
     return view('option');
 });
+Route::get('/option', [RecipeController::class, 'fullIndex']);
+Route::post('/search', [RecipeController::class, 'searchRecipes'])->name('search-recipes');
+
 
 Route::get('/about', function () {
     return view('about-us');
@@ -74,4 +77,4 @@ Route::get('/ingredientUser/{id}', [IngredientController::class, 'ingredientUser
 Route::post('/storeIngredient/{recipe_id}', [IngredientController::class, 'storeIngredient'])->name('ingredients.store');
 
 Route::get('/stepUser/{id}', [StepController::class, 'stepUser'])->name('step-user');
-Route::post('/addStep/{recipe_id}', [StepController::class, 'addStep'])->name('step.add');
+Route::post('/steps/{recipe_id}/store', [StepController::class, 'storeStep'])->name('steps.store');

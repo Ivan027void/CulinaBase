@@ -53,7 +53,7 @@
                 <h3>Bahan-bahan:</h3>
                 <ul>
                     @foreach ($ingredients as $ingredient)
-                        <li>{{ $ingredient->quantity }} {{ $ingredient->size }} {{ $ingredient->ingredient_name }} {{ $ingredient->note }}</li>
+                        <li>{{ $ingredient->quantity }} {{ $ingredient->size }} {{ $ingredient->ingredient_name }}, {{ $ingredient->note }}</li>
                     @endforeach
                 </ul>
 

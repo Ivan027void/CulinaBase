@@ -85,14 +85,14 @@
                     </div>
                 </div>
                 <div class="button-container">
-                <div class="button-row-1">
-                    <button type="button" id="add-ingredient">Add Ingredient</button>
-                    <button type="submit">Submit Ingredients</button>
+                    <div class="button-row-1">
+                        <button type="button" id="add-ingredient">Add Ingredient</button>
+                        <button type="submit">Submit Ingredients</button>
+                    </div>
+                    <div class="button-row-2">
+                        <button class="btn_kembali" onclick="window.location.href='/userPage'">Back</button>
+                    </div>
                 </div>
-                <div class="button-row-2">
-                    <button class="btn_kembali" onclick="window.location.href='/userPage'">Back</button>
-                </div>
-            </div>
             </form>
            
 

@@ -22,25 +22,26 @@ class StepController extends Controller
         }
     }
 
-    public function addStep(Request $request, $recipe_id)
+    public function storeStep(Request $request, $recipe_id)
 {
+    // Validate the input data
     $request->validate([
-        'steps' => 'required|array',
-        'steps.*' => 'required',
-        'descriptions' => 'required|array',
-        'descriptions.*' => 'required',
+        'descriptions' => 'required',
     ]);
 
-    // Retrieve the input data for steps and descriptions
-    $steps = $request->input('steps');
+    // Retrieve the input data for description
     $descriptions = $request->input('descriptions');
 
-    // Loop through the submitted steps and descriptions and insert them into the database
-    for ($i = 0; $i < count($steps); $i++) {
+    
+
+    // Loop through the submitted descriptions and insert them into the database
+    foreach ($descriptions as $key => $description) {
+        // Get the next step order
+        $stepOrder = Step::where('recipe_id', $recipe_id)->max('step_order') + 1;
         $step = new Step([
+            'description' => $description,
             'recipe_id' => $recipe_id,
-            'step_order' => $i + 1, // Use the index as the step order
-            'description' => $descriptions[$i],
+            'step_order' => $stepOrder++,
         ]);
         $step->save();
     }

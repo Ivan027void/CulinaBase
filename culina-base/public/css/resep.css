@@ -70,7 +70,7 @@ main {
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    text-align: center; /* Center-align the content */
+    text-align: center;/* Center-align the content */
     width: auto;
     max-width: 75%;
     margin: 0 auto;
