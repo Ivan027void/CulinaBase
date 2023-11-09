@@ -30,26 +30,32 @@
         <table>
             <tr>
                 <th>User Name</th>
+                <th>Password</th>
                 <th>Time Created</th>
             </tr>
             <tr>
                 <td>User 1</td>
+                <td>password</td>
                 <td>2023-01-15 10:30:00</td>
             </tr>
             <tr>
                 <td>User 2</td>
+                <td>password</td>
                 <td>2023-02-20 14:45:00</td>
             </tr>
             <tr>
                 <td>User 3</td>
+                <td>password</td>
                 <td>2023-03-25 09:15:00</td>
             </tr>
             <tr>
                 <td>User 4</td>
+                <td>password</td>
                 <td>2023-04-10 12:00:00</td>
             </tr>
             <tr>
                 <td>User 5</td>
+                <td>password</td>
                 <td>2023-05-05 16:20:00</td>
             </tr>
         </table>

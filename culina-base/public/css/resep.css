@@ -58,6 +58,7 @@ a{
 }
 #navItems{
     display: flex;
+    margin-top: 10px;
     gap: 40px;
     
 }

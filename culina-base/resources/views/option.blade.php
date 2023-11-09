@@ -9,20 +9,32 @@
 </head>
 
 <body>
-    <div class="container">
+    <div class="container" style="background-image: url(gambar/bg2.jpg);">
         <header>
             <div class="navContainer">
                 <nav>
                     <ul id="navList">
                         <li>
-                            <a id="navLogo" href="/">CulinaBase</a>
+                        <div>
+                            <span style="font-size: 20px;margin-top: 50px;">
+                            <a id="navLogo" href="/"><span style="color:#ff9900">(CulinaBase)</span></a>
+                            </span>
+                        </div>
                         </li>
                         <li>
                             <div id="navItems">
                                 <a href="/">Home</a>
                                 <a href="/option">Recipe</a>
                                 <a href="/about">About</a>
-                                <a href="/login">Login</a>
+                                @auth
+                                    @if (Auth::user()->isAdmin())
+                                        <a href="/adminPage">{{ Auth::user()->name }}</a> <!-- Redirect admin users to adminPage -->
+                                    @else
+                                        <a href="/userPage">{{ Auth::user()->name }}</a> <!-- Redirect regular users to userPage -->
+                                    @endif
+                                @else
+                                    <a href="/login">Login</a>
+                                @endauth
                             </div>
                         </li>
                     </ul>
@@ -30,12 +42,6 @@
             </div>
         </header>
         <br>
-        <div>
-            <span style="font-size: 45px;margin-top: 150px; margin-left: 50px;"><span
-                    style="color:#ff9900">(R)</span><span style="color:white">ecipes</span></span>
-            <span style="margin-left: 1100px;color:white">
-                <a href="index.html">Logout</a></span>
-        </div>
         <center>
             <form name="search" action="" method="POST">
                 <input type="text" id="search" name="reg" placeholder="Search...">
