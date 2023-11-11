@@ -11,43 +11,64 @@ class StepController extends Controller
 {
     public function stepUser($id)
     {
-        // Cek apakah pengguna sudah login
-        if (Auth::check()) {
-            $user = Auth::user();
+        // Retrieve recipe details
+        $recipe = Recipe::findOrFail($id);
 
-            $recipe = Recipe::findOrFail($id);
-            $step = Step::where('recipe_id', $id)->get();
+        // Retrieve steps for the recipe
+        $steps = Step::where('recipe_id', $id)->orderBy('step_order')->get();
 
-            return view('stepUser', compact('recipe', 'step'));
-        }
+        return view('stepUser', compact('recipe', 'steps'));
     }
 
-    public function storeStep(Request $request, $recipe_id)
-{
-    // Validate the input data
-    $request->validate([
-        'descriptions' => 'required',
-    ]);
-
-    // Retrieve the input data for description
-    $descriptions = $request->input('descriptions');
-
-    
-
-    // Loop through the submitted descriptions and insert them into the database
-    foreach ($descriptions as $key => $description) {
-        // Get the next step order
-        $stepOrder = Step::where('recipe_id', $recipe_id)->max('step_order') + 1;
-        $step = new Step([
-            'description' => $description,
-            'recipe_id' => $recipe_id,
-            'step_order' => $stepOrder++,
+    public function addStep(Request $request, $id)
+    {
+        // Validate the request data
+        $request->validate([
+            'step_order' => 'required|integer',
+            'description' => 'required|string',
         ]);
-        $step->save();
+
+        // Create a new step
+        Step::create([
+            'recipe_id' => $id,
+            'step_order' => $request->input('step_order'),
+            'description' => $request->input('description'),
+        ]);
+
+        return redirect()->route('step-user', $id)->with('success', 'Step added successfully');
     }
 
-    // Redirect back or to a specific page after insertion
-    return redirect()->back()->with('success', 'Steps added successfully');
-}
+    public function updateStep(Request $request, $id, $stepId)
+    {
+        // Validate the request data
+        $request->validate([
+            'step_order' => 'required|integer',
+            'description' => 'required|string',
+        ]);
 
+        // Find the step by ID
+        $step = Step::findOrFail($stepId);
+
+        // Update the step
+        $step->update([
+            'step_order' => $request->input('step_order'),
+            'description' => $request->input('description'),
+        ]);
+
+        return redirect()->route('step-user', $id)->with('success', 'Step updated successfully');
+    }
+
+    public function deleteStep($id, $stepId)
+    {
+        $step = Step::find($stepId);
+    
+        if (!$step) {
+            return redirect()->route('step-user', $id)->with('error', 'Step not found');
+        }
+    
+        $step->delete();
+    
+        return redirect()->route('step-user', $id)->with('success', 'Step delete successfully');
+    }
+    
 }

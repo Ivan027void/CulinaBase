@@ -63,6 +63,14 @@
 
     <section id="recipe-management">
         <h2>Recipe Management</h2>
+        <div class="dashboard-actions">
+            <form action="{{ route('form-admin') }}" method="get">
+                @csrf
+                <button type="submit" class="btn new-recipe">Add New Recipe</button>
+            </form>
+        </div>
+
+        
         @if($recipes->isEmpty())
         <table>
             <tr>

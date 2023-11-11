@@ -271,6 +271,24 @@ footer {
     cursor: pointer;
 }
 
+#cancel-update,#delete-step{
+    background-color: red; /* Set the background color to red (adjust as needed) */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-right: 5px; /* Add a right margin to create space between Remove and Add buttons */
+    cursor: pointer;
+}
+
+#step-update,.edit-step{
+    background-color: green; /* Set the background color to green */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-right: 10px; /* Add right margin to create space between Add and Submit buttons */
+    cursor: pointer;
+}
+
 /* Style for the "Submit Ingredients" button */
 [type="submit"] {
     background-color: #007BFF; /* Set the background color to a blue shade */

@@ -8,6 +8,7 @@ use App\Http\Controllers\RecipeController;
 use App\Http\Controllers\UserPageController;
 use App\Http\Controllers\IngredientController;
 use App\Http\Controllers\StepController;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -60,11 +61,12 @@ Route::post('/register', [RegisterController::class, 'register']);
 Route::get('/adminPage', function () {
     return view('adminPage');
 });
-Route::get('/adminPage',[RecipeController::class, 'indexAdmin'])->name('admin.page');
-Route::get('/recipe_info/{id}', [RecipeController::class, 'showAdmin'])->name('recipes.show');
-Route::get('/adminPage/edit_recipe/{id}', [RecipeController::class, 'edit'])->name('recipes.edit');
-Route::delete('/adminPage/delete/{id}', [RecipeController::class, 'delete'])->name('recipes.delete');
-
+Route::get('/adminPage',[AdminController::class, 'indexAdmin'])->name('admin.page');
+Route::get('/recipe_info/{id}', [AdminController::class, 'showAdmin'])->name('recipes.show');
+Route::get('/adminPage/edit_recipe/{id}', [AdminController::class, 'edit'])->name('recipes.edit');
+Route::delete('/adminPage/delete/{id}', [AdminController::class, 'delete'])->name('recipes.delete');
+Route::get('/formAdmin', [AdminController::class, 'formAdmin'])->name('form-admin');
+Route::post('/add-recipe', [AdminController::class, 'addRecipe'])->name('add-recipe');
 
 Route::get('/userPage', [UserPageController::class, 'userPage'])->name('user-page');
 Route::get('/formUser', [UserPageController::class, 'formUser'])->name('form-user');
@@ -76,5 +78,14 @@ Route::put('/userPage/edit/{id}', [UserPageController::class, 'update'])->name('
 Route::get('/ingredientUser/{id}', [IngredientController::class, 'ingredientUser'])->name('ingredient-user');
 Route::post('/storeIngredient/{recipe_id}', [IngredientController::class, 'storeIngredient'])->name('ingredients.store');
 
+
+
 Route::get('/stepUser/{id}', [StepController::class, 'stepUser'])->name('step-user');
-Route::post('/steps/{recipe_id}/store', [StepController::class, 'storeStep'])->name('steps.store');
+// Route to handle adding a new step
+Route::post('/stepUser/{id}/addStep', [StepController::class, 'addStep'])->name('add-step');
+
+// Route to handle updating an existing step
+Route::put('/stepUser/{id}/updateStep/{stepId}', [StepController::class, 'updateStep'])->name('update-step');
+
+Route::delete('/stepUser/{id}/deleteStep/{stepId}', [StepController::class, 'deleteStep'])
+    ->name('delete-step');

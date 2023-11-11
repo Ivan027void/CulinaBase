@@ -30,7 +30,7 @@ class LoginController extends Controller
             $user = Auth::user();
 
             if ($user->isAdmin()) {
-                return redirect('/adminPage'); // Redirect to adminPage for admins
+                return redirect()->route('admin.page'); // Redirect to adminPage for admins
             } else {
                 return redirect()->route('user-page'); // Redirect to userPage for regular users
             }    

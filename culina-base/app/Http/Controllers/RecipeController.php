@@ -29,10 +29,10 @@ class RecipeController extends Controller
         // Retrieve the reviews for the recipe
         $reviews = Review::where('recipe_id', $id)->get();
 
-       // Retrieve the author (user) information
+        // Retrieve the author (user) information
         $author = User::find($recipe->author_id);
 
-     return view('recipe_info', compact('recipe', 'steps', 'ingredients', 'reviews', 'author'));
+        return view('recipe_info', compact('recipe', 'steps', 'ingredients', 'reviews', 'author'));
     }
 
 
@@ -49,55 +49,14 @@ class RecipeController extends Controller
     }
 
     public function searchRecipes(Request $request)
-{
-    $searchText = $request->input('search'); // Retrieve the search input from the request
-    $recipes = Recipe::where('recipe_name', 'like', '%' . $searchText . '%')->get();
-
-    return view('recipe.index', ['recipes' => $recipes]);
-}
-
-    public function indexAdmin()
     {
-        $recipes = Recipe::all(); // Retrieve all recipes from the database
-        return view('adminPage', compact('recipes'));
-    }
-    public function edit($id)
-    {
-        $recipe = Recipe::findOrFail($id);
-        $this->authorize('edit', $recipe); // Check authorization
-        $steps = Step::where('recipe_id', $id)->get();
-        $ingredients = Ingredient::whereHas('recipe', function ($query) use ($id) {
-            $query->where('recipes.recipe_id', $id);
-        })->get();
-        return view('editAdmin', compact('recipe', 'steps', 'ingredients'));
+        $searchText = $request->input('search'); // Retrieve the search input from the request
+        $recipes = Recipe::where('recipe_name', 'like', '%' . $searchText . '%')->get();
+
+        return view('recipe.index', ['recipes' => $recipes]);
     }
 
-public function delete($id)
-{
-    $recipe = Recipe::findOrFail($id);
-    $this->authorize('delete', $recipe); // Check authorization
-    $recipe->delete();
-    return redirect()->view('adminPage')->with('success', 'Recipe deleted successfully');
-}
-
-public function showAdmin($id)
-{
-    // You should add validation and authorization checks here to ensure only admins can perform this action
-    $recipe = Recipe::findOrFail($id);
-    $steps = Step::where('recipe_id', $id)->get();
-    $ingredients = Ingredient::whereHas('recipe', function ($query) use ($id) {
-        $query->where('recipes.recipe_id', $id); // Use table alias
-    })->get();
-     // Retrieve the reviews for the recipe
-     $reviews = Review::where('recipe_id', $id)->get();
-
-        // Retrieve the author (user) information
-        $author = User::find($recipe->author_id);
-
-        return view('recipe_info', compact('recipe', 'steps', 'ingredients', 'reviews', 'author'));
-        }
-
-public function postReview(Request $request)
+    public function postReview(Request $request)
     {
         // Validate the input data
         $request->validate([
