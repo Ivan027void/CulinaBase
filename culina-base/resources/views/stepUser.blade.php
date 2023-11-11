@@ -61,9 +61,9 @@
                                     style="display: inline;">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" id="delete-step" onclick="return confirm('Are you sure you want to delete this step?')">Delete</button>
+                                    <button type="submit" id="delete-step"
+                                        onclick="return confirm('Are you sure you want to delete this step?')">Delete</button>
                                 </form>
-
                             </div>
                         </div>
                         </td>

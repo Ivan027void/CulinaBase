@@ -51,4 +51,41 @@ class IngredientController extends Controller
     // Redirect back or to a specific page after insertion
     return redirect()->back()->with('success', 'Ingredients added successfully');
 }
+    public function updateIngredient(Request $request, $recipe_id, $ingredientId)
+    {
+        // Validate the request data
+        $request->validate([
+            'ingredient_name' => 'required|string',
+            'quantity' => 'nullable|string',
+            'size' => 'nullable|string',
+            'note' => 'nullable|string',
+        ]);
+
+        // Find the ingredient by ID
+        $ingredient = Ingredient::findOrFail($ingredientId);
+
+        // Update the ingredient
+        $ingredient->update([
+            'ingredient_name' => $request->input('ingredient_name'),
+            'quantity' => $request->input('quantity'),
+            'size' => $request->input('size'),
+            'note' => $request->input('note'),
+        ]);
+
+        return redirect()->route('ingredient-user', $recipe_id)->with('success', 'Ingredient updated successfully');
+    }
+
+
+    public function deleteIngredient($recipe_id, $ingredientId)
+    {
+        $ingredient = Ingredient::find($ingredientId);
+
+        if (!$ingredient) {
+            return redirect()->route('ingredient-user', $recipe_id)->with('error', 'Ingredient not found');
+        }
+
+        $ingredient->delete();
+
+        return redirect()->route('ingredient-user', $recipe_id)->with('success', 'Ingredient deleted successfully');
+    }
 }

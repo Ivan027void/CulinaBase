@@ -1,29 +1,36 @@
 <!DOCTYPE html> <html lang="en"> <head>
 <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Admin Page</title>
-<link rel="stylesheet" href="css/admin.css"> </head> <body> <div class='container'> <header>
-<div class="navContainer">
-<nav>
-<ul id="navList">
-    <li>
-    <a id="navLogo" href="/">CulinaBase</a>
-    </li>
-    <li>
-    <div id="navItems">
-    <a href="/">Home</a>
-    <a href="#user-management">User Management</a>
-    <a href="#recipe-management">Recipe Management</a>
-    @auth
-    <a href="/">{{Auth::user()->name }}</a>
-    @else
-    user
-    @endauth
-    </div>
-    </li>
-</ul>
-</nav>
-</div>
-</header>
+<link rel="stylesheet" href="css/admin.css"> 
+</head> 
+<body> 
 
+<div id="floating-area" class="floating-area">
+        <a href="#top">Top</a> |
+        <a href="#user-management">User</a>|
+        <a href="#recipe-management">Recipe</a> 
+    </div>
+    <div class='container' id="top"> 
+        <header>
+            <div class="navContainer">
+                <nav>
+                    <ul id="navList">
+                        <li>
+                            <a id="navLogo" href="/">CulinaBase</a>
+                        </li>
+                        <li>
+                            <div id="navItems">
+                                <a href="/">Home</a>
+                                @auth
+                                <a href="/">{{Auth::user()->name }}</a>
+                                @else
+                                user
+                                @endauth
+                            </div>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </header> 
 <main>
     <section id="user-management">
         <h2>User Management</h2>
@@ -158,6 +165,39 @@
     </div>
 </footer>
 </div>
+
+<script>
+    // Show or hide the floating area based on scroll position
+    window.onscroll = function () {
+        console.log('Scrolling...');
+        scrollFunction();
+    };
+
+    function scrollFunction() {
+        var floatingArea = document.querySelector(".floating-area");
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            console.log('Displaying floating area...');
+            floatingArea.style.display = "block";
+        } else {
+            console.log('Hiding floating area...');
+            floatingArea.style.display = "none";
+        }
+    }
+
+    // Smooth scrolling when clicking on links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+</script>
+
+
+
 </body>
 
 </html>

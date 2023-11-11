@@ -217,3 +217,26 @@ footer {
     color: azure;
     font-size: 2rem;
 }
+
+
+.floating-area {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color:  #001f3f;
+    color: #FFFFFF;
+    padding: 10px;
+    border-radius: 15px;
+    cursor: pointer;
+    display: none;
+}
+
+.floating-area a {
+    text-decoration: none;
+    color: #FFFFFF;
+}
+
+.floating-area a:hover {
+    text-decoration: underline;
+}
+
