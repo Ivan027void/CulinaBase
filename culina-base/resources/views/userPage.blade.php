@@ -1,3 +1,4 @@
+@include('sweetalert::alert')
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,7 +20,7 @@
                             <div id="navItems">
                                 <a href="/">Home</a>
                                 @auth
-                                <a href="/">{{ Auth::user()->name }}</a>
+                                <a href="/profile">{{ Auth::user()->name }}</a>
                                 @else
                                 user
                                 @endauth

@@ -15,9 +15,28 @@ class AdminController extends Controller
 {
     public function indexAdmin()
     {
-        $recipes = Recipe::all(); // Retrieve all recipes from the database
-        return view('adminPage', compact('recipes'));
+        // Retrieve all recipes from the Recipe model
+        $recipes = Recipe::all();
+        // Retrieve non-admin users from the User model
+        $users = User::where('role', '!=', 'admin')->get();
+
+        // If there are no users, you can use your dummy data
+        if ($users->isEmpty()) {
+            $dummyUsers = [
+                ['name' => 'User 1', 'email' => 'password', 'created_at' => '2023-01-15 10:30:00'],
+                ['name' => 'User 2', 'email' => 'password', 'created_at' => '2023-02-20 14:45:00'],
+                ['name' => 'User 3', 'email' => 'password', 'created_at' => '2023-03-25 09:15:00'],
+                ['name' => 'User 4', 'email' => 'password', 'created_at' => '2023-04-10 12:00:00'],
+                ['name' => 'User 5', 'email' => 'password', 'created_at' => '2023-05-05 16:20:00'],
+            ];
+
+            return view('adminPage', compact('recipes', 'dummyUsers'));
+        }
+
+        // If there are users, pass them to the view
+        return view('adminPage', compact('recipes', 'users'));
     }
+
     public function editAdmin($id)
     {
         $recipe = Recipe::findOrFail($id);
@@ -89,7 +108,7 @@ class AdminController extends Controller
         return redirect('/adminPage')->with('success', 'Recipe has been created successfully');
     }
 
-        public function updateAdmin(Request $request, $id)
+    public function updateAdmin(Request $request, $id)
     {
         // Cek apakah user sudah login
         if (!Auth::check()) {
@@ -122,74 +141,74 @@ class AdminController extends Controller
     }
 
     public function addIngredientAdmin(Request $request, $recipe_id)
-{
-    // Validate the input data
-    $request->validate([
-        'ingredients.*' => 'required',
-    ]);
-
-    // Retrieve the input data for ingredients, quantity, size, and note
-    $ingredients = $request->input('ingredients');
-    $quantities = $request->input('quantity');
-    $sizes = $request->input('size');
-    $notes = $request->input('note');
-
-    // Loop through the submitted ingredients and insert them into the database
-    foreach ($ingredients as $key => $ingredientName) {
-        $ingredient = new Ingredient([
-            'ingredient_name' => $ingredientName,
-            'recipe_id' => $recipe_id,
-            'quantity' => $quantities[$key] ?? null, // Set to null if not provided
-            'size' => $sizes[$key] ?? null, // Set to null if not provided
-            'note' => $notes[$key] ?? null, // Set to null if not provided
+    {
+        // Validate the input data
+        $request->validate([
+            'ingredients.*' => 'required',
         ]);
-        $ingredient->save();
+
+        // Retrieve the input data for ingredients, quantity, size, and note
+        $ingredients = $request->input('ingredients');
+        $quantities = $request->input('quantity');
+        $sizes = $request->input('size');
+        $notes = $request->input('note');
+
+        // Loop through the submitted ingredients and insert them into the database
+        foreach ($ingredients as $key => $ingredientName) {
+            $ingredient = new Ingredient([
+                'ingredient_name' => $ingredientName,
+                'recipe_id' => $recipe_id,
+                'quantity' => $quantities[$key] ?? null, // Set to null if not provided
+                'size' => $sizes[$key] ?? null, // Set to null if not provided
+                'note' => $notes[$key] ?? null, // Set to null if not provided
+            ]);
+            $ingredient->save();
+        }
+
+        // Redirect back or to a specific page after insertion
+        return redirect()->back()->with('success', 'Ingredients added successfully');
+
     }
 
-    // Redirect back or to a specific page after insertion
-    return redirect()->back()->with('success', 'Ingredients added successfully');
+    public function updateIngredientAdmin(Request $request, $recipe_id, $ingredientId)
+    {
+        // Validate the request data
+        $request->validate([
+            'ingredient_name' => 'required|string',
+            'quantity' => 'nullable|string',
+            'size' => 'nullable|string',
+            'note' => 'nullable|string',
+        ]);
 
-}
+        // Find the ingredient by ID
+        $ingredient = Ingredient::findOrFail($ingredientId);
 
-public function updateIngredientAdmin(Request $request, $recipe_id, $ingredientId)
-{
-    // Validate the request data
-    $request->validate([
-        'ingredient_name' => 'required|string',
-        'quantity' => 'nullable|string',
-        'size' => 'nullable|string',
-        'note' => 'nullable|string',
-    ]);
+        // Update the ingredient
+        $ingredient->update([
+            'ingredient_name' => $request->input('ingredient_name'),
+            'quantity' => $request->input('quantity'),
+            'size' => $request->input('size'),
+            'note' => $request->input('note'),
+        ]);
 
-    // Find the ingredient by ID
-    $ingredient = Ingredient::findOrFail($ingredientId);
-
-    // Update the ingredient
-    $ingredient->update([
-        'ingredient_name' => $request->input('ingredient_name'),
-        'quantity' => $request->input('quantity'),
-        'size' => $request->input('size'),
-        'note' => $request->input('note'),
-    ]);
-
-    return redirect()->route('recipes.edit', $recipe_id)->with('success', 'Ingredient updated successfully');
-}
-
-
-public function deleteIngredientAdmin($recipe_id, $ingredientId)
-{
-    $ingredient = Ingredient::find($ingredientId);
-
-    if (!$ingredient) {
-        return redirect()->route('recipes.edit', $recipe_id)->with('error', 'Ingredient not found');
+        return redirect()->route('recipes.edit', $recipe_id)->with('success', 'Ingredient updated successfully');
     }
 
-    $ingredient->delete();
 
-    return redirect()->route('recipes.edit', $recipe_id)->with('success', 'Ingredient deleted successfully');
-}
+    public function deleteIngredientAdmin($recipe_id, $ingredientId)
+    {
+        $ingredient = Ingredient::find($ingredientId);
 
-public function addStepAdmin(Request $request, $id)
+        if (!$ingredient) {
+            return redirect()->route('recipes.edit', $recipe_id)->with('error', 'Ingredient not found');
+        }
+
+        $ingredient->delete();
+
+        return redirect()->route('recipes.edit', $recipe_id)->with('success', 'Ingredient deleted successfully');
+    }
+
+    public function addStepAdmin(Request $request, $id)
     {
         // Validate the request data
         $request->validate([
@@ -230,13 +249,13 @@ public function addStepAdmin(Request $request, $id)
     public function deleteStepAdmin($id, $stepId)
     {
         $step = Step::find($stepId);
-    
+
         if (!$step) {
             return redirect()->route('recipes.edit', $id)->with('error', 'Step not found');
         }
-    
+
         $step->delete();
-    
+
         return redirect()->route('recipes.edit', $id)->with('success', 'Step delete successfully');
     }
 

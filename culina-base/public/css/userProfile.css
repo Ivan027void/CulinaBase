@@ -1,0 +1,220 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #e2e5e8;
+    margin: 0;
+}
+
+.container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.navContainer {
+    background: linear-gradient(160deg, #000000 0%, #8085d0 100%);
+    min-height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 2;
+}
+
+nav {
+    width: 100%;
+}
+
+#navList {
+    width: 100%;
+    padding: 15px;
+    list-style: none;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: space-around;
+}
+
+#navLogo {
+    font-size: 2.2rem;
+    color: azure;
+}
+
+a {
+    text-decoration: none;
+    color: azure;
+}
+
+#navItems {
+    display: flex;
+    margin-top: 10px;
+    gap: 20px;
+}
+
+main {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 30px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 600px; /* Increase the width to your desired value */
+    width: 100%;
+    margin: 87px auto 20px; /* Adjust margin to create space below the nav and above the footer */
+    text-align: center;
+    position: relative; /* Ensure proper stacking context for child elements */
+    z-index: 1; /* Ensure the main content is above other elements */
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+.btn.btn-primary {
+    background-color: #007bff;
+}
+
+.btn.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.logout {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.btn_logout {
+    background: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.btn_logout:hover {
+    background: #0056b3;
+}
+
+.button-link {
+    background: none;
+    color: #007bff;
+    border: none;
+    cursor: pointer;
+    text-decoration: underline;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.button-link:hover {
+    color: #0056b3;
+}
+
+/* Styling for the footer */
+footer {
+    text-align: center;
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    width: 100%;
+}
+
+.footerBox {
+    max-width: 960px;
+    margin: 0 auto;
+    background: linear-gradient(160deg, #000000 0%, #8085d0 100%);
+    width: 100%;
+    text-align: center;
+    min-height: 40px;
+}
+
+.footerBox p {
+    color: azure;
+    font-size: 2rem;
+}
+
+.profile-form-container {
+    max-width: 360px;
+    margin: 20px auto; /* Adjust margin to center the form */
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.profile-form-container label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+.profile-form-container input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.profile-form-container button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.profile-form-container button:hover {
+    background-color: #0056b3;
+}
+
+/* Style for the button container */
+.button-container {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Style for the first row (Add Ingredient and Submit Ingredients) */
+.button-row-1 {
+    display: flex;
+    justify-content: center;
+    gap: 10px; /* Adjust the gap as needed for spacing between the buttons */
+}
+
+/* Style for the "Back" button */
+.btn_kembali {
+    background-color: #333; /* Set the background color to a dark color (adjust as needed) */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 10px; /* Add top margin to create space between Submit and Back buttons */
+    cursor: pointer;
+}
+

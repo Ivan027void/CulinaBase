@@ -9,6 +9,7 @@ use App\Http\Controllers\UserPageController;
 use App\Http\Controllers\IngredientController;
 use App\Http\Controllers\StepController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -62,6 +63,9 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 // Route for the registration page
 Route::get('/regis', [RegisterController::class, 'showRegistrationForm']);
 Route::post('/register', [RegisterController::class, 'register']);
+
+Route::get('/profile', [ProfileController::class,'showProfile'])->name('profile.show');
+Route::put('/profile/update', [ProfileController::class,'updateProfile'])->name('profile.update');
 
 //route for admin
 Route::get('/adminPage', [AdminController::class, 'indexAdmin'])->name('admin.page');

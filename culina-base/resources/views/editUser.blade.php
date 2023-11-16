@@ -1,3 +1,4 @@
+@include('sweetalert::alert')
 <!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width,
     initial-scale=1.0"> <title>Upload Recipe</title>
 <link rel="stylesheet" href="{{ asset('css/userform.css') }}">
@@ -15,10 +16,8 @@
                         <li>
                             <div id="navItems">
                                 <a href="/">Home</a>
-                                <a href="/option">Recipe</a>
-                                <a href="/about">About</a>
                                 @auth
-                                <a href="/">{{Auth::user()->name }}</a>
+                                <a href="/profle">{{Auth::user()->name }}</a>
                                 @else
                                 user
                                 @endauth

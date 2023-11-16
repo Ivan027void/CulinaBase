@@ -2,6 +2,19 @@
     content="width=device-width, initial-scale=1.0">
 <title>Login</title>
 <link rel="stylesheet" href="css/loginregis.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.min.css">
+@include('sweetalert::alert')
+<script>
+    // SweetAlert initialization code
+    Swal.fire({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000,
+    });
+</script>
+
 </head>
 
 <body>
@@ -25,6 +38,25 @@
                 </nav>
             </div>
         </header>
+        @if(session('success'))
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: '{{ session('success') }}',
+            });
+        </script>
+    @endif
+
+    @if(session('error'))
+        <script>
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: '{{ session('error') }}',
+            });
+        </script>
+    @endif
         <main>
             <div class="formarea">
                 <p class="log-title">Login Form</p>

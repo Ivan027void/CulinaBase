@@ -1,6 +1,7 @@
 <!DOCTYPE html> <html lang="en"> <head>
 <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Admin Page</title>
-<link rel="stylesheet" href="css/admin.css"> 
+<link rel="stylesheet" href="{{ asset('css/admin.css') }}"> 
+@include('sweetalert::alert')
 </head> 
 <body> 
 
@@ -20,6 +21,8 @@
                         <li>
                             <div id="navItems">
                                 <a href="/">Home</a>
+                                <a href="#user-management">User</a>
+                                <a href="#recipe-management">Recipe</a> 
                                 @auth
                                 <a href="/">{{Auth::user()->name }}</a>
                                 @else
@@ -31,40 +34,32 @@
                 </nav>
             </div>
         </header> 
-<main>
+    <main>
     <section id="user-management">
         <h2>User Management</h2>
         <table>
             <tr>
                 <th>User Name</th>
-                <th>Password</th>
+                <th>Email</th>
                 <th>Time Created</th>
             </tr>
-            <tr>
-                <td>User 1</td>
-                <td>password</td>
-                <td>2023-01-15 10:30:00</td>
-            </tr>
-            <tr>
-                <td>User 2</td>
-                <td>password</td>
-                <td>2023-02-20 14:45:00</td>
-            </tr>
-            <tr>
-                <td>User 3</td>
-                <td>password</td>
-                <td>2023-03-25 09:15:00</td>
-            </tr>
-            <tr>
-                <td>User 4</td>
-                <td>password</td>
-                <td>2023-04-10 12:00:00</td>
-            </tr>
-            <tr>
-                <td>User 5</td>
-                <td>password</td>
-                <td>2023-05-05 16:20:00</td>
-            </tr>
+            @if(isset($users))
+                @foreach($users as $user)
+                    <tr>
+                        <td>{{ $user->name }}</td>
+                        <td>{{ $user->email }}</td>
+                        <td>{{ $user->created_at }}</td>
+                    </tr>
+                @endforeach
+            @else
+                @foreach($dummyUsers as $dummyUser)
+                    <tr>
+                        <td>{{ $dummyUser['name'] }}</td>
+                        <td>{{ $dummyUser['email'] }}</td>
+                        <td>{{ $dummyUser['created_at'] }}</td>
+                    </tr>
+                @endforeach
+            @endif
         </table>
     </section>
 

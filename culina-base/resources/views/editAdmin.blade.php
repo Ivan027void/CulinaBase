@@ -6,6 +6,7 @@
         <title>Resep {{ $recipe->recipe_name }}</title>
         <link rel="stylesheet" href="{{ asset('css/adminForm.css') }}">
     </head> 
+    @include('sweetalert::alert')
     <body> 
     <div id="floating-area" class="floating-area">
                 <a href="#top">Top</a> |
