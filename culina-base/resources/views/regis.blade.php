@@ -32,7 +32,7 @@
         </header>
         <main>
         <div class="formarea">
-                <p class="log-title">Login Form</p>
+                <p class="log-title">Registration Form</p>
             <form method="POST" action="/register">
                 @csrf
                 <label for="name">Name:</label>

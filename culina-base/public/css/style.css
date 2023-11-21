@@ -97,9 +97,9 @@ main {
 }
 
 .recipe-card {
-    margin: 10px;
-    padding: 10px;
-    border: 1px solid #ddd;
+    margin: 5px;
+    padding: 7px;
+    border: 3px solid black;
     border-radius: 5px;
     max-width: calc(33.33% - 20px);
     /* Membuat 3 kartu per baris */

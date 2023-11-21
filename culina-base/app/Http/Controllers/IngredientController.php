@@ -64,6 +64,11 @@ class IngredientController extends Controller
         // Find the ingredient by ID
         $ingredient = Ingredient::findOrFail($ingredientId);
 
+        // Check if the ingredient exists
+        if (!$ingredient) {
+            // Handle the case where the ingredient is not found (e.g., show an error message)
+            return redirect()->route('ingredient-user', $recipe_id)->with('error', 'Ingredient not found');
+        }
         // Update the ingredient
         $ingredient->update([
             'ingredient_name' => $request->input('ingredient_name'),

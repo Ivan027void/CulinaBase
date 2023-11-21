@@ -19,15 +19,15 @@ class AdminController extends Controller
         $recipes = Recipe::all();
         // Retrieve non-admin users from the User model
         $users = User::where('role', '!=', 'admin')->get();
-
+        
         // If there are no users, you can use your dummy data
         if ($users->isEmpty()) {
             $dummyUsers = [
-                ['name' => 'User 1', 'email' => 'password', 'created_at' => '2023-01-15 10:30:00'],
-                ['name' => 'User 2', 'email' => 'password', 'created_at' => '2023-02-20 14:45:00'],
-                ['name' => 'User 3', 'email' => 'password', 'created_at' => '2023-03-25 09:15:00'],
-                ['name' => 'User 4', 'email' => 'password', 'created_at' => '2023-04-10 12:00:00'],
-                ['name' => 'User 5', 'email' => 'password', 'created_at' => '2023-05-05 16:20:00'],
+                ['name' => 'User 1', 'email' => '@password', 'created_at' => '2023-01-15 10:30:00'],
+                ['name' => 'User 2', 'email' => '@password', 'created_at' => '2023-02-20 14:45:00'],
+                ['name' => 'User 3', 'email' => '@password', 'created_at' => '2023-03-25 09:15:00'],
+                ['name' => 'User 4', 'email' => '@password', 'created_at' => '2023-04-10 12:00:00'],
+                ['name' => 'User 5', 'email' => '@password', 'created_at' => '2023-05-05 16:20:00'],
             ];
 
             return view('adminPage', compact('recipes', 'dummyUsers'));

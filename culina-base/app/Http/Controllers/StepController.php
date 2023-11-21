@@ -58,6 +58,7 @@ class StepController extends Controller
         return redirect()->route('step-user', $id)->with('success', 'Step updated successfully');
     }
 
+
     public function deleteStep($id, $stepId)
     {
         $step = Step::find($stepId);

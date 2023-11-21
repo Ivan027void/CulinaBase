@@ -29,6 +29,7 @@
         </header>
 
         <main>
+            
         <form method="POST" action="{{ route('create-recipe') }}" enctype="multipart/form-data">
             @csrf
             <label for="name">Recipe Name<span class="required">*</span>:</label>
@@ -63,6 +64,16 @@
                 </p>
             </div>
         </footer>
+
+        @if(session('notification'))
+        <script>
+            swal({
+                title: "{{ session('notification.title') }}",
+                text: "{{ session('notification.text') }}",
+                icon: "{{ session('notification.icon') }}",
+            });
+        </script>
+        @endif
     </div>
 </body>
 

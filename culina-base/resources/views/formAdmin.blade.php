@@ -65,6 +65,16 @@
                 </p>
             </div>
         </footer>
+
+        @if(session('notification'))
+        <script>
+            swal({
+                title: "{{ session('notification.title') }}",
+                text: "{{ session('notification.text') }}",
+                icon: "{{ session('notification.icon') }}",
+            });
+        </script>
+        @endif
     </div>
 </body>
 

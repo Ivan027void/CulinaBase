@@ -198,16 +198,15 @@ main {
 }
 
 .recipe-card {
-    margin: 10px;
-    padding: 10px;
+    margin: 5px;
+    padding: 5px; /* Reduce padding to make the card smaller */
     border: 1px solid #ddd;
     border-radius: 5px;
-    max-width: calc(33.33% - 20px);
-    /* Membuat 3 kartu per baris */
+    max-width: calc(25% - 10px); /* Adjust max-width for 4 cards per row */
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-    flex: 0 0 calc(33.33% - 20px);
-    /* Membuat 3 kartu per baris */
+    flex: 0 0 calc(25% - 10px); /* Adjust flex for 4 cards per row */
 }
+
 
 .recipe-card img {
     max-width: 100%;

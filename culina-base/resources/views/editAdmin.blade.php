@@ -6,13 +6,36 @@
         <title>Resep {{ $recipe->recipe_name }}</title>
         <link rel="stylesheet" href="{{ asset('css/adminForm.css') }}">
     </head> 
-    @include('sweetalert::alert')
+
     <body> 
     <div id="floating-area" class="floating-area">
                 <a href="#top">Top</a> |
                 <a href="#bahan">Bahan</a> |
                 <a href="#langkah">Langkah</a>
             </div>
+@include('sweetalert::alert')
+<script>
+    @if (session('success'))
+        swal({
+            title: "Success",
+            text: "{{ session('success') }}",
+            icon: "success",
+        });
+    @elseif(session('error'))
+    swal({
+        title: "Error",
+        text: "{{ session('error') }}",
+        icon: "error",
+    });
+    @elseif(session('warning'))
+    swal({
+        title: "Warning",
+        text: "{{ session('warning') }}",
+        icon: "warning",
+    });
+    @endif
+    </script>
+
         <div Class='Container' id="top">
             <header> 
                 <div class="navContainer"> 
@@ -50,17 +73,6 @@
             <p>Waktu Persiapan: {{ $recipe->preparation_time }}</p>
             <p>Waktu Memasak: {{ $recipe->cooking_time }}</p>
             
-
-         <!-- Display validation errors -->
-         @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-        @endif
 
             <form action="{{ route('recipes.update', ['id' => $recipe->recipe_id]) }}" method="post" enctype="multipart/form-data">
             @csrf
@@ -118,7 +130,12 @@
                 <td>
                 <div class="button-container">
                     <div class="button-row-1">
-                        <button type="button" class="edit-ingredient" data-ingredientid="{{ $item->id }}">Edit</button>
+                    <button type="button" class="edit-ingredient" data-bs-toggle="modal"
+                        data-bs-target="#editIngredientModal{{ $item->ingredient_id }}" data-ingredient-id="{{ $item->ingredient_id }}"
+                        data-ingredient-name="{{ $item->ingredient_name }}" data-quantity="{{ $item->quantity }}"
+                        data-size="{{ $item->size }}" data-note="{{ $item->note }}">
+                        Edit
+                    </button>
                         <form
                             action="{{ route('ingredients.delete', ['recipe_id' => $recipe->recipe_id, 'ingredientId' => $item->ingredient_id]) }}"
                             method="POST">
@@ -159,23 +176,41 @@
             </div>
         </form>
 
-         <!-- Update Ingredient Form -->
-         <div id="update-ingredient-form" style="display: none;">
-            <h3>Update Ingredient</h3>
-            <form method="POST"
-                action="{{ route('ingredients.update', ['recipe_id' => $recipe->recipe_id, 'ingredientId' => $item->ingredient_id]) }}"
-                id="update-ingredient-form">
-                @method('PUT')
-                @csrf
-                <input type="text" name="ingredient_name" id="update-ingredient-name" placeholder="Ingredient Name" required>
-                <input type="text" name="quantity" id="update-ingredient-quantity" placeholder="Quantity">
-                <input type="text" name="size" id="update-ingredient-size" placeholder="Size" >
-                <input type="text" name="note" id="update-ingredient-note" placeholder="Note" >
-                <button id="ingredient-update" type="submit">Update Ingredient</button>
-                <button type="button" id="cancel-update-ingridients">Cancel</button>
-            </form>
+        @foreach ($ingredient as $item)
+                    <!-- Modal for updating ingredient -->
+    <div class="modal d-none" id="editIngredientModal{{ $item->ingredient_id }}" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editIngredientModalLabel">Edit Ingredient {{$item->ingredient_name}}</h5>
+                </div>
+                <div class="modal-body">
+                    <!-- Add your update form here -->
+                    <form action="{{ route('ingredient.update', ['recipe_id' => $recipe->recipe_id, 'ingredientId' => $item->ingredient_id]) }}" method="POST">
+                        @csrf
+                        @method('PUT')
+                        <!-- Your form fields for updating ingredient -->
+                        <label for="ingredient_name">Ingredient Name:</label>
+                        <input type="text" name="ingredient_name" value="{{ $item->ingredient_name }}" required>
+
+                        <label for="quantity">Quantity:</label>
+                        <input type="text" name="quantity" value="{{ $item->quantity }}">
+
+                        <label for="size">Size:</label>
+                        <input type="text" name="size" value="{{ $item->size }}">
+
+                        <label for="note">Note:</label>
+                        <input type="text" name="note" value="{{ $item->note }}">
+
+                        <button type="submit">Update Ingredient</button>
+                        <button type="button" class="cancel-update">Cancel</button>
+                    </form>
+                </div>
+            </div>
         </div>
-</div>
+    </div>
+    @endforeach
+
 
          <!-- Display validation errors -->
          @if ($errors->any())
@@ -209,8 +244,8 @@
                         <td>
                         <div class="button-container">
                             <div class="button-row-1">
-                                <button type="button" class="edit-step" data-stepid="{{ $step->id }}">Edit</button>
-                                <form action="{{ route('steps.delete', ['id'=> $recipe->recipe_id, 'stepId' => $step->step_id]) }}" method="POST"
+                            <button type="button" class="edit-step" data-step-id="{{ $step->step_id }}">Edit</button>
+                             <form action="{{ route('steps.delete', ['id'=> $recipe->recipe_id, 'stepId' => $step->step_id]) }}" method="POST"
                                     style="display: inline;">
                                     @csrf
                                     @method('DELETE')
@@ -236,19 +271,73 @@
                 <button type="submit">Add Step</button>
             </form>
 
-             <!-- Update Step Form -->
-             <div id="update-step-form" style="display: none;">
-                <h3>Update Step</h3>
-                <form method="POST" action="{{ route('steps.update', ['id' => $recipe->recipe_id, 'stepId' => $step->step_id]) }}" id="update-step-form">
-                    @method('PUT')
-                    @csrf
-                    <input type="text" name="step_order" id="update-step-order" placeholder="Step Order" required>
-                    <input type="text" name="description" id="update-step-description" placeholder="Description" required>
-                    <button id="step-update" type="submit">Update Step</button>
-                    <button type="button" id="cancel-update-steps">Cancel</button>
-                </form>
+                      <!-- Edit Step Modal -->
+                      <div id="editStepModal" class="modal fade">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h2 class="modal-title">Edit Step Order</h2>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="editStepForm" method="POST" action="">
+                                @csrf
+                                @method('PUT')
+                                <label for="editStepOrder">Step Order:</label>
+                                <input type="text" name="step_order" id="editStepOrder" required>
+                                <label for="editStepDescription">Description:</label>
+                                <textarea name="description" id="editStepDescription" required></textarea>
+                                <!-- Changed to textarea -->
+                                <div class="button-container">
+                                    <div class="button-row-1">
+                                        <button type="submit" class="btn btn-primary">Update Step</button>
+                                        <button type="button" class="btn btn-secondary" id="cancel-update"
+                                            data-bs-dismiss="modal">Cancel</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
-</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var modal = new bootstrap.Modal(document.getElementById('editStepModal'));
+        var editButtons = document.querySelectorAll('.edit-step');
+
+        editButtons.forEach(function (button) {
+            button.addEventListener('click', function () {
+                var stepOrder = this.closest('tr').querySelector('td:nth-child(1)').innerText;
+                var stepDescription = this.closest('tr').querySelector('td:nth-child(2)').innerText;
+
+                // Use dataset to access data-step-id attribute
+                var stepId = this.dataset.stepId;
+
+                var formAction = "{{ route('steps.update', ['id' => $recipe->recipe_id, 'stepId' => ':stepId']) }}";
+                formAction = formAction.replace(':stepId', stepId);
+
+                document.getElementById('editStepForm').action = formAction;
+                document.getElementById('editStepOrder').value = stepOrder;
+                document.getElementById('editStepDescription').value = stepDescription;
+
+                // Set the modal title dynamically
+                var modalTitle = document.querySelector('.modal-title');
+                modalTitle.innerText = 'Edit Step Order - Step ID: ' + stepId + ', Order: ' + stepOrder;
+
+                modal.show();
+            });
+        });
+
+        document.getElementById('editStepForm').addEventListener('submit', function (event) {
+            var confirmUpdate = confirm('Are you sure you want to update this step?');
+            if (!confirmUpdate) {
+                event.preventDefault(); // Cancel the form submission
+            }
+        });
+    });
+</script>
+
                <div id="button-container">
                 <div class="button-row-1">
                     <button class="btn_kembali" onclick="window.location.href='/adminPage'">Back</button>
@@ -263,6 +352,7 @@
             </footer>
         </div>
 
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
         <script>
     document.getElementById('add-ingredient').addEventListener('click', function () {
         const ingredientInput = document.createElement('div');
@@ -283,43 +373,35 @@
         }
     });
 
-    document.querySelectorAll('.edit-ingredient').forEach(function (button) {
-        button.addEventListener('click', function () {
-            // Fetch the ingredient details and populate the update form
-            let ingredientId = button.getAttribute('data-ingredientid');
-            let ingredient = {!! json_encode($ingredient->keyBy('id')->toArray(), JSON_HEX_TAG) !!}[ingredientId];
-            document.getElementById('update-ingredient-form').action = `/adminPage/{{ $recipe->recipe_id }}/updateIngredient/${ingredientId}`;
-            document.getElementById('update-ingredient-name').value = ingredient.ingredient_name;
-            document.getElementById('update-ingredient-quantity').value = ingredient.quantity;
-            document.getElementById('update-ingredient-size').value = ingredient.size;
-            document.getElementById('update-ingredient-note').value = ingredient.note;
-            document.getElementById('update-ingredient-form').style.display = 'block';
-        });
+    @foreach($ingredient as $item)
+    var modalId = '#editIngredientModal{{ $item->ingredient_id }}';
+    var modal = new bootstrap.Modal(document.querySelector(modalId));
+
+    // Select the "Cancel" button within the modal and attach the event listener
+    var cancelButton = document.querySelector(`${modalId} .cancel-update`);
+    cancelButton.addEventListener('click', function () {
+        modal.hide(); // Close the modal without making any changes
     });
 
-    // Cancel Update button click event
-document.getElementById('cancel-update-ingridients').addEventListener('click', function () {
-    document.getElementById('update-ingredient-form').style.display = 'none';
-});
+    document.getElementById('edit-ingredient{{ $item->ingredient_id }}').addEventListener('click', function () {
+        // Get the ingredient data
+        var ingredientId = this.getAttribute('data-ingredient-id');
+        var ingredientName = this.getAttribute('data-ingredient-name');
+        var quantity = this.getAttribute('data-quantity');
+        var size = this.getAttribute('data-size');
+        var note = this.getAttribute('data-note');
 
+        // Populate the form fields
+        var form = document.querySelector(`${modalId} form`);
+        form.querySelector('[name="ingredient_name"]').value = ingredientName;
+        form.querySelector('[name="quantity"]').value = quantity;
+        form.querySelector('[name="size"]').value = size;
+        form.querySelector('[name="note"]').value = note;
 
-    // Edit Step button click event
-    document.querySelectorAll('.edit-step').forEach(function (button) {
-        button.addEventListener('click', function () {
-            // Fetch the step details and populate the update form
-            let stepId = button.getAttribute('data-stepid');
-            let step = {!! json_encode($steps->keyBy('id')->toArray(), JSON_HEX_TAG) !!}[stepId];
-            document.getElementById('update-step-form').action = `/adminPage/{{ $recipe->recipe_id }}/update-step/${stepId}`;
-            document.getElementById('update-step-order').value = step.step_order;
-            document.getElementById('update-step-description').value = step.description;
-            document.getElementById('update-step-form').style.display = 'block';
-        });
+        // Show the modal
+        modal.show();
     });
-
-    // Cancel Update Step button click event
-    document.getElementById('cancel-update-steps').addEventListener('click', function () {
-        document.getElementById('update-step-form').style.display = 'none';
-    });
+    @endforeach
 </script>
 <script>
         // Show or hide the floating area based on scroll position
