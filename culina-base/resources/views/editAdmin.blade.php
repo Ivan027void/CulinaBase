@@ -271,35 +271,35 @@
                 <button type="submit">Add Step</button>
             </form>
 
-                      <!-- Edit Step Modal -->
-                      <div id="editStepModal" class="modal fade">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h2 class="modal-title">Edit Step Order</h2>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <form id="editStepForm" method="POST" action="">
-                                @csrf
-                                @method('PUT')
-                                <label for="editStepOrder">Step Order:</label>
-                                <input type="text" name="step_order" id="editStepOrder" required>
-                                <label for="editStepDescription">Description:</label>
-                                <textarea name="description" id="editStepDescription" required></textarea>
-                                <!-- Changed to textarea -->
-                                <div class="button-container">
-                                    <div class="button-row-1">
-                                        <button type="submit" class="btn btn-primary">Update Step</button>
-                                        <button type="button" class="btn btn-secondary" id="cancel-update"
-                                            data-bs-dismiss="modal">Cancel</button>
-                                    </div>
+                    <!-- Edit Step Modal -->
+                    <div id="editStepModal" class="modal fade">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h2 class="modal-title">Edit Step Order</h2>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
-                            </form>
+                                <div class="modal-body">
+                                    <form id="editStepForm" method="POST" action="">
+                                        @csrf
+                                        @method('PUT')
+                                        <label for="editStepOrder">Step Order:</label>
+                                        <input type="text" name="step_order" id="editStepOrder" required>
+                                        <label for="editStepDescription">Description:</label>
+                                        <textarea name="description" id="editStepDescription" required></textarea>
+                                        <!-- Changed to textarea -->
+                                        <div class="button-container">
+                                            <div class="button-row-1">
+                                                <button type="submit" class="btn btn-primary">Update Step</button>
+                                                <button type="button" class="btn btn-secondary" id="cancel-update"
+                                                    data-bs-dismiss="modal">Cancel</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {

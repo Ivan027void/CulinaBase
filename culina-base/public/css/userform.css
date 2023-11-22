@@ -269,7 +269,7 @@ footer {
     cursor: pointer;
 }
 
-.cancel-update, #cancel-update,#delete-step, #delete-ingredient{
+.btn-class,.cancel-update, #cancel-update,#delete-step, #delete-ingredient{
     background-color: red; /* Set the background color to red (adjust as needed) */
     color: white;
     border: none;
@@ -297,7 +297,7 @@ footer {
 }
 
 /* Style for the "Back" button */
-.btn_kembali {
+.btn_kembali, #cancel_delete {
     background-color: #333; /* Set the background color to a dark color (adjust as needed) */
     color: white;
     border: none;

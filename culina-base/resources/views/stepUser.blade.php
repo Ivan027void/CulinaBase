@@ -79,13 +79,7 @@
                         <div class="button-container">
                             <div class="button-row-1">
                             <button type="button" class="edit-step" data-step-id="{{ $step->step_id }}">Edit</button>
-                             <form action="{{ route('delete-step', ['id'=> $recipe->recipe_id, 'stepId' => $step->step_id]) }}" method="POST"
-                                    style="display: inline;">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" id="delete-step"
-                                        onclick="return confirm('Are you sure you want to delete this step?')">Delete</button>
-                                </form>
+                            <button  data-bs-toggle="modal" data-bs-target="#deleteModal" id="delete-step">Delete</button>
                             </div>
                         </div>
                         </td>
@@ -184,6 +178,33 @@
                 </ul>
             </div>
             @endif
+
+<!-- Add this to the head of your HTML file -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ZGlB5kF9Fhzz5lSkZFREudufGA6dtFVeCpJ/yPPGe6XcWxRKKuUpo8h2zDPJJbo" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-oE4KeaWOTf1c5gOpScb/H5uL5zQ62nvNM/NEy+g3FzsPpUn1J6sD89HyaLXIbVo" crossorigin="anonymous"></script>
+
+
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel">Confirm Delete</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to delete this step?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="cancel_delete">Cancel</button>
+                <form action="{{ route('delete-step', ['id'=> $recipe->recipe_id, 'stepId' => $step->step_id]) }}" method="POST" style="display: inline;">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger" id="delete-ingredient">Delete</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
             <div class="button-container">
                 <div class="button-row-1">
