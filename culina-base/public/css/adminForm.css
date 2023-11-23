@@ -322,7 +322,7 @@ footer {
 }
 
 /* Style for the "Add Ingredient" button */
-#add-ingredient {
+.update-ingredient, #add-ingredient {
     background-color: green; /* Set the background color to green */
     color: white;
     border: none;

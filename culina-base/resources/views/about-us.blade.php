@@ -19,10 +19,18 @@
                         </li>
                         <li>
                             <div id="navItems">
-                                <a href="/">Home</a>
+                            <a href="/">Home</a>
                                 <a href="/option">Recipe</a>
                                 <a href="/about">About</a>
-                                <a href="/login">Login</a>
+                                @auth
+                                    @if (Auth::user()->isAdmin())
+                                        <a href="/adminPage">{{ Auth::user()->name }}</a> <!-- Redirect admin users to adminPage -->
+                                    @else
+                                        <a href="/userPage">{{ Auth::user()->name }}</a> <!-- Redirect regular users to userPage -->
+                                    @endif
+                                @else
+                                    <a href="/login">Login</a>
+                                @endauth
                             </div>
                         </li>
                     </ul>

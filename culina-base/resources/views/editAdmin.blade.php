@@ -186,7 +186,7 @@
                 </div>
                 <div class="modal-body">
                     <!-- Add your update form here -->
-                    <form action="{{ route('ingredient.update', ['recipe_id' => $recipe->recipe_id, 'ingredientId' => $item->ingredient_id]) }}" method="POST">
+                    <form action="{{ route('ingredients.update', ['recipe_id' => $recipe->recipe_id, 'ingredientId' => $item->ingredient_id]) }}" method="POST">
                         @csrf
                         @method('PUT')
                         <!-- Your form fields for updating ingredient -->
@@ -202,8 +202,8 @@
                         <label for="note">Note:</label>
                         <input type="text" name="note" value="{{ $item->note }}">
 
-                        <button type="submit">Update Ingredient</button>
-                        <button type="button" class="cancel-update">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Update Ingredient</button>
+                        <button type="button" id="cancel-update">Cancel</button>
                     </form>
                 </div>
             </div>
