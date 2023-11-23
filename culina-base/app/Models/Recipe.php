@@ -16,29 +16,33 @@ class Recipe extends Model
         'gambar',
         'description',
         'preparation_time',
-        'cooking_time',
-        'category_id',
+        'cooking_time'
     ];
 
-    // public function addGambar($file)
-    // {
-    //     $fileName = time() . '.' . $file->getClientOriginalExtension();
-    //     $file->move(public_path('images'), $fileName);
-    //     $this->gambar = $fileName;
-    //     $this->save();
-    // }
-
-    // Recipe.php (Recipe model)
-    public function author()
-    {
-        return $this->belongsTo(User::class, 'author_id', 'id');
-    }
+    // Recipe model
+        public function author()
+        {
+            return $this->belongsTo(User::class, 'author_id');
+        }
 
 
-    public function category()
-    {
-        return $this->belongsTo(Category::class, 'category_id', 'category_id');
-    }
+
+    protected static function boot()
+{
+    parent::boot();
+
+    static::deleting(function ($recipe) {
+        // Detach relationships without deleting related records
+        $recipe->ingredients()->detach();
+
+        // Manually delete related records in the ingredients table
+        Ingredient::where('recipe_id', $recipe->recipe_id)->delete();
+
+        // Delete related records in the steps table
+        Step::where('recipe_id', $recipe->recipe_id)->delete();
+    });
+}
+
 
     public function ingredients()
     {

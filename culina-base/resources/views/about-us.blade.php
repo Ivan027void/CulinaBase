@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CulinaBase-Tentang Kami</title>
+    <title>CulinaBase - About Us</title>
     <link rel="stylesheet" href="css/aboutus.css">
 </head>
 
@@ -19,14 +19,14 @@
                         </li>
                         <li>
                             <div id="navItems">
-                            <a href="/">Home</a>
+                                <a href="/">Home</a>
                                 <a href="/option">Recipe</a>
                                 <a href="/about">About</a>
                                 @auth
                                     @if (Auth::user()->isAdmin())
-                                        <a href="/adminPage">{{ Auth::user()->name }}</a> <!-- Redirect admin users to adminPage -->
+                                        <a href="/adminPage">{{ Auth::user()->name }}</a>
                                     @else
-                                        <a href="/userPage">{{ Auth::user()->name }}</a> <!-- Redirect regular users to userPage -->
+                                        <a href="/userPage">{{ Auth::user()->name }}</a>
                                     @endif
                                 @else
                                     <a href="/login">Login</a>
@@ -41,93 +41,92 @@
         <main>
             <div class="contentBox">
                 <section class="description">
-                    <h1>Tentang Kami</h1>
+                    <h1>About CulinaBase</h1>
                     <p>
-                        Website ini merupakan kumpulan resep masakan dari berbagai sumber. Kami menyediakan berbagai
-                        resep masakan, mulai dari masakan Indonesia, masakan internasional, hingga masakan vegetarian.
+                        Welcome to CulinaBase, your go-to platform for a collection of recipes from various sources.
+                        We offer a diverse range of recipes, spanning from Indonesian to international cuisines, and even
+                        vegetarian dishes.
                     </p>
                     <p>
-                        Tujuan kami adalah untuk memudahkan para pecinta kuliner menemukan resep yang mereka cari. Kami
-                        juga
-                        ingin berbagi informasi dan tips memasak kepada para pembaca.
+                        Our goal is to make it easy for culinary enthusiasts to discover the recipes they are looking
+                        for. We also aim to share information and cooking tips with our readers.
                     </p>
                 </section>
 
                 <section class="informasi">
-                    <h2>for your information</h2>
+                    <h2>For Your Information</h2>
                     <p>
-                        Kami adalah tim yang terdiri dari koki, pengembang perangkat lunak, desainer, dan penganut gizi.
-                        Kami memiliki latar belakang yang beragam, namun kami semua memiliki satu tujuan bersama: untuk
-                        membantu orang-orang menemukan kebahagiaan dalam memasak dan berbagi makanan.
+                        We are a team comprising chefs, software developers, designers, and nutrition enthusiasts. With
+                        diverse backgrounds, we share a common goal: to help people find joy in cooking and sharing
+                        food.
                     </p>
                     <p>
-                        Kami percaya bahwa masakan adalah cara yang luar biasa untuk berhubungan dengan budaya, berbagi
-                        momen istimewa, dan merawat diri sendiri dan orang-orang yang kita cintai. Visi kami adalah
-                        menjadikan memasak lebih mudah, lebih kreatif, dan lebih bermakna bagi semua orang.
+                        We believe that cooking is an incredible way to connect with culture, share special moments, and
+                        take care of ourselves and our loved ones. Our vision is to make cooking easier, more creative,
+                        and more meaningful for everyone.
                     </p>
                     <p>
-                        Misi kami adalah menciptakan CulinaBase sebagai platform terbaik untuk pencinta masakan di
-                        seluruh
-                        dunia. Kami berusaha untuk menghadirkan resep-resep berkualitas tinggi, panduan yang mudah
-                        diikuti, dan alat-alat yang berguna untuk membantu Anda mencapai keberhasilan di dapur. Kami
-                        juga
-                        ingin membangun komunitas yang solid di sekitar kegemaran bersama ini.
+                        Our mission is to establish CulinaBase as the premier platform for culinary enthusiasts
+                        worldwide. We strive to provide high-quality recipes, easy-to-follow guides, and useful tools to
+                        help you succeed in the kitchen. We also aim to build a strong community around this shared
+                        passion.
                     </p>
                     <p>
-                        Kami memiliki nilai-nilai inti yang kami anut:
+                        We uphold core values:
                     </p>
                     <ul class='point'>
-                        <li><strong>Inovasi:</strong> Kami selalu mencari cara baru untuk memperbaiki layanan kami dan
-                            menjadikannya lebih baik.</li>
-                        <li><strong>Kualitas:</strong> Kami berkomitmen untuk menyediakan konten terbaik, resep yang
-                            teruji, dan informasi yang akurat.</li>
-                        <li><strong>Keterbukaan:</strong> Kami mendengar masukan Anda dan selalu siap untuk berinteraksi
-                            dengan Anda.</li>
-                        <li><strong>Kepuasan Pelanggan:</strong> Kepuasan Anda adalah prioritas utama kami.</li>
+                        <li><strong>Innovation:</strong> We constantly seek new ways to improve our service and make
+                            it better.</li>
+                        <li><strong>Quality:</strong> We are committed to providing the best content, tested recipes,
+                            and accurate information.</li>
+                        <li><strong>Openness:</strong> We value your feedback and are always ready to engage with you.
+                        </li>
+                        <li><strong>Customer Satisfaction:</strong> Your satisfaction is our top priority.</li>
                     </ul>
                 </section>
 
                 <section class="team">
-                    <h2>Tim Kami</h2>
+                    <h2>Our Team</h2>
                     <div class="team-card">
                         <div class="card">
-                            <img src="gambar/siluet.png" alt="Foto Anggota 1">
-                            <h3>Nama Anggota 1</h3>
-                            <p>Jabatan atau Peran Anggota 1</p>
-                            <p>Deskripsi singkat tentang Anggota 1.</p>
+                            <img src="gambar/siluet.png" alt="Photo of Team Member 1">
+                            <h3>Team Member 1</h3>
+                            <p>Role or Position of Team Member 1</p>
+                            <p>Brief description of Team Member 1.</p>
                         </div>
                         <div class="card">
-                            <img src="gambar/siluet.png" alt="Foto Anggota 2">
-                            <h3>Nama Anggota 2</h3>
-                            <p>Jabatan atau Peran Anggota 2</p>
-                            <p>Deskripsi singkat tentang Anggota 2.</p>
+                            <img src="gambar/siluet.png" alt="Photo of Team Member 2">
+                            <h3>Team Member 2</h3>
+                            <p>Role or Position of Team Member 2</p>
+                            <p>Brief description of Team Member 2.</p>
                         </div>
                         <div class="card">
-                            <img src="gambar/siluet.png" alt="Foto Anggota 3">
-                            <h3>Nama Anggota 3</h3>
-                            <p>Jabatan atau Peran Anggota 3</p>
-                            <p>Deskripsi singkat tentang Anggota 3.</p>
+                            <img src="gambar/siluet.png" alt="Photo of Team Member 3">
+                            <h3>Team Member 3</h3>
+                            <p>Role or Position of Team Member 3</p>
+                            <p>Brief description of Team Member 3.</p>
                         </div>
                         <div class="card">
-                            <img src="gambar/siluet.png" alt="Foto Anggota 4">
-                            <h3>Nama Anggota 4</h3>
-                            <p>Jabatan atau Peran Anggota 4</p>
-                            <p>Deskripsi singkat tentang Anggota 4.</p>
+                            <img src="gambar/siluet.png" alt="Photo of Team Member 4">
+                            <h3>Team Member 4</h3>
+                            <p>Role or Position of Team Member 4</p>
+                            <p>Brief description of Team Member 4.</p>
                         </div>
+                        <!-- Repeat for other team members -->
                     </div>
                 </section>
 
                 <section class="contact">
-                    <h2>Kontak Kami</h2>
+                    <h2>Contact Us</h2>
                     <div class="card">
                         <ul>
-                            <li><strong><img src="gambar/mapgoogle.jpeg" alt="GoogleMaps">Alamat:</strong>
+                            <li><strong><img src="gambar/mapgoogle.jpeg" alt="Google Maps">Address:</strong>
                                 <p>Jl. Jendral Sudirman No. 100, Jakarta Selatan</p>
                             </li>
-                            <li><strong><img src="gambar/wa.jpeg" alt="WhatsApp"> 081234567890</strong></li>
-                            <li><strong><img src="gambar/igLogo.jpg" alt="Instagram"> @website_kumpulan_resep</strong>
+                            <li><strong><img src="gambar/wa.jpeg" alt="WhatsApp">081234567890</strong></li>
+                            <li><strong><img src="gambar/igLogo.jpg" alt="Instagram">@website_kumpulan_resep</strong>
                             </li>
-                            <li><strong><img src="gambar/fb.png" alt="Facebook"> Website Kumpulan Resep</strong></li>
+                            <li><strong><img src="gambar/fb.png" alt="Facebook">Website Kumpulan Resep</strong></li>
                         </ul>
                     </div>
                 </section>
@@ -135,7 +134,8 @@
             <footer>
                 <div class="footerBox">
                     <p>
-                        Copyright &copy;CulinaBase kelompok Sistem Informasi
+                        Copyright &copy;CulinaBase Sistem Informasi
+                    </p>
                 </div>
             </footer>
         </main>

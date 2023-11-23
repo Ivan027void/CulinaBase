@@ -64,5 +64,10 @@ class User extends Authenticatable
         return $this->role === 'admin' || strpos($this->email, '@adm') !== false;
     }
 
+    public function author()
+    {
+        return $this->belongsTo(User::class, 'author_id');
+    }
+
 
 }

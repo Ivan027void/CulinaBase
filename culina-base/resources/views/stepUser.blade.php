@@ -183,7 +183,7 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ZGlB5kF9Fhzz5lSkZFREudufGA6dtFVeCpJ/yPPGe6XcWxRKKuUpo8h2zDPJJbo" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-oE4KeaWOTf1c5gOpScb/H5uL5zQ62nvNM/NEy+g3FzsPpUn1J6sD89HyaLXIbVo" crossorigin="anonymous"></script>
 
-
+@if(!$steps->isEmpty())
 <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -205,6 +205,7 @@
         </div>
     </div>
 </div>
+@endif
 
             <div class="button-container">
                 <div class="button-row-1">

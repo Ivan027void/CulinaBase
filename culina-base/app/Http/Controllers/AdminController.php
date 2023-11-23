@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Session;
 
 class AdminController extends Controller
 {
-    public function indexAdmin()
+    public function indexAdmin(Request $request)
     {
         // Retrieve all recipes from the Recipe model
         $recipes = Recipe::all();
@@ -34,7 +34,30 @@ class AdminController extends Controller
         }
 
         // If there are users, pass them to the view
-        return view('adminPage', compact('recipes', 'users'));
+        // Include author names for each recipe
+        foreach ($recipes as $recipe) {
+            // Check if the recipe has an author
+            if ($recipe->author) {
+                // Add the author's name to the recipe data
+                $recipe->authorName = $recipe->author->name;
+            } else {
+                // If there's no author, set a default name or handle as needed
+                $recipe->authorName = 'Unknown Author';
+            }
+        }
+
+        // Filter by recipe name
+        if ($request->has('recipe_name')) {
+            $recipes = $recipes->where('recipe_name', 'like', '%' . $request->input('recipe_name') . '%');
+        }
+
+        // Filter by author
+        if ($request->has('author_name')) {
+            $recipes = $recipes->where('author_id', $request->input('author_name'));
+        }
+
+        // If there are users, pass them to the view
+        return view('adminPage', compact('recipes', 'users',));
     }
 
     public function editAdmin($id)

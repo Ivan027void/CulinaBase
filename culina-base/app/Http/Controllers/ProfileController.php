@@ -27,7 +27,7 @@ class ProfileController extends Controller
         // Use SweetAlert to show success message
         Alert::success('Success', 'Profile updated.');
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Profile updated successfully!');
     }
 
 }

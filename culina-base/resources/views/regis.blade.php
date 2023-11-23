@@ -50,7 +50,7 @@
                     <button class="btn_submit" type="submit">Register</button>
                 </div>
                 <div class="noAccount">
-                    <p>Sudah punya akun? <a href="/login">Sign in</a></p>
+                    <p>Sudah punya akun? <a href="/login">Log in</a></p>
                 </div>
             </form>
         </div>
