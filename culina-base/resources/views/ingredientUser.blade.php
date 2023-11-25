@@ -86,14 +86,7 @@
                         data-size="{{ $item->size }}" data-note="{{ $item->note }}">
                         Edit
                     </button>
-                    <form
-                            action="{{ route('ingredient.delete', ['recipe_id' => $recipe->recipe_id, 'ingredientId' => $item->ingredient_id]) }}"
-                            method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" id="delete-ingredient"
-                                onclick="return confirm('Are you sure you want to delete this ingredient?')">Delete</button>
-                        </form>
+                    <button  data-bs-toggle="modal" data-bs-target="#deleteModal" id="delete-ingredient">Delete</button>
                     </div>
                 </div>
                 </td>
@@ -182,6 +175,30 @@
             @endforeach
         </ul>
     </div>
+@endif
+
+@if(!$ingredient->isEmpty())
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel">Confirm Delete</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to delete this {{$item->ingredient_name}}?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="cancel_delete">Cancel</button>
+                <form action="{{ route('ingredient.delete', ['recipe_id'=> $recipe->recipe_id, 'ingredientId' => $item->ingredient_id]) }}" method="POST" style="display: inline;">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger" id="delete-ingredient">Delete</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 @endif
 
             <div class="button-container">

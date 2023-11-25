@@ -1,9 +1,31 @@
 <!DOCTYPE html> <html lang="en"> <head>
 <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Admin Page</title>
 <link rel="stylesheet" href="{{ asset('css/admin.css') }}"> 
-@include('sweetalert::alert')
 </head> 
 <body> 
+
+@include('sweetalert::alert')
+            <script>
+                @if (session('success'))
+                    swal({
+                        title: "Success",
+                        text: "{{ session('success') }}",
+                        icon: "success",
+                    });
+                @elseif(session('error'))
+                swal({
+                    title: "Error",
+                    text: "{{ session('error') }}",
+                    icon: "error",
+                });
+                @elseif(session('warning'))
+                swal({
+                    title: "Warning",
+                    text: "{{ session('warning') }}",
+                    icon: "warning",
+                });
+                @endif
+            </script>
 
 <div id="floating-area" class="floating-area">
         <a href="#top">Top</a> |

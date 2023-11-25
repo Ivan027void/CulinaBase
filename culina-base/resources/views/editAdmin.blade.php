@@ -100,9 +100,15 @@
             <button type="submit" class="btn btn-primary">Simpan</button>
         </form>
 
+        @if ($errors->any())
         <div class="warning">
+            <p>Please fix the errors in the form and try again.</p>
             <p>Please fill in all required fields marked with <span class="required">*</span></p>
         </div>
+        @endif
+
+        <br>
+        <hr>
 
 
         <div id="bahan">
@@ -222,6 +228,9 @@
                 </ul>
             </div>
             @endif
+
+            <br>
+            <hr>
 
             <div id="langkah">
             <h3>Cara Memasak:</h3>

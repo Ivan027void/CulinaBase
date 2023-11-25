@@ -1,4 +1,3 @@
-@include('sweetalert::alert')
 <!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width,
     initial-scale=1.0"> <title>Upload Recipe</title>
 <link rel="stylesheet" href="{{ asset('css/userform.css') }}">
@@ -51,6 +50,42 @@
             @endif
             </script>
         <main>
+
+        <div class="form-header"  onclick="toggleLanguage()">
+    <h1 id="formTitleEnglish">Edit Recipe</h1>
+    <h1 id="formTitleIndonesia" style="display: none;">Edit Resep</h1>
+
+    <p id="formInfoEnglish">Edit your recipe here!</p>
+    <p id="formInfoIndonesia" style="display: none;">Modifikasi resep di form ini!</p>
+
+    <p id="fillFormEnglish">Fill in the form below to modify your recipe.</p>
+    <p id="fillFormIndonesia" style="display: none;">Isi formulir di bawah untuk mengedit resep Anda.</p>
+
+    <p id="requiredFieldsEnglish">Please fill in all required fields marked with <span class="required">*</span></p>
+    <p id="requiredFieldsIndonesia" style="display: none;">Silakan isi semua kolom yang wajib diisi yang ditandai dengan <span class="required">*</span></p>
+
+</div>
+
+<script>
+    function toggleLanguage() {
+        toggleVisibility('formTitleEnglish', 'formTitleIndonesia');
+        toggleVisibility('formInfoEnglish', 'formInfoIndonesia');
+        toggleVisibility('fillFormEnglish', 'fillFormIndonesia');
+        toggleVisibility('requiredFieldsEnglish', 'requiredFieldsIndonesia');
+    }
+
+    function toggleVisibility(idEnglish, idIndonesia) {
+        const elementEnglish = document.getElementById(idEnglish);
+        const elementIndonesia = document.getElementById(idIndonesia);
+
+        // Toggle visibility based on current state
+        const isEnglishVisible = elementEnglish.style.display !== 'none';
+
+        elementEnglish.style.display = isEnglishVisible ? 'none' : 'block';
+        elementIndonesia.style.display = isEnglishVisible ? 'block' : 'none';
+    }
+</script>
+
         <form action="{{ route('update-recipe', ['id' => $recipe->recipe_id]) }}"  method="post" enctype="multipart/form-data">
             @csrf
             @method('PUT')
@@ -77,9 +112,12 @@
             <button type="submit" class="btn btn-primary">Simpan</button>
         </form>
 
+        @if ($errors->any())
         <div class="warning">
+            <p>Please fix the errors in the form and try again.</p>
             <p>Please fill in all required fields marked with <span class="required">*</span></p>
         </div>
+        @endif
 
 
         <button class="btn_kembali" onclick="window.location.href='/userPage'">Back</button>
