@@ -38,9 +38,10 @@ class RecipeController extends Controller
 
     public function index()
     {
-        $recipes = Recipe::all(); // Retrieve all recipes from the database
+        $recipes = Recipe::inRandomOrder()->limit(9)->get(); // Retrieve 9 random recipes from the database
         return view('landingpage', compact('recipes'));
     }
+    
 
     public function fullIndex()
     {
