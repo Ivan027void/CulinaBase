@@ -19,14 +19,9 @@ body {
 }
 
 .navContainer{
-    width: 100vw;
-    /* background-color: rgba(113, 113, 154, 0.776);
-    */
-    background-color: #000000;
-background-image: linear-gradient(160deg, #000000 0%, #8085d0 100%);
-
-
-    min-height: 80px;
+    width: 100%;
+     background-color: rgba(113, 113, 154, 0.776);
+     background-image: linear-gradient(160deg, #000000 0%, #8085d0 100%);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -38,13 +33,10 @@ nav{
 #navList{
     width: 100%;
     padding: 15px;
-    /* margin-left: 10px;
-    margin-right: 15px; */
     list-style: none;
     font-size: 1.5rem;
     display: flex;
     justify-content: space-around;
-    /* align-items: center; */
 }
 
 #navLogo{
@@ -58,8 +50,8 @@ a{
 }
 #navItems{
     display: flex;
-    margin-top: 10px;
-    gap: 40px;
+    margin-top: 5px;
+    gap: 30px;
     
 }
 
@@ -72,8 +64,9 @@ main {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     text-align: center;/* Center-align the content */
     width: auto;
-    max-width: 75%;
+    max-width: 70%;
     margin: 0 auto;
+    margin-top: 10px;
 }
 
 main img {

@@ -17,15 +17,16 @@ body {
 }
 
 .navContainer {
-    background: linear-gradient(160deg, #000000 0%, #8085d0 100%);
+    width: 100%;
+    background-color: rgba(113, 113, 154, 0.776);
+    background-image: linear-gradient(160deg, #000000 0%, #8085d0 100%);
+
+
     min-height: 80px;
     display: flex;
     justify-content: center;
     align-items: center;
-    position: fixed; /* Add this to fix the header */
-    top: 0; /* Add this to position it at the top */
-    width: 100%; /* Add this to make it full-width */
-    z-index: 1; /* Add this to place it above other content */
+    position: relative;
 }
 
 nav {
@@ -42,7 +43,7 @@ nav {
 }
 
 #navLogo {
-    font-size: 2.2rem;
+    font-size: 2.8rem;
     color: azure;
 }
 
@@ -54,7 +55,8 @@ a {
 #navItems {
     display: flex;
     margin-top: 10px;
-    gap: 20px;
+    gap: 40px;
+
 }
 
 main {
@@ -63,10 +65,9 @@ main {
     border: 1px solid #ddd;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    max-width: 800px;
+    max-width: 90%;
     margin: 20px auto;
     text-align: center;
-    margin-top: 100px; /* Add this to create space for the fixed header */
 }
 
 .dashboard-actions {
@@ -104,14 +105,14 @@ main {
 }
 
 .btn_logout {
-    background: #007bff;
+    background: #000;
     color: #fff;
     border: none;
     border-radius: 3px;
     padding: 10px 15px;
     cursor: pointer;
+    font-size: 16px;
     font-weight: bold;
-    transition: background 0.3s;
 }
 
 .btn_logout:hover {
@@ -132,25 +133,22 @@ main {
     color: #0056b3;
 }
 
-.footerBox {
-    max-width: 960px;
-    margin: 0 auto;
+footer {
+    width: 100%;
 }
 
-footer {
+.footerBox {
+    background-color: #000000;
+    background-image: linear-gradient(160deg, #000000 0%, #8085d0 100%);
+
+    width: 100%;
     text-align: center;
-    background: linear-gradient(160deg, #000000 0%, #8085d0 100%);
-    padding: 10px 0;
-    position: fixed; /* Add this to fix the footer */
-    bottom: 0; /* Add this to position it at the bottom */
-    width: 100%; /* Add this to make it full-width */
-    z-index: 1; /* Add this to place it above other content */
+    min-height: 40px;
 }
 
 .footerBox p {
     color: azure;
     font-size: 2rem;
-    display: none;
 }
 
 /* Show the footer text on small screens (sm and above) */
@@ -183,7 +181,7 @@ table {
 
 table th, table td {
     padding: 10px;
-    text-align: left;
+    text-align: center;
 }
 
 table th {
@@ -200,65 +198,74 @@ table td {
     justify-content: space-between;
     margin: 0 10px;
     padding: 0 10px;
-  }
-  
-  .button-container button {
+}
+
+.button-container button {
     margin: 0 5px;
-    padding: 10px 15px;
+    padding: 10px 15px; /* Consistent padding for all buttons */
     border: 1px solid black;
     border-radius: 5px;
-  }
+    text-align: center; /* Center-align button text */
+}
+
+/* Add focus styles */
+.button-container button:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #3498db; /* Example focus color, adjust as needed */
+}
 
 .btn-show, .btn-add-ingredient, .btn-langkah-memasak, .btn-edit {
-    padding: 10px 15px;
     font-size: 16px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     transition: background-color 0.3s, color 0.3s, transform 0.3s;
-  }
-  
-  .btn-show {
+}
+
+.btn-show {
     background-color: #3498db;
     color: #fff;
     border-color: #3498db;
-  }
-  
-  .btn-add-ingredient {
+}
+
+.btn-add-ingredient {
     background-color: #27ae60;
     color: #fff;
     border-color: #27ae60;
-  }
-  
-  .btn-langkah-memasak {
+}
+
+.btn-langkah-memasak {
     background-color: #f39c12;
     color: #fff;
     border-color: #f39c12;
-  }
-  
-  .btn-edit {
+}
+
+.btn-edit {
     background-color: #2980b9;
     color: #fff;
     border-color: #2980b9;
-  }
-  
-  .btn-show:hover {
+}
+
+/* Hover styles */
+.button-container button:hover {
+    transform: scale(1.1);
+}
+
+/* Adjust hover colors */
+.btn-show:hover {
     background-color: #2577b5;
-    transform: scale(1.1);
-  }
-  
-  .btn-add-ingredient:hover {
+}
+
+.btn-add-ingredient:hover {
     background-color: #219a52;
-    transform: scale(1.1);
-  }
-  
-  .btn-langkah-memasak:hover {
+}
+
+.btn-langkah-memasak:hover {
     background-color: #d88d0e;
-    transform: scale(1.1);
-  }
-  
-  .btn-edit:hover {
+}
+
+.btn-edit:hover {
     background-color: #2980b9;
-    transform: scale(1.1);
-  }
+}
+
   
 
 /* Style for the "No recipes yet" message */
@@ -279,4 +286,185 @@ table td {
     border-radius: 10px;
     cursor: pointer;
     display: none;
+}
+
+
+.extra-note {
+    background-color: #f8f8f8; /* Background color */
+    border: 1px solid #ddd; /* Border color */
+    padding: 20px; /* Padding around the content */
+    margin: 20px 0; /* Margin to provide some spacing */
+    border-radius: 5px; /* Rounded corners */
+}
+
+.language-toggle {
+    margin-bottom: 20px; /* Spacing between language toggle and delete info */
+}
+
+#language {
+    padding: 8px; /* Padding for the language dropdown */
+    font-size: 14px; /* Font size for the language dropdown */
+}
+
+.delete-info {
+    background-color: #ffeeee; /* Background color for the delete info box */
+    border: 1px solid #ff9999; /* Border color for the delete info box */
+    padding: 15px; /* Padding inside the delete info box */
+    border-radius: 5px; /* Rounded corners for the delete info box */
+}
+
+#deleteInfoText {
+    color: #555; /* Text color for the delete info text */
+    font-size: 14px; /* Font size for the delete info text */
+}
+
+
+.floating-area {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color:  #001f3f;
+    color: #FFFFFF;
+    padding: 10px;
+    border-radius: 15px;
+    cursor: pointer;
+    display: none;
+}
+
+.floating-area a {
+    text-decoration: none;
+    color: #FFFFFF;
+}
+
+.floating-area a:hover {
+    text-decoration: underline;
+}
+
+
+.search-container {
+    margin: 20px; /* Adjust margin as needed */
+    display: flex;
+    align-items: center;
+}
+
+label {
+    margin-right: 10px; /* Adjust margin as needed */
+}
+
+#recipeSearch {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 200px; /* Adjust width as needed */
+    margin-right: 10px; /* Adjust margin as needed */
+}
+
+
+.new-recipe {
+    background-color: green; /* Change the background color as needed */
+    color: #ffffff; /* Set text color to white or another contrasting color */
+    padding: 10px 15px; /* Adjust padding as needed */
+    border: none;
+    border-radius: 5px; /* Add rounded corners if desired */
+    cursor: pointer;
+    font-size: 16px; /* Adjust font size as needed */
+}
+
+.new-recipe:hover {
+    background-color: #2980b9; /* Change the background color on hover */
+}
+
+/* Adjust styles for responsiveness if needed */
+@media (max-width: 600px) {
+    .search-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    #recipeSearch {
+        width: 100%;
+        margin-top: 10px; /* Adjust margin as needed */
+    }
+
+    label {
+        margin-bottom: 5px;
+    }
+}
+
+#resetFilterBtn {
+    background-color:  #6c757d;; /* Blue */
+    color: #fff; /* Dark text color */
+    padding: 8px 16px; /* Padding around the button text */
+    border: 1px solid #ccc; /* Border around the button */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer; /* Cursor style on hover */
+    transition: background-color 0.3s; /* Smooth transition for background color change */
+}
+
+#resetFilterBtn:hover {
+    background-color: #dc3545;
+}
+
+
+/* Responsive Styles for Table */
+@media (max-width: 768px) {
+    .recipe-list {
+        padding: 10px;
+    }
+
+    table {
+        font-size: 14px;
+    }
+
+    table th, table td {
+        padding: 8px;
+    }
+}
+
+/* Responsive Styles for Buttons */
+@media (max-width: 600px) {
+    .button-container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .button-container button {
+        margin: 5px 0;
+        width: 100%;
+    }
+
+    .btn-show, .btn-add-ingredient, .btn-langkah-memasak, .btn-edit {
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+}
+
+/* Responsive Styles for Floating Area */
+@media (max-width: 600px) {
+    .floating-area {
+        padding: 8px;
+    }
+}
+
+/* Responsive Styles for Search Container */
+@media (max-width: 600px) {
+    .search-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    #recipeSearch {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    label {
+        margin-bottom: 5px;
+    }
+
+    #resetFilterBtn {
+        margin-top: 10px;
+        width: 100%;
+    }
 }
