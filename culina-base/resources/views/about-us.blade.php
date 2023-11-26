@@ -90,26 +90,26 @@
                     <div class="team-card">
                         <div class="card">
                             <img src="gambar/siluet.png" alt="Photo of Team Member 1">
-                            <h3>Team Member 1</h3>
+                            <h3>Ivan Chiari</h3>
                             <p>Role or Position of Team Member 1</p>
                             <p>Brief description of Team Member 1.</p>
                         </div>
                         <div class="card">
                             <img src="gambar/siluet.png" alt="Photo of Team Member 2">
-                            <h3>Team Member 2</h3>
+                            <h3>Wilda Fahera</h3>
                             <p>Role or Position of Team Member 2</p>
                             <p>Brief description of Team Member 2.</p>
                         </div>
                         <div class="card">
                             <img src="gambar/siluet.png" alt="Photo of Team Member 3">
-                            <h3>Team Member 3</h3>
+                            <h3>Muhammad Raihan</h3>
                             <p>Role or Position of Team Member 3</p>
                             <p>Brief description of Team Member 3.</p>
                         </div>
                         <div class="card">
                             <img src="gambar/siluet.png" alt="Photo of Team Member 4">
-                            <h3>Team Member 4</h3>
-                            <p>Role or Position of Team Member 4</p>
+                            <h3> Sri Azizah Nazhifah, S.Kom., M.Sc</h3>
+                            <p>Dosen Pengampu Mata Kuliah </p>
                             <p>Brief description of Team Member 4.</p>
                         </div>
                         <!-- Repeat for other team members -->

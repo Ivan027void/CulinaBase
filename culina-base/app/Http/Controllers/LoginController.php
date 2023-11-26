@@ -31,13 +31,13 @@ class LoginController extends Controller
             $user = Auth::user();
     
             if ($user->isAdmin()) {
-                return redirect()->route('admin.page')-with('success', 'Welcome back, Captain! Your command center awaits. 🚀');
+                return redirect()->route('admin.page')->with('success', 'Welcome back, Captain! Your command center awaits. 🚀');
             } else {
                 return redirect()->route('user-page')->with('success', 'Welcome, ' . $user->name . '!');
             }    
         }
     
-        return redirect('/login')->with('error', 'Invalid credentials. Please try again.');
+        return redirect('/login')->with('error', 'Email or password is incorrect. If you are not a registered user, please register first.');
     }
     
     // Proses logout

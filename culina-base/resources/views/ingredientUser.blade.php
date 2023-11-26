@@ -158,7 +158,7 @@
                         <input type="text" name="note" value="{{ $item->note }}">
 
                         <button type="submit">Update Ingredient</button>
-                        <button type="button" class="cancel-update">Cancel</button>
+                        <button type="button" data-bs-dismiss="modal"  id="cancel-update">Cancel</button>
                     </form>
                 </div>
             </div>
@@ -242,12 +242,13 @@
 @foreach ($ingredient as $item)
     var modalId = '#editIngredientModal{{ $item->ingredient_id }}';
     var modal = new bootstrap.Modal(document.querySelector(modalId));
-
-    // Select the "Cancel" button within the modal and attach the event listener
+   // Select the "Cancel" button within the modal and attach the event listener
     var cancelButton = document.querySelector(`${modalId} .cancel-update`);
-    cancelButton.addEventListener('click', function () {
-        modal.hide(); // Close the modal without making any changes
-    });
+    if (cancelButton) {
+        cancelButton.addEventListener('click', function () {
+            modal.hide(); // Close the modal without making any changes
+        });
+    }
 
     document.getElementById('edit-ingredient{{ $item->ingredient_id }}').addEventListener('click', function () {
         // Get the ingredient data
@@ -269,40 +270,6 @@
     });
 @endforeach
 </script>
-<!-- <script>
-    @foreach ($ingredient as $item)
-        document.getElementById('edit-ingredient{{ $item->ingredient_id }}').addEventListener('click', function () {
-            var modalId = '#editIngredientModal{{ $item->ingredient_id }}';
-            var modal = new bootstrap.Modal(document.querySelector(modalId));
-
-             // Select the "Cancel" button within the modal and attach the event listener
-             var cancelButton = document.querySelector(`${modalId} .cancel-update`);
-            cancelButton.addEventListener('click', function () {
-                modal.hide(); // Close the modal without making any changes
-            });
-
-
-            // Get the ingredient data
-            var ingredientId = this.getAttribute('data-ingredient-id');
-            var ingredientName = this.getAttribute('data-ingredient-name');
-            var quantity = this.getAttribute('data-quantity');
-            var size = this.getAttribute('data-size');
-            var note = this.getAttribute('data-note');
-
-            // Populate the form fields
-            var form = document.querySelector(`${modalId} form`);
-            form.querySelector('[name="ingredient_name"]').value = ingredientName;
-            form.querySelector('[name="quantity"]').value = quantity;
-            form.querySelector('[name="size"]').value = size;
-            form.querySelector('[name="note"]').value = note;
-
-            // Show the modal
-            modal.show();
-        });
-    @endforeach
-</script> -->
-
-
 
 </body>
 

@@ -142,14 +142,7 @@
                         data-size="{{ $item->size }}" data-note="{{ $item->note }}">
                         Edit
                     </button>
-                        <form
-                            action="{{ route('ingredients.delete', ['recipe_id' => $recipe->recipe_id, 'ingredientId' => $item->ingredient_id]) }}"
-                            method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" id="delete-ingredient"
-                                onclick="return confirm('Are you sure you want to delete this ingredient?')">Delete</button>
-                        </form>
+                    <button  data-bs-toggle="modal" data-bs-target="#deleteModal" id="delete-ingredient">Delete</button>
                     </div>
                 </div>
                 </td>
@@ -209,13 +202,37 @@
                         <input type="text" name="note" value="{{ $item->note }}">
 
                         <button type="submit" class="btn btn-primary">Update Ingredient</button>
-                        <button type="button" id="cancel-update">Cancel</button>
+                        <button type="button" id="cancel-update" data-bs-dismiss="modal">Cancel</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
     @endforeach
+
+    @if(!$ingredient->isEmpty())
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel">Confirm Delete</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to delete this {{$item->ingredient_name}}?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="cancel_delete">Cancel</button>
+                <form action="{{ route('ingredients.delete', ['recipe_id'=> $recipe->recipe_id, 'ingredientId' => $item->ingredient_id]) }}" method="POST" style="display: inline;">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger" id="delete-ingredient">Delete</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+@endif
 
 
          <!-- Display validation errors -->
@@ -360,6 +377,7 @@
                 </div>
             </footer>
         </div>
+
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
         <script>

@@ -71,7 +71,8 @@
         <footer>
             <div class="footerBox">
                 <p>
-                    Copyright &copy;CulinaBase kelompok Sistem Informasi
+                    Copyright &copy; CulinaBase kelompok Sistem Informasi
+                </p>
             </div>
         </footer>
     </div>

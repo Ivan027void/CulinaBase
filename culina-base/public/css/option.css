@@ -4,19 +4,24 @@
     box-sizing: border-box;
 }
 
-.container {
-    height: 100%;
-    width: 100%;
-    overflow-x: none;
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
     background-color: #e2e5e8;
     background-image: linear-gradient(98deg, #e2e5e8 0%, #ffffff 100%);
 }
 
+.container {
+    flex: 1;
+    overflow-x: none;
+}
+
 .navContainer {
-    width: 100vw;
+    width: 100%;
+    min-height: 80px;
     background-color: #000000;
     background-image: linear-gradient(160deg, #000000 0%, #8085d0 100%);
-    min-height: 80px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -50,17 +55,25 @@ a {
     display: flex;
     margin-top: 10px;
     gap: 40px;
-
 }
 
+/* Styling for the footer */
 footer {
+    text-align: center;
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    margin-top: 100px;
     width: 100%;
+    position:static;
+    bottom:0;
+    
 }
-
 .footerBox {
+    max-width: 960px;
+    margin: 0 auto;
     background-color: #000000;
     background-image: linear-gradient(160deg, #000000 0%, #8085d0 100%);
-
     width: 100%;
     text-align: center;
     min-height: 40px;
@@ -71,21 +84,6 @@ footer {
     font-size: 2rem;
 }
 
-.footer {
-    margin-right: 30px;
-    margin-top: 200px;
-    padding: 10px 10px 10px 10px;
-    display: inline-block;
-    vertical-align: top;
-    color: white;
-    font-size: 16px;
-    font-family: "Alegreya Sans SC", Arial, Helvetica, sans-serif;
-    text-decoration: none;
-    line-height: 70px;
-    opacity: 0.7;
-    border-top: 2px solid #cc7a00;
-}
-
 .slideshow {
     border-top: 2px solid #cc7a00;
     margin-left: 30px;
@@ -93,94 +91,16 @@ footer {
     border-bottom: 2px solid #cc7a00;
 }
 
-
-
-body {
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-}
-
-input[type=text],
-select {
+input[type=text] {
     width: 30%;
     padding: 12px 20px;
     margin: 8px 0;
     display: inline-block;
     border-radius: 40px;
     box-sizing: border-box;
-
-
-
 }
 
-input[type=submit] {
-    text-align: center;
-    text-decoration: none;
-    width: 10%;
-    background-color: #cc7a00;
-    padding: 12px 20px;
-    margin: 8px 0;
-    margin-left: 5px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    color: white;
-    font-size: 20px;
-
-    box-sizing: border-box;
-}
-
-input[type=submit]:hover {
-    background-color: black;
-
-}
-
-button {
-    display: inline-block;
-    outline: none;
-    text-align: center;
-    text-decoration: none;
-    width: 360px;
-    height: 62px;
-    background-color: #cc7a00;
-    color: #4E4E50;
-    padding: 14px 20px;
-    border: solid #e6e6e6;
-    cursor: pointer;
-    color: white;
-    font-size: 20px;
-    border-radius: 30px;
-    margin: 5px;
-    box-shadow: 0 9px #999;
-}
-
-button:active {
-    background-color: black;
-    box-shadow: 0 5px #666;
-    transform: translateY(4px);
-}
-
-button:hover {
-    border-radius: 40px;
-    background-color: black;
-    color: orange;
-}
-
-button:focus {
-    outline: 0;
-}
-
-input[type=submit]:focus {
-    outline: 0;
-}
-
-input[type=submit]:onclick {
-    outline: 0;
-}
-
-/* CSS untuk bagian <main> */
+/* CSS for <main> */
 main {
     display: flex;
     padding: 20px;
@@ -207,11 +127,29 @@ main {
     flex: 0 0 calc(25% - 10px); /* Adjust flex for 4 cards per row */
 }
 
-
 .recipe-card img {
     max-width: 100%;
     height: 200px;
-    /* Tentukan tinggi gambar yang tetap */
     object-fit: cover;
-    /* Memastikan gambar selalu memenuhi kotak kartu */
+}
+
+/* Styling tautan pada kartu resep dan halaman about-us */
+.recipe-card a
+{
+    text-decoration: none;
+    color: #000000;
+    font-weight: bold;
+}
+
+/* Hover effect untuk tautan */
+.recipe-card a:hover {
+    color: #0056b3;
+}
+
+/* Media query untuk menangani layar yang lebih kecil (responsif) */
+@media (max-width: 768px) {
+    .recipe-card {
+        max-width: calc(50% - 20px);
+        /* Menampilkan 2 kartu per baris pada layar yang lebih kecil */
+    }
 }

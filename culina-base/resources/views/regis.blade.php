@@ -1,4 +1,3 @@
-@include('sweetalert::alert')
 <!DOCTYPE html>
 <html lang="en">
 
@@ -31,6 +30,30 @@
             </div>
         </header>
         <main>
+
+        @include('sweetalert::alert')
+        <script>
+            @if (session('success'))
+                swal({
+                    title: "Success",
+                    text: "{{ session('success') }}",
+                    icon: "success",
+                });
+            @elseif(session('error'))
+            swal({
+                title: "Error",
+                text: "{{ session('error') }}",
+                icon: "error",
+            });
+            @elseif(session('warning'))
+            swal({
+                title: "Warning",
+                text: "{{ session('warning') }}",
+                icon: "warning",
+            });
+            @endif
+            </script>
+
         <div class="formarea">
                 <p class="log-title">Registration Form</p>
             <form method="POST" action="/register">

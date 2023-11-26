@@ -1,4 +1,3 @@
-@include('sweetalert::alert')
 <!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width,
     initial-scale=1.0"> <title>Upload Recipe</title>
 <link rel="stylesheet" href="css/userform.css">
@@ -118,6 +117,29 @@
                 </p>
             </div>
         </footer>
+
+        @include('sweetalert::alert')
+        <script>
+            @if (session('success'))
+                swal({
+                    title: "Success",
+                    text: "{{ session('success') }}",
+                    icon: "success",
+                });
+            @elseif(session('error'))
+            swal({
+                title: "Error",
+                text: "{{ session('error') }}",
+                icon: "error",
+            });
+            @elseif(session('warning'))
+            swal({
+                title: "Warning",
+                text: "{{ session('warning') }}",
+                icon: "warning",
+            });
+            @endif
+            </script>
 
         @if(session('notification'))
         <script>

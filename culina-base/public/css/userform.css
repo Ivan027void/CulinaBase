@@ -71,6 +71,7 @@ main {
     width: 100%;
     margin: 20px 0;
     text-align: center;
+    flex-grow: 1;
 }
 
 label {
@@ -112,8 +113,8 @@ button {
     background: #007bff;
     color: #fff;
     border: none;
-    border-radius: 3px;
-    padding: 10px 15px;
+    border-radius: 7px;
+    padding: 10px 30px;
     cursor: pointer;
 }
 
@@ -135,9 +136,11 @@ select {
     color: #fff;
     border: none;
     border-radius: 3px;
-    padding: 5px 10px;
+    padding: 20px 30px;
     cursor: pointer;
     margin-left: 5px;
+    height: 50px;
+    width: 200px;
 }
 
 .add-ingredient:hover,
@@ -200,17 +203,16 @@ select {
     color: #0056b3; /* Change the text color on hover */
 }
 
-
-/* Styling for the footer */
 footer {
     text-align: center;
     background-color: #333;
     color: white;
     padding: 10px;
-    margin-top: 50px;
+    margin-top: 10px;
     width: 100%;
+    position:static;
+    bottom:0;
 }
-
 .footerBox {
     max-width: 960px;
     margin: 0 auto;
@@ -225,7 +227,6 @@ footer {
     color: azure;
     font-size: 2rem;
 }
-
 
 /* Style for the button container */
 .button-container {
@@ -267,6 +268,9 @@ footer {
     padding: 10px 20px;
     margin-right: 10px; /* Add right margin to create space between Add and Submit buttons */
     cursor: pointer;
+    height: 50px;
+    width: 200px;
+    font-size: 16px;
 }
 
 .btn-class,.cancel-update, #cancel-update,#delete-step, #delete-ingredient{
@@ -276,6 +280,7 @@ footer {
     padding: 10px 20px;
     margin-right: 5px; /* Add a right margin to create space between Remove and Add buttons */
     cursor: pointer;
+    font-size: 16px;
 }
 
 #step-update,.edit-step,.edit-ingredient {
@@ -285,6 +290,7 @@ footer {
     padding: 10px 20px;
     margin-right: 10px; /* Add right margin to create space between Add and Submit buttons */
     cursor: pointer;
+    font-size: 16px;
 }
 
 /* Style for the "Submit Ingredients" button */
@@ -304,6 +310,7 @@ footer {
     padding: 10px 20px;
     margin-top: 10px; /* Add top margin to create space between Submit and Back buttons */
     cursor: pointer;
+    font-size: 16px;
 }
 
 table {
