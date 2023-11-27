@@ -466,3 +466,35 @@ p {
     color: #e74c3c; /* Adjust the color as needed */
     font-weight: bold;
 }
+
+/* Style for the recipe information */
+.inforesep {
+    /* Styles for the card container */
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin: 5px;
+    padding: 7px;
+    /* Membuat 3 kartu per baris */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    width: fit-content;
+    margin: 0 auto;
+    margin-bottom: 15px;
+}
+
+.inforesep h2.recipe_title {
+    /* Styles for h2.recipe_title inside .inforesep */
+    color: #333; /* Adjust as needed */
+    margin-bottom: 10px; /* Add spacing below the title */
+    /* Add other styling as needed */
+}
+
+.inforesep img {
+    /* Styles for images inside .inforesep */
+    min-width: 100px; /* Minimum width for the image */
+    margin-bottom: 10px; /* Add spacing below the image */
+    max-width: 100%;
+    height: 200px;
+    /* Tentukan tinggi gambar yang tetap */
+    object-fit: cover;
+}
+

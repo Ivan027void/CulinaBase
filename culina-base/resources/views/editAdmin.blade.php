@@ -2,6 +2,7 @@
 <html lang="en">
      <head> 
         <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width,initial-scale=1.0">
         <title>Resep {{ $recipe->recipe_name }}</title>
         <link rel="stylesheet" href="{{ asset('css/adminForm.css') }}">
@@ -271,13 +272,10 @@
                         <div class="button-container">
                             <div class="button-row-1">
                             <button type="button" class="edit-step" data-step-id="{{ $step->step_id }}">Edit</button>
-                             <form action="{{ route('steps.delete', ['id'=> $recipe->recipe_id, 'stepId' => $step->step_id]) }}" method="POST"
-                                    style="display: inline;">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" id="delete-step"
-                                        onclick="return confirm('Are you sure you want to delete this step?')">Delete</button>
-                                </form>
+                             <!-- Delete Step Button -->
+                        <button type="button" class="delete-step" id="delete-step" data-bs-toggle="modal" data-bs-target="#deleteStepModal{{ $step->step_id }}">
+                            Delete
+                        </button>
                             </div>
                         </div>
                         </td>
@@ -326,6 +324,36 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- Delete Step Modals (outside the table) -->
+                    @if(!$steps->isEmpty())
+                    @foreach ($steps as $step)
+                    <div class="modal fade" id="deleteStepModal{{ $step->step_id }}" tabindex="-1"
+                        aria-labelledby="deleteStepModalLabel{{ $step->step_id }}" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="deleteStepModalLabel{{ $step->step_id }}">Confirm Delete Step</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Are you sure you want to delete this step: </p>
+                                    <p>({{$step->step_order}}) {{ $step->description }}?</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                    <form action="{{ route('steps.delete', ['id'=> $recipe->recipe_id, 'stepId' => $step->step_id]) }}"
+                                        method="POST" style="display: inline;">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="delete-step" id="delete-step">Delete</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
+                    @endif
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
@@ -456,6 +484,21 @@
             });
         });
     </script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var deleteButtons = document.querySelectorAll('.delete-step');
+
+        deleteButtons.forEach(function (button) {
+            button.addEventListener('click', function () {
+                var stepId = this.dataset.stepId;
+                var modalId = '#deleteStepModal' + stepId;
+                var modal = new bootstrap.Modal(document.querySelector(modalId));
+                modal.show();
+            });
+        });
+    });
+</script>
 
     </body>
 </html>

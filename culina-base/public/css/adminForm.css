@@ -331,7 +331,7 @@ footer {
     cursor: pointer;
 }
 
-#cancel-update-steps, #cancel-update-ingridients,#cancel-update,#delete-step, #delete-ingredient{
+ #cancel-update-steps, #cancel-update-ingridients,#cancel-update,#delete-step, #delete-ingredient{
     background-color: red; /* Set the background color to red (adjust as needed) */
     color: white;
     border: none;
