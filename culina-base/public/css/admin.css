@@ -215,22 +215,22 @@ footer {
     text-align: center;
     background-color: #333;
     color: white;
-    padding: 10px;
+    padding: 8px;
     width: 100%;
 }
 
 .footerBox {
-    max-width: 960px;
+    max-width: 900px;
     margin: 0 auto;
     background: linear-gradient(160deg, #000000 0%, #8085d0 100%);
     width: 100%;
     text-align: center;
-    min-height: 40px;
+    min-height: 30px;
 }
 
 .footerBox p {
     color: azure;
-    font-size: 2rem;
+    font-size: 20px;
 }
 
 
