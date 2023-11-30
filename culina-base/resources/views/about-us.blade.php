@@ -122,12 +122,12 @@
                     <div class="card">
                         <ul>
                             <li><strong><img src="gambar/mapgoogle.jpeg" alt="Google Maps">Address:</strong>
-                                <p>Jl. Jendral Sudirman No. 100, Jakarta Selatan</p>
+                                <p>Jl. lupa nama No. 00, Utara Selatan</p>
                             </li>
-                            <li><strong><img src="gambar/wa.jpeg" alt="WhatsApp">081234567890</strong></li>
-                            <li><strong><img src="gambar/igLogo.jpg" alt="Instagram">@website_kumpulan_resep</strong>
+                            <li><strong><img src="gambar/wa.jpeg" alt="WhatsApp">000101010000</strong></li>
+                            <li><strong><img src="gambar/igLogo.jpg" alt="Instagram">@Culina_Base_Resep</strong>
                             </li>
-                            <li><strong><img src="gambar/fb.png" alt="Facebook">Website Kumpulan Resep</strong></li>
+                            <li><strong><img src="gambar/fb.png" alt="Facebook">CulinaBase</strong></li>
                         </ul>
                     </div>
                 </section>
