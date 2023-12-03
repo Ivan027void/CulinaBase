@@ -65,6 +65,7 @@
             <tr>
                 <th>User Name</th>
                 <th>Email</th>
+                <th>Phone</th>
                 <th>Time Created</th>
             </tr>
             @if(isset($users))
@@ -72,6 +73,7 @@
                     <tr class="user-row" data-author="{{ $user->name }}">
                         <td class="user-name">{{ $user->name }}</td>
                         <td>{{ $user->email }}</td>
+                        <td>{{ $user->phone }}</td>
                         <td>{{ $user->created_at }}</td>
                     </tr>
                 @endforeach
