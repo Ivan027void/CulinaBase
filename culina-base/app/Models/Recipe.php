@@ -25,8 +25,6 @@ class Recipe extends Model
             return $this->belongsTo(User::class, 'author_id');
         }
 
-
-
     protected static function boot()
 {
     parent::boot();
@@ -53,7 +51,7 @@ class Recipe extends Model
 
     public function steps()
     {
-        return $this->hasMany(Step::class, 'recipe_id');
+        return $this->hasMany(Step::class, 'recipe_id')->orderBy('step_order');
     }
 
 

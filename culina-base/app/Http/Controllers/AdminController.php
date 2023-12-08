@@ -10,6 +10,7 @@ use App\Models\Review;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Crypt;
 
 class AdminController extends Controller
 {
@@ -19,7 +20,7 @@ class AdminController extends Controller
         $recipes = Recipe::all();
         // Retrieve non-admin users from the User model
         $users = User::where('role', '!=', 'admin')->get();
-        
+
         // If there are no users, you can use your dummy data
         if ($users->isEmpty()) {
             $dummyUsers = [
@@ -57,7 +58,7 @@ class AdminController extends Controller
         }
 
         // If there are users, pass them to the view
-        return view('adminPage', compact('recipes', 'users',));
+        return view('adminPage', compact('recipes', 'users', ));
     }
 
     public function editAdmin($id)

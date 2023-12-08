@@ -19,7 +19,8 @@ class RecipeController extends Controller
         $recipe = Recipe::findOrFail($id);
 
         // Retrieve the steps for the recipe
-        $steps = Step::where('recipe_id', $id)->get();
+        //$steps = Step::where('recipe_id', $id)->orderBy('step_order')->get();
+        $steps = $recipe->steps;
 
         // Retrieve the ingredients for the recipe
         $ingredients = Ingredient::whereHas('recipe', function ($query) use ($id) {
