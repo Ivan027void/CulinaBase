@@ -69,7 +69,7 @@ Route::put('/profile/update', [ProfileController::class,'updateProfile'])->name(
 
 //route for admin
 Route::get('/adminPage', [AdminController::class, 'indexAdmin'])->name('admin.page');
-Route::get('/admin/show-password/{userId}', [AdminController::class, 'showPassword'])->name('admin.showPassword');
+//Route::get('/admin/show-password/{userId}', [AdminController::class, 'showPassword'])->name('admin.showPassword');
 Route::get('/recipe_info/{id}', [AdminController::class, 'showAdmin'])->name('recipes.show');
 Route::get('/adminPage/edit_recipe/{id}', [AdminController::class, 'editAdmin'])->name('recipes.edit');
 Route::delete('/adminPage/delete/{id}', [AdminController::class, 'delete'])->name('recipes.delete');
