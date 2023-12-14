@@ -63,8 +63,21 @@
                     <li>{{ $step->description }}</li>
                     @endforeach
                 </ol>
+                <button class="btn_kembali" onclick="redirectToUserRolePage()">Back</button>
+                
+                <script>
+                    function redirectToUserRolePage() {
+                        // Assuming Auth::user() returns the authenticated user
+                        var userRole = "{{ Auth::user()->isAdmin() ? 'admin' : 'user' }}";
 
-                <button class="btn_kembali" onclick="history.back()">Back</button>
+                        if (userRole === 'admin') {
+                            window.location.href = '/adminPage';
+                        } else {
+                            window.location.href = '/userPage';
+                        }
+                    }
+                </script>
+
 
             </main>
 
